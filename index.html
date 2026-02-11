@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Daily - AI Agent 每日新聞</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            border-bottom: 1px solid #30363d;
+        }
+        header h1 {
+            font-size: 2em;
+            background: linear-gradient(135deg, #58a6ff, #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: #8b949e;
+            margin-top: 8px;
+            font-size: 1.1em;
+        }
+        .calendar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .calendar-nav button {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .calendar-nav button:hover { background: #30363d; }
+        .calendar-nav span { font-size: 1.2em; font-weight: 600; }
+        .calendar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        .weekday-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+        .weekday-header div {
+            text-align: center;
+            color: #8b949e;
+            font-size: 0.85em;
+            padding: 8px 0;
+        }
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+        .day-cell {
+            aspect-ratio: 1;
+            background: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: #8b949e;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .day-cell.empty { background: transparent; border: none; }
+        .day-cell.has-post {
+            background: #1a2233;
+            border-color: #58a6ff;
+            color: #58a6ff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .day-cell.has-post:hover {
+            background: #1f3054;
+            transform: scale(1.05);
+        }
+        .day-cell.has-post::after {
+            content: "📰";
+            font-size: 0.6em;
+            position: absolute;
+            bottom: 6px;
+        }
+        .day-cell.today {
+            border-color: #bc8cff;
+            box-shadow: 0 0 8px rgba(188, 140, 255, 0.3);
+        }
+        .post-viewer {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .post-viewer.active { display: block; }
+        .post-viewer .back-btn {
+            background: #21262d;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        .post-viewer .back-btn:hover { background: #30363d; }
+        .post-content {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 30px;
+            line-height: 1.8;
+        }
+        .post-content h1 { font-size: 1.5em; color: #58a6ff; margin-bottom: 16px; }
+        .post-content h2 { font-size: 1.2em; color: #bc8cff; margin: 20px 0 10px; }
+        .post-content h3 { font-size: 1.05em; color: #e6edf3; margin: 16px 0 8px; }
+        .post-content p { margin: 8px 0; }
+        .post-content a { color: #58a6ff; text-decoration: none; }
+        .post-content a:hover { text-decoration: underline; }
+        .post-content ul, .post-content ol { padding-left: 24px; margin: 8px 0; }
+        .post-content li { margin: 4px 0; }
+        .post-content strong { color: #e6edf3; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #484f58;
+            border-top: 1px solid #21262d;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .day-cell { font-size: 0.85em; }
+            .post-content { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 Tech Daily</h1>
+        <p>每日香港 Top 5 AI Agent 使用案例</p>
+    </header>
+
+    <div id="calendarView">
+        <div class="calendar-nav">
+            <button onclick="changeMonth(-1)">◀ 上月</button>
+            <span id="monthLabel"></span>
+            <button onclick="changeMonth(1)">下月 ▶</button>
+        </div>
+        <div class="calendar">
+            <div class="weekday-header">
+                <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+            </div>
+            <div class="days-grid" id="daysGrid"></div>
+        </div>
+    </div>
+
+    <div class="post-viewer" id="postViewer">
+        <button class="back-btn" onclick="showCalendar()">← 返回日曆</button>
+        <div class="post-content" id="postContent"></div>
+    </div>
+
+    <footer>
+        Powered by OpenClaw 🦞 | v2ryan
+    </footer>
+
+    <script>
+        let currentDate = new Date();
+        let postIndex = {};
+
+        async function loadIndex() {
+            try {
+                const res = await fetch('posts/index.json');
+                if (res.ok) postIndex = await res.json();
+            } catch(e) {}
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const today = new Date();
+
+            document.getElementById('monthLabel').textContent =
+                `${year} 年 ${month + 1} 月`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const grid = document.getElementById('daysGrid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < firstDay; i++) {
+                grid.innerHTML += '<div class="day-cell empty"></div>';
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                const hasPost = postIndex[dateStr];
+                const isToday = today.getFullYear() === year &&
+                                today.getMonth() === month &&
+                                today.getDate() === d;
+
+                const classes = ['day-cell'];
+                if (hasPost) classes.push('has-post');
+                if (isToday) classes.push('today');
+
+                const cell = document.createElement('div');
+                cell.className = classes.join(' ');
+                cell.textContent = d;
+                if (hasPost) {
+                    cell.onclick = () => loadPost(dateStr);
+                }
+                grid.appendChild(cell);
+            }
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            renderCalendar();
+        }
+
+        async function loadPost(dateStr) {
+            try {
+                const res = await fetch(`posts/${dateStr}.html`);
+                if (res.ok) {
+                    document.getElementById('postContent').innerHTML = await res.text();
+                    document.getElementById('calendarView').style.display = 'none';
+                    document.getElementById('postViewer').classList.add('active');
+                }
+            } catch(e) {
+                alert('載入失敗');
+            }
+        }
+
+        function showCalendar() {
+            document.getElementById('calendarView').style.display = 'block';
+            document.getElementById('postViewer').classList.remove('active');
+        }
+
+        loadIndex();
+    </script>
+</body>
+</html>
