@@ -3,49 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Daily - AI Agent 每日新聞</title>
+    <title>Tech Daily - 香港科技日報</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #0d1117;
+            background: #0a0a0f;
             color: #e6edf3;
             min-height: 100vh;
         }
+
+        /* Top Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 0 20px;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+        .nav-logo {
+            font-size: 1.2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+        }
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #8b949e;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            white-space: nowrap;
+        }
+        .nav-tab:hover { color: #e6edf3; background: rgba(255,255,255,0.06); }
+        .nav-tab.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.2);
+        }
+        .nav-tab .tab-icon { margin-right: 4px; }
+
+        /* Header */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
-            border-bottom: 1px solid #30363d;
+            padding: 48px 20px 24px;
         }
         header h1 {
-            font-size: 2em;
-            background: linear-gradient(135deg, #58a6ff, #bc8cff);
+            font-size: 2.4em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         header p {
-            color: #8b949e;
+            color: #6b7280;
             margin-top: 8px;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
+
+        /* Calendar Navigation */
         .calendar-nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 16px;
+            padding: 16px 20px;
         }
         .calendar-nav button {
-            background: #21262d;
-            border: 1px solid #30363d;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
             color: #e6edf3;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 8px 18px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
+            transition: all 0.2s;
         }
-        .calendar-nav button:hover { background: #30363d; }
-        .calendar-nav span { font-size: 1.2em; font-weight: 600; }
+        .calendar-nav button:hover { background: rgba(255,255,255,0.08); }
+        .calendar-nav span { font-size: 1.15em; font-weight: 600; }
+
+        /* Calendar Grid */
         .calendar {
             max-width: 900px;
             margin: 0 auto;
@@ -54,56 +111,63 @@
         .weekday-header {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            margin-bottom: 4px;
+            gap: 6px;
+            margin-bottom: 6px;
         }
         .weekday-header div {
             text-align: center;
-            color: #8b949e;
-            font-size: 0.85em;
+            color: #6b7280;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             padding: 8px 0;
         }
         .days-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
+            gap: 6px;
         }
         .day-cell {
             aspect-ratio: 1;
-            background: #161b22;
-            border: 1px solid #21262d;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.1em;
-            color: #8b949e;
+            font-size: 1.05em;
+            color: #4b5563;
             position: relative;
-            transition: all 0.2s;
+            transition: all 0.25s;
         }
         .day-cell.empty { background: transparent; border: none; }
         .day-cell.has-post {
-            background: #1a2233;
-            border-color: #58a6ff;
-            color: #58a6ff;
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.25);
+            color: #60a5fa;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
         }
         .day-cell.has-post:hover {
-            background: #1f3054;
-            transform: scale(1.05);
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
         }
-        .day-cell.has-post::after {
-            content: "📰";
-            font-size: 0.6em;
+        .day-cell.has-post .dot {
+            width: 5px; height: 5px;
+            background: #60a5fa;
+            border-radius: 50%;
             position: absolute;
-            bottom: 6px;
+            bottom: 8px;
         }
         .day-cell.today {
-            border-color: #bc8cff;
-            box-shadow: 0 0 8px rgba(188, 140, 255, 0.3);
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 0 12px rgba(167, 139, 250, 0.15);
         }
+
+        /* Post Viewer */
         .post-viewer {
             display: none;
             max-width: 800px;
@@ -112,49 +176,110 @@
         }
         .post-viewer.active { display: block; }
         .post-viewer .back-btn {
-            background: #21262d;
-            border: 1px solid #30363d;
-            color: #58a6ff;
-            padding: 8px 16px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #60a5fa;
+            padding: 10px 20px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-bottom: 20px;
-            font-size: 0.95em;
+            margin-bottom: 24px;
+            font-size: 0.9em;
+            transition: all 0.2s;
         }
-        .post-viewer .back-btn:hover { background: #30363d; }
+        .post-viewer .back-btn:hover { background: rgba(255,255,255,0.08); }
         .post-content {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 30px;
-            line-height: 1.8;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 36px;
+            line-height: 1.85;
         }
-        .post-content h1 { font-size: 1.5em; color: #58a6ff; margin-bottom: 16px; }
-        .post-content h2 { font-size: 1.2em; color: #bc8cff; margin: 20px 0 10px; }
-        .post-content h3 { font-size: 1.05em; color: #e6edf3; margin: 16px 0 8px; }
-        .post-content p { margin: 8px 0; }
-        .post-content a { color: #58a6ff; text-decoration: none; }
-        .post-content a:hover { text-decoration: underline; }
-        .post-content ul, .post-content ol { padding-left: 24px; margin: 8px 0; }
-        .post-content li { margin: 4px 0; }
-        .post-content strong { color: #e6edf3; }
+        .post-content h1 {
+            font-size: 1.6em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+        .post-content h2 {
+            font-size: 1.15em;
+            color: #a78bfa;
+            margin: 28px 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+            font-weight: 600;
+        }
+        .post-content h3 {
+            font-size: 1em;
+            color: #e6edf3;
+            margin: 18px 0 6px;
+            font-weight: 600;
+        }
+        .post-content p { margin: 6px 0; color: #d1d5db; }
+        .post-content a {
+            color: #60a5fa;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            transition: border-color 0.2s;
+        }
+        .post-content a:hover { border-bottom-color: #60a5fa; }
+        .post-content strong { color: #f3f4f6; }
+
+        /* Section filter in post */
+        .section-youtube h3 { display: block; }
+        .section-lihkg h3 { display: block; }
+        .section-agent h3 { display: block; }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            color: #484f58;
-            border-top: 1px solid #21262d;
-            font-size: 0.9em;
+            padding: 40px 20px;
+            color: #374151;
+            font-size: 0.85em;
         }
-        @media (max-width: 600px) {
-            .day-cell { font-size: 0.85em; }
-            .post-content { padding: 16px; }
+        footer a { color: #4b5563; text-decoration: none; }
+        footer a:hover { color: #6b7280; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .nav-inner { flex-direction: column; height: auto; padding: 10px 0; gap: 6px; }
+            .nav-tabs { overflow-x: auto; width: 100%; justify-content: center; }
+            .nav-tab { padding: 6px 12px; font-size: 0.8em; }
+            header h1 { font-size: 1.8em; }
+            .day-cell { font-size: 0.85em; border-radius: 8px; }
+            .post-content { padding: 20px; border-radius: 12px; }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">🤖 Tech Daily</div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-filter="all">
+                    <span class="tab-icon">📋</span>全部
+                </button>
+                <button class="nav-tab" data-filter="youtube">
+                    <span class="tab-icon">📺</span>YouTube
+                </button>
+                <button class="nav-tab" data-filter="lihkg">
+                    <span class="tab-icon">💬</span>討論區
+                </button>
+                <button class="nav-tab" data-filter="agent">
+                    <span class="tab-icon">🤖</span>AI Agent
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <header>
-        <h1>🤖 Tech Daily</h1>
-        <p>每日香港 Top 5 AI Agent 使用案例</p>
+        <h1>Tech Daily</h1>
+        <p>每日香港科技新聞 ✦ YouTube ✦ 討論區 ✦ AI Agent</p>
     </header>
 
     <div id="calendarView">
@@ -177,12 +302,48 @@
     </div>
 
     <footer>
-        Powered by OpenClaw 🦞 | v2ryan
+        Powered by <a href="https://github.com/openclaw/openclaw">OpenClaw</a> 🦞 ✦ Built by v2sdryan
     </footer>
 
     <script>
         let currentDate = new Date();
         let postIndex = {};
+        let currentFilter = 'all';
+
+        // Tab filtering
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                applyFilter();
+            });
+        });
+
+        function applyFilter() {
+            const content = document.getElementById('postContent');
+            if (!content.innerHTML) return;
+
+            const sections = content.querySelectorAll('h2');
+            sections.forEach(section => {
+                let el = section;
+                const sectionText = section.textContent.toLowerCase();
+                let sectionType = 'other';
+                if (sectionText.includes('youtube')) sectionType = 'youtube';
+                else if (sectionText.includes('連登') || sectionText.includes('討論區')) sectionType = 'lihkg';
+                else if (sectionText.includes('ai agent')) sectionType = 'agent';
+
+                const show = currentFilter === 'all' || currentFilter === sectionType;
+                section.style.display = show ? '' : 'none';
+
+                // Toggle all elements until next h2
+                el = section.nextElementSibling;
+                while (el && el.tagName !== 'H2') {
+                    el.style.display = show ? '' : 'none';
+                    el = el.nextElementSibling;
+                }
+            });
+        }
 
         async function loadIndex() {
             try {
@@ -216,16 +377,13 @@
                                 today.getMonth() === month &&
                                 today.getDate() === d;
 
+                const cell = document.createElement('div');
                 const classes = ['day-cell'];
                 if (hasPost) classes.push('has-post');
                 if (isToday) classes.push('today');
-
-                const cell = document.createElement('div');
                 cell.className = classes.join(' ');
-                cell.textContent = d;
-                if (hasPost) {
-                    cell.onclick = () => loadPost(dateStr);
-                }
+                cell.innerHTML = d + (hasPost ? '<div class="dot"></div>' : '');
+                if (hasPost) cell.onclick = () => loadPost(dateStr);
                 grid.appendChild(cell);
             }
         }
@@ -242,6 +400,11 @@
                     document.getElementById('postContent').innerHTML = await res.text();
                     document.getElementById('calendarView').style.display = 'none';
                     document.getElementById('postViewer').classList.add('active');
+                    currentFilter = 'all';
+                    document.querySelectorAll('.nav-tab').forEach(t => {
+                        t.classList.toggle('active', t.dataset.filter === 'all');
+                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             } catch(e) {
                 alert('載入失敗');
