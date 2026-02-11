@@ -612,5 +612,47 @@
 
         loadIndex();
     </script>
+<div id="settingsPanel" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
+  <div style="background:#21262d;color:#e6edf3;padding:20px;border-radius:8px;max-width:400px;width:90%;">
+    <h3>Settings</h3>
+    <label>Theme:
+      <select id="themeSelect">
+        <option value="light">Light</option>
+        <option value="dark" selected>Dark</option>
+        <option value="solarized">Solarized</option>
+        <option value="monokai">Monokai</option>
+      </select>
+    </label>
+    <br/><br/>
+    <label>Font Size:
+      <input type="range" id="fontSizeSlider" min="12" max="24" value="16">
+      <span id="fontSizeValue">16px</span>
+    </label>
+    <br/><br/>
+    <button onclick="applySettings()">Apply</button>
+    <button onclick="closeSettings()">Close</button>
+  </div>
+</div>
+<script>
+  function openSettings(){document.getElementById('settingsPanel').style.display='flex';}
+  function closeSettings(){document.getElementById('settingsPanel').style.display='none';}
+  function applySettings(){
+    const theme=document.getElementById('themeSelect').value;
+    const size=document.getElementById('fontSizeSlider').value;
+    document.body.style.fontSize=size+'px';
+    document.getElementById('fontSizeValue').textContent=size+'px';
+    switch(theme){
+      case 'light':
+        document.body.style.background='#fff';document.body.style.color='#000';break;
+      case 'dark':
+        document.body.style.background='#0a0a0f';document.body.style.color='#e6edf3';break;
+      case 'solarized':
+        document.body.style.background='#FDF6E3';document.body.style.color='#657B83';break;
+      case 'monokai':
+        document.body.style.background='#272822';document.body.style.color='#F8F8F2';break;
+    }
+  }
+  document.getElementById('settingsBtn').addEventListener('click',openSettings);
+</script>
 </body>
 </html>
