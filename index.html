@@ -38,6 +38,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+            cursor: pointer;
         }
         .nav-tabs {
             display: flex;
@@ -61,6 +62,39 @@
             background: rgba(99, 102, 241, 0.2);
         }
         .nav-tab .tab-icon { margin-right: 4px; }
+
+        /* Date Navigation Bar */
+        .date-nav {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 16px 20px 0;
+        }
+        .date-nav.active { display: flex; justify-content: space-between; align-items: center; }
+        .date-nav button {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e6edf3;
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .date-nav button:hover { background: rgba(255,255,255,0.08); }
+        .date-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+        .date-nav .date-label {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #a78bfa;
+        }
+        .date-nav .calendar-link {
+            font-size: 0.85em;
+            color: #6b7280;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .date-nav .calendar-link:hover { color: #60a5fa; }
 
         /* Header */
         header {
@@ -166,30 +200,20 @@
             border-color: rgba(167, 139, 250, 0.4);
             box-shadow: 0 0 12px rgba(167, 139, 250, 0.15);
         }
+        .day-cell.viewing {
+            background: rgba(167, 139, 250, 0.2);
+            border-color: rgba(167, 139, 250, 0.5);
+            color: #a78bfa;
+        }
 
         /* Post Viewer */
         .post-viewer {
             display: none;
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px 20px;
         }
         .post-viewer.active { display: block; }
-        .post-viewer .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #60a5fa;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            font-size: 0.9em;
-            transition: all 0.2s;
-        }
-        .post-viewer .back-btn:hover { background: rgba(255,255,255,0.08); }
         .post-content {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.06);
@@ -230,11 +254,6 @@
         .post-content a:hover { border-bottom-color: #60a5fa; }
         .post-content strong { color: #f3f4f6; }
 
-        /* Section filter in post */
-        .section-youtube h3 { display: block; }
-        .section-lihkg h3 { display: block; }
-        .section-agent h3 { display: block; }
-
         /* Footer */
         footer {
             text-align: center;
@@ -253,13 +272,14 @@
             header h1 { font-size: 1.8em; }
             .day-cell { font-size: 0.85em; border-radius: 8px; }
             .post-content { padding: 20px; border-radius: 12px; }
+            .date-nav { flex-wrap: wrap; gap: 8px; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-inner">
-            <div class="nav-logo">🤖 Tech Daily</div>
+            <div class="nav-logo" onclick="showCalendar()">🤖 Tech Daily</div>
             <div class="nav-tabs">
                 <button class="nav-tab active" data-filter="all">
                     <span class="tab-icon">📋</span>全部
@@ -277,10 +297,12 @@
         </div>
     </nav>
 
-    <header>
-        <h1>Tech Daily</h1>
-        <p>每日香港科技新聞 ✦ YouTube ✦ 討論區 ✦ AI Agent</p>
-    </header>
+    <div id="headerArea">
+        <header>
+            <h1>Tech Daily</h1>
+            <p>每日香港科技新聞 ✦ YouTube ✦ 討論區 ✦ AI Agent</p>
+        </header>
+    </div>
 
     <div id="calendarView">
         <div class="calendar-nav">
@@ -296,8 +318,14 @@
         </div>
     </div>
 
+    <div class="date-nav" id="dateNav">
+        <button id="prevDay" onclick="navigateDay(-1)">◀ 上一日</button>
+        <span class="date-label" id="dateLabel"></span>
+        <span class="calendar-link" onclick="showCalendar()">📅 日曆</span>
+        <button id="nextDay" onclick="navigateDay(1)">下一日 ▶</button>
+    </div>
+
     <div class="post-viewer" id="postViewer">
-        <button class="back-btn" onclick="showCalendar()">← 返回日曆</button>
         <div class="post-content" id="postContent"></div>
     </div>
 
@@ -309,6 +337,8 @@
         let currentDate = new Date();
         let postIndex = {};
         let currentFilter = 'all';
+        let currentPostDate = null;
+        let sortedDates = [];
 
         // Tab filtering
         document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -326,7 +356,6 @@
 
             const sections = content.querySelectorAll('h2');
             sections.forEach(section => {
-                let el = section;
                 const sectionText = section.textContent.toLowerCase();
                 let sectionType = 'other';
                 if (sectionText.includes('youtube')) sectionType = 'youtube';
@@ -336,8 +365,7 @@
                 const show = currentFilter === 'all' || currentFilter === sectionType;
                 section.style.display = show ? '' : 'none';
 
-                // Toggle all elements until next h2
-                el = section.nextElementSibling;
+                let el = section.nextElementSibling;
                 while (el && el.tagName !== 'H2') {
                     el.style.display = show ? '' : 'none';
                     el = el.nextElementSibling;
@@ -350,7 +378,15 @@
                 const res = await fetch('posts/index.json');
                 if (res.ok) postIndex = await res.json();
             } catch(e) {}
-            renderCalendar();
+            sortedDates = Object.keys(postIndex).sort();
+
+            // Default: show latest post
+            if (sortedDates.length > 0) {
+                const latest = sortedDates[sortedDates.length - 1];
+                loadPost(latest);
+            } else {
+                renderCalendar();
+            }
         }
 
         function renderCalendar() {
@@ -376,11 +412,13 @@
                 const isToday = today.getFullYear() === year &&
                                 today.getMonth() === month &&
                                 today.getDate() === d;
+                const isViewing = dateStr === currentPostDate;
 
                 const cell = document.createElement('div');
                 const classes = ['day-cell'];
                 if (hasPost) classes.push('has-post');
                 if (isToday) classes.push('today');
+                if (isViewing) classes.push('viewing');
                 cell.className = classes.join(' ');
                 cell.innerHTML = d + (hasPost ? '<div class="dot"></div>' : '');
                 if (hasPost) cell.onclick = () => loadPost(dateStr);
@@ -397,13 +435,30 @@
             try {
                 const res = await fetch(`posts/${dateStr}.html`);
                 if (res.ok) {
+                    currentPostDate = dateStr;
+
                     document.getElementById('postContent').innerHTML = await res.text();
                     document.getElementById('calendarView').style.display = 'none';
+                    document.getElementById('headerArea').style.display = 'none';
                     document.getElementById('postViewer').classList.add('active');
+                    document.getElementById('dateNav').classList.add('active');
+
+                    // Update date label
+                    const d = new Date(dateStr + 'T00:00:00');
+                    const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+                    document.getElementById('dateLabel').textContent =
+                        `${dateStr}（星期${weekdays[d.getDay()]}）`;
+
+                    // Update prev/next buttons
+                    const idx = sortedDates.indexOf(dateStr);
+                    document.getElementById('prevDay').disabled = (idx <= 0);
+                    document.getElementById('nextDay').disabled = (idx >= sortedDates.length - 1);
+
                     currentFilter = 'all';
                     document.querySelectorAll('.nav-tab').forEach(t => {
                         t.classList.toggle('active', t.dataset.filter === 'all');
                     });
+
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             } catch(e) {
@@ -411,9 +466,20 @@
             }
         }
 
+        function navigateDay(delta) {
+            const idx = sortedDates.indexOf(currentPostDate);
+            const newIdx = idx + delta;
+            if (newIdx >= 0 && newIdx < sortedDates.length) {
+                loadPost(sortedDates[newIdx]);
+            }
+        }
+
         function showCalendar() {
             document.getElementById('calendarView').style.display = 'block';
+            document.getElementById('headerArea').style.display = 'block';
             document.getElementById('postViewer').classList.remove('active');
+            document.getElementById('dateNav').classList.remove('active');
+            renderCalendar();
         }
 
         loadIndex();
