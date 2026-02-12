@@ -613,38 +613,52 @@
 
         loadIndex();
     </script>
-<div id="settingsPanel" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
-  <div style="background:#21262d;color:#e6edf3;padding:20px;border-radius:8px;max-width:400px;width:90%;">
-    <h3>Settings</h3>
-    <label>Theme:
-      <select id="themeSelect">
-        <option value="light">Light</option>
-        <option value="dark" selected>Dark</option>
-        <option value="solarized">Solarized</option>
-        <option value="monokai">Monokai</option>
-      </select>
-    </label>
-    <br/><br/>
-    <label>Font Size:
-      <input type="range" id="fontSizeSlider" min="12" max="24" value="16">
-      <span id="fontSizeValue">16px</span>
-    </label>
-    <br/><br/>
-    <button onclick="applySettings()">Apply</button>
-    <button onclick="closeSettings()">Close</button>
+<div id="settingsPanel" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(3,8,18,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;align-items:center;padding:20px;">
+  <div style="background:linear-gradient(180deg,#111827 0%,#0f172a 100%);color:#e6edf3;padding:22px;border-radius:16px;max-width:420px;width:100%;border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="margin:0;font-size:28px;line-height:1.1;">Settings</h3>
+      <button onclick="closeSettings()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#94a3b8;width:30px;height:30px;border-radius:8px;cursor:pointer;">✕</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:20px;">
+        <span>Theme</span>
+        <select id="themeSelect" style="min-width:170px;background:#0b1220;color:#e6edf3;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 10px;font-size:17px;">
+          <option value="light">Light</option>
+          <option value="dark" selected>Dark</option>
+          <option value="solarized">Solarized</option>
+          <option value="monokai">Monokai</option>
+        </select>
+      </label>
+
+      <label style="display:block;font-size:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span>Font Size</span>
+          <span id="fontSizeValue" style="font-weight:600;color:#c4b5fd;">16px</span>
+        </div>
+        <input type="range" id="fontSizeSlider" min="12" max="24" value="16" style="width:100%;accent-color:#8b5cf6;cursor:pointer;">
+      </label>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;">
+      <button onclick="closeSettings()" style="padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#cbd5e1;cursor:pointer;font-size:16px;">Cancel</button>
+      <button onclick="applySettings()" style="padding:10px 16px;border-radius:10px;border:none;background:linear-gradient(90deg,#7c3aed,#2563eb);color:#fff;cursor:pointer;font-size:16px;font-weight:600;">Apply</button>
+    </div>
   </div>
 </div>
 <script>
-  function openSettings(){document.getElementById('settingsPanel').style.display='flex';}
-  function closeSettings(){document.getElementById('settingsPanel').style.display='none';}
-  function applySettings(){
-    const theme=document.getElementById('themeSelect').value;
-    const size=document.getElementById('fontSizeSlider').value;
-    document.body.style.fontSize=size+'px';
-    document.getElementById('fontSizeValue').textContent=size+'px';
+  const settingsPanel = document.getElementById('settingsPanel');
+  const themeSelect = document.getElementById('themeSelect');
+  const fontSizeSlider = document.getElementById('fontSizeSlider');
+  const fontSizeValue = document.getElementById('fontSizeValue');
+
+  function openSettings(){ settingsPanel.style.display='flex'; }
+  function closeSettings(){ settingsPanel.style.display='none'; }
+
+  function applyTheme(theme){
     switch(theme){
       case 'light':
-        document.body.style.background='#fff';document.body.style.color='#000';break;
+        document.body.style.background='#ffffff';document.body.style.color='#111827';break;
       case 'dark':
         document.body.style.background='#0a0a0f';document.body.style.color='#e6edf3';break;
       case 'solarized':
@@ -653,7 +667,37 @@
         document.body.style.background='#272822';document.body.style.color='#F8F8F2';break;
     }
   }
-  document.getElementById('settingsBtn').addEventListener('click',openSettings);
+
+  function applySettings(){
+    const theme = themeSelect.value;
+    const size = fontSizeSlider.value;
+    document.body.style.fontSize = size + 'px';
+    fontSizeValue.textContent = size + 'px';
+    applyTheme(theme);
+    localStorage.setItem('techTheme', theme);
+    localStorage.setItem('techFontSize', size);
+    closeSettings();
+  }
+
+  fontSizeSlider.addEventListener('input', function(){
+    fontSizeValue.textContent = this.value + 'px';
+  });
+
+  settingsPanel.addEventListener('click', function(e){
+    if (e.target === settingsPanel) closeSettings();
+  });
+
+  document.getElementById('settingsBtn').addEventListener('click', openSettings);
+
+  (function initSettings(){
+    const savedTheme = localStorage.getItem('techTheme') || 'dark';
+    const savedSize = localStorage.getItem('techFontSize') || '16';
+    themeSelect.value = savedTheme;
+    fontSizeSlider.value = savedSize;
+    fontSizeValue.textContent = savedSize + 'px';
+    document.body.style.fontSize = savedSize + 'px';
+    applyTheme(savedTheme);
+  })();
 </script>
 </body>
 </html>
