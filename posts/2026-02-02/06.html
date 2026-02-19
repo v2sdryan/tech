@@ -41,7 +41,6 @@
       <span class="badge">逐段繁中翻譯</span>
     </div>
     <h1>6. 🔐 2026-02-02 資安討論：MCP 伺服器安全隱患 開發者須知的五大風險</h1>
-    <div class="meta">原文連結：<a href="https://lihkg.com/thread/3894005/20260202" target="_blank">https://lihkg.com/thread/3894005/20260202</a></div>
     <h2>全文翻譯（繁中）</h2>
     <p>隨著 Model Context Protocol（MCP）在 AI 開發者社群中迅速普及，2026-02-02 連登資安版出現了一篇詳盡的 MCP 安全風險分析帖文。作者為資深滲透測試工程師，整理了五大常見安全隱患及其應對方案。</p>
     <p>風險一：未加密傳輸。許多開發者在本地開發時使用 HTTP 而非 HTTPS 運行 MCP 伺服器，導致 AI 代理與工具之間的通訊可被中間人攔截。若 MCP 伺服器暴露在公網上，攻擊者可竊取敏感數據或注入惡意指令。建議：所有 MCP 通訊必須使用 TLS 加密。</p>
