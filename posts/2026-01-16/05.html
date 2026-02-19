@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. 💻 2026-01-16 開發工具：Claude Code CLI 多代理協作模式實戰</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+      padding: 20px 16px 40px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: #007aff; color: #fff;
+      font-size: 12px; padding: 2px 10px; border-radius: 12px;
+      margin: 0 4px 12px 0;
+    }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    .meta {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;
+      word-break: break-all;
+    }
+    .meta a { color: #007aff; text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back {
+      display: inline-block; margin-top: 32px; color: #007aff;
+      text-decoration: none; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 05</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>5. 💻 2026-01-16 開發工具：Claude Code CLI 多代理協作模式實戰</h1>
+    <div class="meta">原文連結：<a href="https://docs.anthropic.com/en/docs/claude-code/multi-agent-2026-01-16" target="_blank">https://docs.anthropic.com/en/docs/claude-code/multi-agent-2026-01-16</a></div>
+    <h2>全文翻譯（繁中）</h2>
+    <p>Anthropic 於 2026-01-16 發佈 Claude Code CLI 的多代理協作模式更新，讓開發者可以在終端環境中同時協調多個 AI 代理執行不同任務。這一功能徹底改變了大型程式碼庫的管理方式。</p>
+    <p>多代理協作的核心概念是「分工」——主代理（Orchestrator）負責理解需求、制定計劃並協調工作；子代理（Workers）各自負責特定任務如程式碼審查、測試生成、文檔更新與安全掃描。所有代理共享專案上下文，但各自擁有專屬的工具集。</p>
+    <p>在實際測試中，多代理模式展現了驚人的效率。一位開發者分享了將 10 萬行 TypeScript 專案從 Express 遷移到 Hono 框架的案例：主代理規劃了遷移策略，一個子代理負責逐檔案改寫路由定義，另一個同步更新測試案例，第三個負責修正型別錯誤。整個遷移在 3 小時內完成，而人工估計需要 2-3 週。</p>
+    <p>Claude Code 的 Hooks 系統也獲得重要升級。開發者可以配置 PreToolUse 與 PostToolUse 鉤子，在每次工具呼叫前後自動執行自定義腳本——例如自動運行 Prettier 格式化、ESLint 檢查或 TypeScript 型別驗證。這確保了 AI 生成的程式碼始終符合團隊的編碼標準。</p>
+    <p>新增的「/plan」模式讓開發者在 AI 開始寫程式碼之前先審閱實作計劃。AI 會先分析需求、識別需要修改的檔案、列出潛在風險並提出實作方案。開發者可以調整計劃後再授權執行，大幅減少了返工的可能性。</p>
+    <p>Anthropic 同時公佈了 Claude Code 的使用統計：月活開發者已突破 100 萬，日均處理的程式碼修改超過 5,000 萬行。最受歡迎的使用場景依次為：重構現有程式碼（28%）、新增功能（24%）、除錯（19%）、撰寫測試（16%）與文檔生成（13%）。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>

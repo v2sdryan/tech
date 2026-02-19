@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19. 🧠 2026-02-19 Claude Skill：Claude Code Hooks 實現自動化開發工作流</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+      padding: 20px 16px 40px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: #007aff; color: #fff;
+      font-size: 12px; padding: 2px 10px; border-radius: 12px;
+      margin: 0 4px 12px 0;
+    }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    .meta {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;
+      word-break: break-all;
+    }
+    .meta a { color: #007aff; text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back {
+      display: inline-block; margin-top: 32px; color: #007aff;
+      text-decoration: none; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 19</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>19. 🧠 2026-02-19 Claude Skill：Claude Code Hooks 實現自動化開發工作流</h1>
+    <div class="meta">原文連結：<a href="https://docs.anthropic.com/en/docs/claude-code/hooks-guide-2026-02-19" target="_blank">https://docs.anthropic.com/en/docs/claude-code/hooks-guide-2026-02-19</a></div>
+    <h2>全文翻譯（繁中）</h2>
+    <p>Anthropic 社群在 2026-02-19 分享了 Claude Code Hooks 的進階用法，展示如何透過 PreToolUse 與 PostToolUse 鉤子打造全自動化的代碼品質管線。Hooks 是 Claude Code 最受歡迎的功能之一，讓 AI 代理的每個操作都經過品質把關。</p>
+    <p>PostToolUse 鉤子的典型配置包括：每次編輯 .ts/.tsx 檔案後自動運行 Prettier 格式化與 TypeScript 型別檢查；每次編輯 .py 檔案後自動運行 Black 格式化與 mypy 型別檢查；每次修改任何檔案後掃描是否不小心留下了 console.log 或 debugger 語句。</p>
+    <p>PreToolUse 鉤子則用於預防性檢查：在 git push 之前自動打開程式碼審閱工具；在建立或修改 .md 或 .txt 檔案前彈出確認提示（防止 AI 自動建立不需要的文檔）；在執行長時間命令（npm install, cargo build）前建議使用 tmux。</p>
+    <p>開發者分享的最佳實踐包括：使用 Stop 鉤子在會話結束前自動檢查所有修改檔案中是否殘留 console.log；配合自定義代理設定檔（~/.claude/agents/）定義不同角色的子代理；利用 ~/.claude/settings.json 中的 allowedTools 配置精細化的權限控制。</p>
+    <p>Claude Code 的使用統計顯示，配置了 Hooks 的開發者提交的程式碼通過 CI/CD 管線的首次成功率從 67% 提升至 89%。Hooks 機制已成為 Claude Code 區別於其他 AI 編程工具的核心功能，Anthropic 計劃在下一版本中新增更多 Hook 類型。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>

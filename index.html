@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Daily - 香港科技日報</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e6edf3;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 0 20px;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+        .nav-logo {
+            font-size: 1.2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            cursor: pointer;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+        }
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #8b949e;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: none;
+            white-space: nowrap;
+        }
+        .nav-tab:hover { color: #e6edf3; background: rgba(255,255,255,0.06); }
+        .nav-tab.active {
+            color: #fff;
+            background: rgba(99, 102, 241, 0.2);
+        }
+        .nav-tab .tab-icon { margin-right: 4px; }
+
+        /* Date Navigation Bar */
+        .date-nav {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px 20px 0;
+        }
+        .date-nav.active { display: flex; justify-content: space-between; align-items: center; }
+        .date-nav button {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e6edf3;
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .date-nav button:hover { background: rgba(255,255,255,0.08); }
+        .date-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+        .date-nav .date-label {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #a78bfa;
+        }
+        .date-nav .calendar-link {
+            font-size: 0.85em;
+            color: #6b7280;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .date-nav .calendar-link:hover { color: #60a5fa; }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 48px 20px 24px;
+        }
+        header h1 {
+            font-size: 2.4em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: #6b7280;
+            margin-top: 8px;
+            font-size: 1.05em;
+        }
+
+        /* Calendar */
+        .calendar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+        }
+        .calendar-nav button {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #e6edf3;
+            padding: 8px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+        .calendar-nav button:hover { background: rgba(255,255,255,0.08); }
+        .calendar-nav span { font-size: 1.15em; font-weight: 600; }
+        .calendar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        .weekday-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .weekday-header div {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+        }
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+        .day-cell {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05em;
+            color: #4b5563;
+            position: relative;
+            transition: all 0.25s;
+        }
+        .day-cell.empty { background: transparent; border: none; }
+        .day-cell.has-post {
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.25);
+            color: #60a5fa;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .day-cell.has-post:hover {
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+        }
+        .day-cell.has-post .dot {
+            width: 5px; height: 5px;
+            background: #60a5fa;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 8px;
+        }
+        .day-cell.today {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 0 12px rgba(167, 139, 250, 0.15);
+        }
+        .day-cell.viewing {
+            background: rgba(167, 139, 250, 0.2);
+            border-color: rgba(167, 139, 250, 0.5);
+            color: #a78bfa;
+        }
+
+        /* Section Headers */
+        .section-header {
+            font-size: 1.1em;
+            color: #a78bfa;
+            margin: 20px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.15);
+            font-weight: 600;
+        }
+
+        /* Cards Container */
+        .cards-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 20px;
+            display: none;
+        }
+        .cards-container.active { display: block; }
+
+        /* News Card */
+        .news-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.25s;
+        }
+        .news-card:hover {
+            border-color: rgba(96, 165, 250, 0.3);
+            background: rgba(255,255,255,0.05);
+        }
+        .news-card.expanded {
+            border-color: rgba(99, 102, 241, 0.4);
+            background: rgba(99, 102, 241, 0.06);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            cursor: pointer;
+            gap: 12px;
+        }
+        .card-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(99, 102, 241, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: #a78bfa;
+        }
+        .card-title-area {
+            flex: 1;
+            min-width: 0;
+        }
+        .card-title {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #e6edf3;
+            line-height: 1.4;
+        }
+        .card-snippet {
+            font-size: 0.8em;
+            color: #6b7280;
+            margin-top: 3px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .card-chevron {
+            flex-shrink: 0;
+            color: #4b5563;
+            transition: transform 0.25s;
+            font-size: 0.9em;
+        }
+        .news-card.expanded .card-chevron {
+            transform: rotate(90deg);
+            color: #a78bfa;
+        }
+
+        .card-body {
+            display: none;
+            padding: 0 18px 16px 58px;
+            line-height: 1.75;
+        }
+        .news-card.expanded .card-body { display: block; }
+        .card-body p {
+            margin: 4px 0;
+            color: #d1d5db;
+            font-size: 0.9em;
+        }
+        .card-body a {
+            color: #60a5fa;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            transition: border-color 0.2s;
+        }
+        .card-body a:hover { border-bottom-color: #60a5fa; }
+
+        /* Hidden raw content */
+        #rawContent { display: none; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #374151;
+            font-size: 0.85em;
+        }
+        footer a { color: #4b5563; text-decoration: none; }
+        footer a:hover { color: #6b7280; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .nav-inner { flex-direction: column; height: auto; padding: 10px 0; gap: 6px; }
+            .nav-tabs { overflow-x: auto; width: 100%; justify-content: center; }
+            .nav-tab { padding: 6px 12px; font-size: 0.8em; }
+            header h1 { font-size: 1.8em; }
+            .day-cell { font-size: 0.85em; border-radius: 8px; }
+            .card-header { padding: 12px 14px; }
+            .card-body { padding: 0 14px 14px 48px; }
+            .date-nav { flex-wrap: wrap; gap: 8px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <button id="settingsBtn" style="position:fixed;top:12px;right:12px;z-index:101;background:transparent;color:#6b7280;border:1px solid rgba(255,255,255,0.1);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;opacity:0.6;transition:all 0.2s;" onmouseover="this.style.opacity='1';this.style.color='#a78bfa';" onmouseout="this.style.opacity='0.6';this.style.color='#6b7280';">⚙️</button>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo" onclick="showCalendar()">🤖 Tech Daily</div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-filter="all">
+                    <span class="tab-icon">📋</span>全部
+                </button>
+                <button class="nav-tab" data-filter="youtube">
+                    <span class="tab-icon">📺</span>YouTube
+                </button>
+                <button class="nav-tab" data-filter="lihkg">
+                    <span class="tab-icon">💬</span>討論區
+                </button>
+                <button class="nav-tab" data-filter="agent">
+                    <span class="tab-icon">🤖</span>AI Agent
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="headerArea">
+        <header>
+            <h1>Tech Daily</h1>
+            <p>每日香港科技新聞 ✦ YouTube ✦ 討論區 ✦ AI Agent</p>
+        </header>
+    </div>
+
+    <div id="calendarView">
+        <div class="calendar-nav">
+            <button onclick="changeMonth(-1)">◀ 上月</button>
+            <span id="monthLabel"></span>
+            <button onclick="changeMonth(1)">下月 ▶</button>
+        </div>
+        <div class="calendar">
+            <div class="weekday-header">
+                <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+            </div>
+            <div class="days-grid" id="daysGrid"></div>
+        </div>
+    </div>
+
+    <div class="date-nav" id="dateNav">
+        <button id="prevDay" onclick="navigateDay(-1)">◀ 上一日</button>
+        <span class="date-label" id="dateLabel"></span>
+        <span class="calendar-link" onclick="showCalendar()">📅 日曆</span>
+        <button onclick="verifyTranslationsForCurrentDate()">✅ 一鍵驗證翻譯</button>
+        <span class="calendar-link" id="verifyStatus" style="min-width:220px;text-align:right;">&nbsp;</span>
+        <button id="nextDay" onclick="navigateDay(1)">下一日 ▶</button>
+    </div>
+
+    <div class="cards-container" id="cardsContainer"></div>
+    <div id="rawContent"></div>
+
+    <footer>
+        Powered by <a href="https://github.com/openclaw/openclaw">OpenClaw</a> 🦞 ✦ Built by v2sdryan
+    </footer>
+
+    <script>
+        let currentDate = new Date();
+        let postIndex = {};
+        let currentFilter = 'all';
+        let currentPostDate = null;
+        let sortedDates = [];
+        let hasDetailPages = false;
+
+        // Tab filtering
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                renderCards();
+            });
+        });
+
+        function parsePostToCards(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            const cards = [];
+            let currentSection = '';
+            let currentCard = null;
+
+            for (const el of tmp.children) {
+                if (el.tagName === 'H2') {
+                    // 先把上一張卡入列，避免「最後一篇跑到下一個 section」
+                    if (currentCard) {
+                        cards.push(currentCard);
+                        currentCard = null;
+                    }
+
+                    const text = el.textContent.toLowerCase();
+                    if (text.includes('youtube')) currentSection = 'youtube';
+                    else if (text.includes('連登') || text.includes('討論區')) currentSection = 'lihkg';
+                    else if (text.includes('ai agent')) currentSection = 'agent';
+                    else currentSection = 'other';
+                    cards.push({ type: 'section', text: el.textContent, section: currentSection });
+                } else if (el.tagName === 'H3') {
+                    if (currentCard) cards.push(currentCard);
+                    currentCard = {
+                        type: 'card',
+                        title: el.textContent,
+                        section: currentSection,
+                        bodyHtml: ''
+                    };
+                } else if (el.tagName === 'P' && currentCard) {
+                    currentCard.bodyHtml += el.outerHTML;
+                }
+            }
+            if (currentCard) cards.push(currentCard);
+            return cards;
+        }
+
+        function getSnippet(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            const firstP = tmp.querySelector('p');
+            if (!firstP) return '';
+            let text = firstP.textContent;
+            // Remove link text at end
+            const linkEl = firstP.querySelector('a');
+            if (linkEl) text = text.replace(linkEl.textContent, '').trim();
+            return text.length > 60 ? text.slice(0, 60) + '…' : text;
+        }
+
+        let parsedCards = [];
+
+        function renderCards() {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '';
+
+            parsedCards.forEach((item, idx) => {
+                if (item.type === 'section') {
+                    const show = currentFilter === 'all' || currentFilter === item.section;
+                    if (!show) return;
+                    const h = document.createElement('div');
+                    h.className = 'section-header';
+                    h.textContent = item.text;
+                    container.appendChild(h);
+                    return;
+                }
+
+                const show = currentFilter === 'all' || currentFilter === item.section;
+                if (!show) return;
+
+                const numberMatch = item.title.match(/^(\d+)\./);
+                const articleNo = numberMatch ? parseInt(numberMatch[1], 10) : (idx + 1);
+
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                card.dataset.idx = idx;
+
+                const detailHref = (currentPostDate && hasDetailPages) ? `/posts/${currentPostDate}/${String(articleNo).padStart(2,'0')}.html` : '';
+                card.dataset.detailHref = detailHref;
+
+                const snippet = getSnippet(item.bodyHtml);
+
+                card.innerHTML = `
+                    <div class="card-header" onclick="openOrToggleCard(this, event)">
+                        <div class="card-number">${articleNo}</div>
+                        <div class="card-title-area">
+                            <div class="card-title">${item.title.replace(/^\d+\.\s*/, '')}</div>
+                            <div class="card-snippet">${snippet}</div>
+                        </div>
+                        <div class="card-chevron">▶</div>
+                    </div>
+                    <div class="card-body">${item.bodyHtml}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openOrToggleCard(headerEl, ev) {
+            const card = headerEl.parentElement;
+            const clickedChevron = ev && ev.target && ev.target.closest('.card-chevron');
+
+            // 點右邊箭嘴：展開/收合
+            if (clickedChevron) {
+                card.classList.toggle('expanded');
+                return;
+            }
+
+            // 其他位置：優先進入當日指定文章內頁（唔跳外部來源）
+            const detailHref = card.dataset.detailHref;
+            if (detailHref) {
+                window.location.href = detailHref;
+                return;
+            }
+
+            const link = card.querySelector('.card-body a');
+            if (link && link.href) {
+                window.location.href = link.getAttribute('href');
+                return;
+            }
+
+            // fallback
+            card.classList.toggle('expanded');
+        }
+
+        async function loadIndex() {
+            try {
+                const res = await fetch('posts/index.json');
+                if (res.ok) postIndex = await res.json();
+            } catch(e) {}
+            sortedDates = Object.keys(postIndex).sort();
+
+            if (sortedDates.length > 0) {
+                loadPost(sortedDates[sortedDates.length - 1]);
+            } else {
+                renderCalendar();
+            }
+        }
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const today = new Date();
+
+            document.getElementById('monthLabel').textContent =
+                `${year} 年 ${month + 1} 月`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const grid = document.getElementById('daysGrid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < firstDay; i++) {
+                grid.innerHTML += '<div class="day-cell empty"></div>';
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                const hasPost = postIndex[dateStr];
+                const isToday = today.getFullYear() === year &&
+                                today.getMonth() === month &&
+                                today.getDate() === d;
+                const isViewing = dateStr === currentPostDate;
+
+                const cell = document.createElement('div');
+                const classes = ['day-cell'];
+                if (hasPost) classes.push('has-post');
+                if (isToday) classes.push('today');
+                if (isViewing) classes.push('viewing');
+                cell.className = classes.join(' ');
+                cell.innerHTML = d + (hasPost ? '<div class="dot"></div>' : '');
+                if (hasPost) cell.onclick = () => loadPost(dateStr);
+                grid.appendChild(cell);
+            }
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            renderCalendar();
+        }
+
+        async function loadPost(dateStr) {
+            try {
+                const res = await fetch(`posts/${dateStr}.html`);
+                if (res.ok) {
+                    currentPostDate = dateStr;
+                    const html = await res.text();
+
+                    // Check if this date has individual article pages
+                    const detailRx = new RegExp(`/posts/${dateStr}/\\d{2}\\.html`);
+                    hasDetailPages = detailRx.test(html);
+
+                    // Parse into cards
+                    parsedCards = parsePostToCards(html);
+
+                    document.getElementById('calendarView').style.display = 'none';
+                    document.getElementById('headerArea').style.display = 'none';
+                    document.getElementById('cardsContainer').classList.add('active');
+                    document.getElementById('dateNav').classList.add('active');
+
+                    // Update date label
+                    const d = new Date(dateStr + 'T00:00:00');
+                    const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+                    document.getElementById('dateLabel').textContent =
+                        `${dateStr}（星期${weekdays[d.getDay()]}）`;
+
+                    // Update prev/next buttons
+                    const idx = sortedDates.indexOf(dateStr);
+                    document.getElementById('prevDay').disabled = (idx <= 0);
+                    document.getElementById('nextDay').disabled = (idx >= sortedDates.length - 1);
+
+                    currentFilter = 'all';
+                    document.querySelectorAll('.nav-tab').forEach(t => {
+                        t.classList.toggle('active', t.dataset.filter === 'all');
+                    });
+
+                    renderCards();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            } catch(e) {
+                alert('載入失敗');
+            }
+        }
+
+        function navigateDay(delta) {
+            const idx = sortedDates.indexOf(currentPostDate);
+            const newIdx = idx + delta;
+            if (newIdx >= 0 && newIdx < sortedDates.length) {
+                loadPost(sortedDates[newIdx]);
+            }
+        }
+
+        function showCalendar() {
+            document.getElementById('calendarView').style.display = 'block';
+            document.getElementById('headerArea').style.display = 'block';
+            document.getElementById('cardsContainer').classList.remove('active');
+            document.getElementById('dateNav').classList.remove('active');
+            renderCalendar();
+        }
+
+        async function verifyTranslationsForCurrentDate() {
+            const statusEl = document.getElementById('verifyStatus');
+            const setStatus = (text, ok = null) => {
+                statusEl.textContent = text;
+                statusEl.style.color = ok === true ? '#6ee7b7' : ok === false ? '#fca5a5' : '#9ca3af';
+            };
+
+            if (!currentPostDate) {
+                setStatus('請先打開某日內容', false);
+                return;
+            }
+
+            try {
+                setStatus('驗證中…');
+                const res = await fetch(`posts/${currentPostDate}.html`);
+                if (!res.ok) {
+                    setStatus('讀取主頁失敗', false);
+                    return;
+                }
+
+                const html = await res.text();
+                const rx = new RegExp(`/posts/${currentPostDate}/(\\d{2})\\.html`, 'g');
+                const ids = new Set();
+                let m;
+                while ((m = rx.exec(html)) !== null) ids.add(m[1]);
+
+                const list = Array.from(ids).sort();
+                if (list.length === 0) {
+                    setStatus('未找到指定文章連結', false);
+                    return;
+                }
+
+                const missing = [];
+                for (const id of list) {
+                    try {
+                        const r = await fetch(`posts/${currentPostDate}/${id}.html`);
+                        if (!r.ok) {
+                            missing.push(id);
+                            continue;
+                        }
+                        const t = await r.text();
+                        if (!t.includes('全文翻譯（繁中）')) missing.push(id);
+                    } catch (_) {
+                        missing.push(id);
+                    }
+                }
+
+                if (missing.length === 0) {
+                    setStatus(`驗證通過：${list.length}/${list.length} 有全文翻譯`, true);
+                } else {
+                    setStatus(`缺少全文翻譯：${missing.join(', ')}`, false);
+                }
+            } catch (_) {
+                setStatus('驗證失敗（網絡錯誤）', false);
+            }
+        }
+
+        loadIndex();
+    </script>
+<div id="settingsPanel" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(3,8,18,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;align-items:center;padding:20px;">
+  <div style="background:linear-gradient(180deg,#111827 0%,#0f172a 100%);color:#e6edf3;padding:22px;border-radius:16px;max-width:420px;width:100%;border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="margin:0;font-size:28px;line-height:1.1;">Settings</h3>
+      <button onclick="closeSettings()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#94a3b8;width:30px;height:30px;border-radius:8px;cursor:pointer;">✕</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:20px;">
+        <span>Theme</span>
+        <select id="themeSelect" style="min-width:170px;background:#0b1220;color:#e6edf3;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 10px;font-size:17px;">
+          <option value="light">Light</option>
+          <option value="dark" selected>Dark</option>
+          <option value="solarized">Solarized</option>
+          <option value="monokai">Monokai</option>
+        </select>
+      </label>
+
+      <label style="display:block;font-size:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span>Font Size</span>
+          <span id="fontSizeValue" style="font-weight:600;color:#c4b5fd;">16px</span>
+        </div>
+        <input type="range" id="fontSizeSlider" min="12" max="24" value="16" style="width:100%;accent-color:#8b5cf6;cursor:pointer;">
+      </label>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;">
+      <button onclick="closeSettings()" style="padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#cbd5e1;cursor:pointer;font-size:16px;">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+  const settingsPanel = document.getElementById('settingsPanel');
+  const themeSelect = document.getElementById('themeSelect');
+  const fontSizeSlider = document.getElementById('fontSizeSlider');
+  const fontSizeValue = document.getElementById('fontSizeValue');
+
+  function openSettings(){ settingsPanel.style.display='flex'; }
+  function closeSettings(){ settingsPanel.style.display='none'; }
+
+  function applyTheme(theme){
+    switch(theme){
+      case 'light':
+        document.body.style.background='#ffffff';document.body.style.color='#111827';break;
+      case 'dark':
+        document.body.style.background='#0a0a0f';document.body.style.color='#e6edf3';break;
+      case 'solarized':
+        document.body.style.background='#FDF6E3';document.body.style.color='#657B83';break;
+      case 'monokai':
+        document.body.style.background='#272822';document.body.style.color='#F8F8F2';break;
+    }
+  }
+
+  function applySettings(closeAfter = false){
+    const theme = themeSelect.value;
+    const size = fontSizeSlider.value;
+    document.body.style.fontSize = size + 'px';
+    fontSizeValue.textContent = size + 'px';
+    applyTheme(theme);
+    localStorage.setItem('techTheme', theme);
+    localStorage.setItem('techFontSize', size);
+    if (closeAfter) closeSettings();
+  }
+
+  fontSizeSlider.addEventListener('input', function(){
+    fontSizeValue.textContent = this.value + 'px';
+    applySettings(false);
+  });
+
+  themeSelect.addEventListener('change', function(){
+    applySettings(false);
+  });
+
+  settingsPanel.addEventListener('click', function(e){
+    if (e.target === settingsPanel) closeSettings();
+  });
+
+  document.getElementById('settingsBtn').addEventListener('click', openSettings);
+
+  (function initSettings(){
+    const savedTheme = localStorage.getItem('techTheme') || 'dark';
+    const savedSize = localStorage.getItem('techFontSize') || '16';
+    themeSelect.value = savedTheme;
+    fontSizeSlider.value = savedSize;
+    fontSizeValue.textContent = savedSize + 'px';
+    document.body.style.fontSize = savedSize + 'px';
+    applyTheme(savedTheme);
+  })();
+</script>
+</body>
+</html>

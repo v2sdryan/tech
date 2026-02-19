@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. 🔐 2026-01-30 資安討論：MCP 伺服器安全隱患 開發者須知的五大風險</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+      padding: 20px 16px 40px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: #007aff; color: #fff;
+      font-size: 12px; padding: 2px 10px; border-radius: 12px;
+      margin: 0 4px 12px 0;
+    }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    .meta {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;
+      word-break: break-all;
+    }
+    .meta a { color: #007aff; text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back {
+      display: inline-block; margin-top: 32px; color: #007aff;
+      text-decoration: none; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 07</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>7. 🔐 2026-01-30 資安討論：MCP 伺服器安全隱患 開發者須知的五大風險</h1>
+    <div class="meta">原文連結：<a href="https://lihkg.com/thread/3894005/20260130" target="_blank">https://lihkg.com/thread/3894005/20260130</a></div>
+    <h2>全文翻譯（繁中）</h2>
+    <p>隨著 Model Context Protocol（MCP）在 AI 開發者社群中迅速普及，2026-01-30 連登資安版出現了一篇詳盡的 MCP 安全風險分析帖文。作者為資深滲透測試工程師，整理了五大常見安全隱患及其應對方案。</p>
+    <p>風險一：未加密傳輸。許多開發者在本地開發時使用 HTTP 而非 HTTPS 運行 MCP 伺服器，導致 AI 代理與工具之間的通訊可被中間人攔截。若 MCP 伺服器暴露在公網上，攻擊者可竊取敏感數據或注入惡意指令。建議：所有 MCP 通訊必須使用 TLS 加密。</p>
+    <p>風險二：缺少身份驗證。MCP 協議本身不強制要求身份驗證，許多第三方 MCP 伺服器預設開放訪問。攻擊者可直接連接未設防的 MCP 伺服器，存取其背後的資料庫或 API。建議：啟用 API Key 或 OAuth 2.0 認證，並限制允許的客戶端 IP 範圍。</p>
+    <p>風險三：過度授權。部分 MCP 伺服器授予 AI 代理過高的權限——例如資料庫的 DROP TABLE 權限或檔案系統的 root 存取權。一旦 AI 代理被提示注入（Prompt Injection）攻擊劫持，可能執行破壞性操作。建議：遵循最小權限原則，為 AI 代理建立專用的受限帳戶。</p>
+    <p>風險四：日誌洩漏。MCP 伺服器的日誌中可能包含敏感資訊——包括 API 密鑰、資料庫連接字串與用戶個人資料。若日誌未加密存放或被上傳至外部監控服務，可能造成數據洩漏。建議：實施日誌脫敏處理，敏感欄位自動替換為遮罩值。</p>
+    <p>風險五：供應鏈攻擊。社群貢獻的第三方 MCP 伺服器可能包含惡意程式碼——類似於 npm 套件的供應鏈攻擊。攻擊者可在看似正常的 MCP 伺服器中埋入後門，竊取經過的所有數據。建議：只使用經過審計的 MCP 伺服器，或自行構建並維護所需的 MCP 連接器。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
