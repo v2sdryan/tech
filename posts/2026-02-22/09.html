@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09. 🖥️ 2026-02-22 本地 AI：Ollama + GLM-5 本地部署實測 中文表現驚喜</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+      padding: 20px 16px 40px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: #007aff; color: #fff;
+      font-size: 12px; padding: 2px 10px; border-radius: 12px;
+      margin: 0 4px 12px 0;
+    }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    .meta {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;
+      word-break: break-all;
+    }
+    .meta a { color: #007aff; text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back {
+      display: inline-block; margin-top: 32px; color: #007aff;
+      text-decoration: none; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 09</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>09. 🖥️ 2026-02-22 本地 AI：Ollama + GLM-5 本地部署實測 中文表現驚喜</h1>
+    <h2>全文翻譯（繁中）</h2>
+    <p>連登討論區在 2026 年 2 月 22 日出現了一篇詳盡的本地 AI 模型部署實測帖文，帖主使用 Ollama 平台成功在個人電腦上部署了智譜 AI 最新發佈的 GLM-5 模型，並對其中文理解與生成能力進行了全面測試。帖文配有大量截圖和詳細的操作步驟，吸引超過 2,000 次收藏和 800 則回覆，成為當日本地 AI 版塊的最熱門帖文。帖主使用的硬件配置為 Apple M3 Max MacBook Pro（48GB 統一記憶體），運行 GLM-5 的 14B 參數量化版本。</p>
+    <p>安裝過程方面，帖主記錄了從安裝 Ollama 到成功運行 GLM-5 的完整流程。整個過程僅需三個終端機命令：安裝 Ollama、下載 GLM-5 模型檔案（約 8.5GB）、啟動模型服務。帖主特別稱讚了 Ollama 的用戶體驗——無需配置 Python 環境、無需手動下載模型權重、無需處理複雜的依賴關係，真正實現了「一鍵部署」。他同時建議讀者搭配 Open WebUI 作為前端界面，以獲得類似 ChatGPT 的網頁版對話體驗。部署完成後，模型完全在本地運行，不需要聯網，所有數據均留在用戶電腦上。</p>
+    <p>中文表現方面，帖主設計了多項測試場景，結果令人驚喜。在繁體中文理解方面，GLM-5 能準確理解香港特有的粵語書面語表達，例如「搞掂」、「畀人呃」、「唔該晒」等。在長文翻譯測試中，GLM-5 將一篇 3,000 字的英文科技文章翻譯為繁體中文，翻譯品質流暢自然，專業術語的處理也相當準確。在代碼生成測試中，以中文描述需求讓模型生成 Python 和 JavaScript 代碼，正確率達到約 85%，與 GPT-4o 等級的雲端模型相差不大。最令帖主驚喜的是模型對粵語口語的理解能力，當輸入「幫我寫個 script 自動 backup 啲 file」時，模型能正確理解混合了粵語和英文的指令。</p>
+    <p>效能方面，GLM-5 14B 在 M3 Max 上的推理速度約為每秒 18 至 22 個 token，相當於人類正常閱讀速度的兩倍左右，日常使用體驗流暢。記憶體佔用約 10GB，不影響同時運行其他應用程式。帖主也測試了較小的 7B 版本，推理速度提升至每秒 35 token，但中文理解能力有所下降。對於使用 Windows 電腦的用戶，帖主建議至少配備 NVIDIA RTX 4060 以上的顯示卡，搭配 16GB 以上的系統記憶體。多名回覆者也分享了自己在不同硬件上的部署經驗，形成了一份相當完整的硬件兼容性參考指南。</p>
+    <p>討論中還延伸出多個實用話題，包括如何使用 GLM-5 搭建個人知識庫、如何結合 RAG 技術實現本地文件搜尋、以及如何將本地模型整合至 VS Code 等開發工具中。一名網民分享了他使用 GLM-5 搭配 LangChain 建立的個人財務分析助手，能夠讀取本地 CSV 報表並生成分析報告，整個過程完全離線運行。這場討論充分展現了香港本地 AI 社群的活力和技術水平，也反映出越來越多用戶重視數據隱私和離線 AI 能力的趨勢。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>

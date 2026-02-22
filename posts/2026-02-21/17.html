@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17. ⭐ 2026-02-21 GitHub AI 焦點：voicebox — 開源語音合成工作室 Qwen3-TTS 驅動</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f7; color: #1d1d1f; line-height: 1.7;
+      padding: 20px 16px 40px;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: #007aff; color: #fff;
+      font-size: 12px; padding: 2px 10px; border-radius: 12px;
+      margin: 0 4px 12px 0;
+    }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    .meta {
+      font-size: 14px; color: #666; margin-bottom: 24px;
+      padding-bottom: 16px; border-bottom: 1px solid #e0e0e0;
+      word-break: break-all;
+    }
+    .meta a { color: #007aff; text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back {
+      display: inline-block; margin-top: 32px; color: #007aff;
+      text-decoration: none; font-size: 15px;
+    }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 17</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>17. ⭐ 2026-02-21 GitHub AI 焦點：voicebox — 開源語音合成工作室 Qwen3-TTS 驅動</h1>
+    <h2>全文翻譯（繁中）</h2>
+    <p>由開發者 jamiepine 創建的 voicebox 項目以阿里巴巴 Qwen3-TTS 語音合成模型為核心引擎，提供了一個功能完備的開源語音合成工作室環境。該項目在 GitHub 趨勢榜上迅速攀升，短短數日內即獲得超過 3,000 顆星。voicebox 的核心賣點是將企業級的 AI 語音合成能力以完全免費和開源的形式帶給個人開發者和小型團隊，用戶可在本地硬件上部署運行，無需依賴任何雲端 API 服務，從而實現零成本和完全的數據隱私保護。</p>
+    <p>voicebox 的功能設計覆蓋了語音合成工作流的各個環節。在基礎的文字轉語音（TTS）功能方面，系統支援超過 30 種語言的高品質語音合成，包括普通話、粵語、英語、日語、韓語等亞太地區主要語言。語音的自然度和表現力已接近真人水平，特別是在情感表達、語調變化和停頓處理等方面表現出色。用戶可透過直觀的 Web 界面輸入文字、選擇語音風格和調整參數，數秒內即可生成高品質的語音文件。</p>
+    <p>voicebox 最具差異化的功能是「語音克隆」（Voice Cloning）能力。用戶只需提供 10-30 秒的語音樣本，系統即可學習該語音的特徵並生成以該聲線朗讀任意文字的合成語音。這一功能對播客創作者、有聲書製作者和影片配音員極具實用價值。例如，一位粵語播客創作者可以用自己的聲線錄製 30 秒樣本，然後讓 voicebox 以其聲線自動朗讀整集節目的文稿，大幅縮短製作時間。系統亦支援跨語言的語音克隆——用戶以粵語錄製的聲線樣本，可被用於生成普通話或英語的合成語音，且保留原始聲線的特徵。</p>
+    <p>在技術架構方面，voicebox 採用了模組化的設計理念。底層的 Qwen3-TTS 模型負責核心的語音合成推理，上層的前端界面和工作流管理由 voicebox 自行開發的組件負責。這種分層架構使得用戶可以靈活地替換底層模型——如果未來有更優秀的開源 TTS 模型出現，可以無縫切換而無需重建整個系統。項目對硬件要求相對友好，基本的 TTS 功能在搭載 Apple M1 晶片的 MacBook 上即可流暢運行，語音克隆功能則需要至少 8GB 顯存的 GPU。項目提供了詳盡的安裝文檔和 Docker 一鍵部署方案，技術門檻較低。</p>
+    <p>voicebox 的出現對語音合成市場格局產生了深遠影響。過去，高品質的語音合成服務主要由 Google Cloud TTS、Amazon Polly 和 ElevenLabs 等商業平台壟斷，每月費用從數十到數百美元不等。voicebox 提供了一個完全免費的替代方案，且語音品質已接近商業服務的水平。對於香港的內容創作者而言，voicebox 的粵語支援尤為珍貴——市面上支援高品質粵語合成的服務極為稀少，voicebox 填補了這一空白。不過，語音克隆技術亦引發了深偽音頻（Deepfake Audio）的安全隱憂，項目文檔中特別提醒用戶在使用語音克隆功能時必須獲得聲音所有者的明確授權，並遵守當地的隱私和肖像權法律。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
