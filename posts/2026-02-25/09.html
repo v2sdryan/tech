@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>09 🖥️ 本地 AI：Ollama 0.6 新功能全面實測 本地 AI 模型部署體驗大幅改善</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
-    .wrap { max-width: 680px; margin: 0 auto; }
-    .badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
-    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
-    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
-    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
-    .back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
-    .back:hover { text-decoration: underline; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>09. ✈️ 2026-02-25 資訊：香港科技代表團出征 MWC 2026 巴塞隆拿 21 間本港企業亮相</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+.wrap { max-width: 680px; margin: 0 auto; }
+.badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+.back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+.back:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-  <div class="wrap">
+<article class="wrap">
+  <div>
     <span class="badge">指定文章 09</span>
     <span class="badge">逐段繁中翻譯</span>
-    <h1>🖥️ 2026-02-25 本地 AI：Ollama 0.6 新功能全面實測 本地 AI 模型部署體驗大幅改善</h1>
-
-    <h2>全文翻譯（繁中）</h2>
-
-    <p>本地 AI 模型部署工具 Ollama 於 2026 年 2 月 24 日正式發佈 0.6 版本，這是該工具自 2023 年推出以來功能更新幅度最大的一次版本迭代。Ollama 0.6 的核心新功能包括：原生支持並發請求處理（最多同時處理 8 個請求）、大幅擴充的模型量化選項（新增 IQ2、IQ3 和 IQ4 系列量化格式）、全新的 GPU 記憶體管理系統，以及改善的跨平台模型緩存機制。連登本地 AI 愛好者版在消息發佈後迅速湧現大量實測帖子，多名資深用戶分享了詳細的升級體驗和性能測試數據。</p>
-
-    <p>在並發請求處理方面，連登網民「LocalAI_Fan」詳細測試了 Ollama 0.6 在 Apple M3 Max 配備 128GB 統一記憶體的 MacBook Pro 上同時運行多個模型的能力。測試結果顯示，在同時運行 Llama 3.2 70B 和 Qwen 2.5 32B 兩個大型模型的情況下，0.6 版本的總體吞吐量較 0.5 版本提升約 65%，GPU 記憶體分配效率明顯改善，模型切換時的冷啟動延遲亦從平均 8 秒縮短至 3 秒。這些改善對於需要在開發工作流程中頻繁切換不同模型的用戶而言具有實際意義。</p>
-
-    <p>新的量化格式支持是 Ollama 0.6 另一個備受關注的功能。IQ（Importance Quantization）系列量化格式是一種相較於傳統 Q 系列量化更為智能的量化方法，能夠根據模型中各組參數對輸出質量的重要程度，差異化地分配量化精度資源。多名網民測試發現，使用 IQ4_XS 格式量化的 Llama 3.3 70B 模型，在記憶體佔用方面比傳統 Q4_0 格式降低約 15%，同時在標準語言理解基準測試中的分數損失極小，僅約 1.2 個百分點，性價比相當出色。</p>
-
-    <p>在 Windows 平台上，Ollama 0.6 帶來的改善尤其顯著。過去 Ollama 在 Windows 系統上的 NVIDIA GPU 支持一直存在記憶體洩漏和偶發崩潰的問題，0.6 版本針對這些問題進行了針對性修復，並對 CUDA 12.x 系列驅動程序的兼容性做了全面優化。多名使用 Windows 平台的網民反映，升級至 0.6 版本後，長時間運行的穩定性有了實質性提升，先前困擾他們的 VRAM 佔用不斷增長問題已基本得到解決。</p>
-
-    <p>整體而言，連登本地 AI 社群對 Ollama 0.6 的反應相當正面。有網民指出，Ollama 的持續完善使本地 AI 模型部署的門檻不斷降低，令更多非專業技術背景的用戶也能夠輕鬆在自己的設備上運行高質量的開源語言模型，實現真正的「本地私隱保護 AI」體驗。同時，社群亦對 Ollama 團隊在下一個版本中加入多模態模型並發運行支持和更完善的 API 兼容層抱有期待，相信這些功能將進一步擴大本地 AI 應用的實用場景範圍。</p>
-
-    <a class="back" href="/">← 返回首頁</a>
   </div>
+  <h1>09. ✈️ 2026-02-25 資訊：香港科技代表團出征 MWC 2026 巴塞隆拿 21 間本港企業亮相</h1>
+
+  <h2>全文翻譯（繁中）</h2>
+
+  <h2>HKSTP 與 HKTDC 聯手組成最大規模代表團</h2>
+  <p>香港科技園公司（HKSTP）與香港貿易發展局（HKTDC）於 2026 年 2 月 25 日正式宣佈，將聯合組成迄今規模最大的香港科技代表團，率領 21 間本港科技企業出席於 2026 年 3 月 2 至 5 日在西班牙巴塞隆拿舉行的 MWC 2026（世界流動通訊大會，Mobile World Congress）。此次代表團的規模較 2025 年增加逾三成，充分反映了香港科技界在拓展國際商業合作方面的積極意向，以及特區政府在推動本港科技企業走向世界舞台方面的持續支持。</p>
+
+  <h2>4YFN 創業展區：香港新創企業的全球發聲平台</h2>
+  <p>21 間參展香港企業中，大部分將在 MWC 2026 的「4YFN」（4 Years From Now）創業展區亮相，這是 MWC 為創業企業和早期科技公司設立的專屬展覽和商洽空間，每年吸引來自全球的頂尖投資者、企業採購決策者和科技媒體人士到訪。香港科技園表示，此次參展企業涵蓋智慧城市、5G 應用、AI 醫療科技、綠色科技和金融科技五大領域，代表了香港在多個新興科技賽道上的最新創新成果。</p>
+
+  <h2>重點展示項目：智慧城市與 AI 解決方案</h2>
+  <p>在 MWC 2026 的展示重點方面，香港代表團將著重展示本港在智慧城市基礎設施和 AI 應用解決方案方面的最新成果。預計展示的項目包括：基於 5G 和 AI 的智慧交通管理系統、AI 輔助的環境監測和污染預測平台、面向大灣區市場的跨境數字服務解決方案，以及多個獲得本地政府和大型企業採用的 AI Agent 應用案例。代表團亦計劃舉辦多場針對歐洲和中東投資者的專題推介會，積極為香港科技初創企業對接國際資本。</p>
+
+  <h2>MWC 2026 的整體行業背景</h2>
+  <p>MWC 2026 預計吸引來自全球 180 多個國家和地區的超過 10 萬名業界人士出席，是全球最大的移動和連接技術行業年度盛會。今年大會的主要議題包括 5G-Advanced（5.5G）的全球商業部署進展、AI 與蜂窩網絡的深度融合應用、衛星通訊的普及化趨勢，以及 AI 手機和穿戴設備的下一代體驗設計。三星 Galaxy S26 系列的同期發佈亦預計將成為 MWC 2026 期間的重要話題之一，令香港參展企業的行程時間點恰到好處。</p>
+
+  <h2>香港代表團的戰略目標與預期成果</h2>
+  <p>HKSTP 行政總裁在出發前夕的記者會上表示，此次 MWC 之行的核心目標有三：其一是提升香港整體科技創新形象的國際曝光度，向全球業界展示香港不僅是金融中心，更是具有實力的 AI 和深科技創新樞紐；其二是為參展企業對接具體的商業合作機會，包括歐洲市場分銷合作、技術授權談判和策略投資引進；其三是收集全球最新的行業趨勢和技術動態，為香港科技政策的制訂提供第一手的國際參考。代表團預計在五日行程中完成超過 200 場一對一商業洽談會。</p>
+
+  <a class="back" href="/posts/2026-02-25.html">← 返回 2026-02-25 每日摘要</a>
+</article>
 </body>
 </html>

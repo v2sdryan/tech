@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10 🔐 資安討論：WhatsApp AI 聊天功能被發現嚴重私隱漏洞 數百萬用戶受影響</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
-    .wrap { max-width: 680px; margin: 0 auto; }
-    .badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
-    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
-    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
-    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
-    .back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
-    .back:hover { text-decoration: underline; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10. 🔐 2026-02-25 資安討論：Anthropic 揭中國 AI 公司大規模濫用 Claude 開設 2.4 萬個假帳號</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+.wrap { max-width: 680px; margin: 0 auto; }
+.badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+.back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+.back:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-  <div class="wrap">
+<article class="wrap">
+  <div>
     <span class="badge">指定文章 10</span>
     <span class="badge">逐段繁中翻譯</span>
-    <h1>🔐 2026-02-25 資安討論：WhatsApp AI 聊天功能被發現嚴重私隱漏洞 數百萬用戶受影響</h1>
-
-    <h2>全文翻譯（繁中）</h2>
-
-    <p>網絡安全研究機構「CyberSafe Labs」於 2026 年 2 月 25 日公開披露一項針對 WhatsApp AI 聊天助理功能的嚴重私隱漏洞。根據研究報告，這個被命名為「ChatLeak-26」的漏洞存在於 WhatsApp iOS 和 Android 客戶端最新版本的 AI 聊天功能模塊中，攻擊者可透過中間人攻擊（MITM）手段在特定網絡環境下截取用戶與 WhatsApp AI 助理的部分對話記錄，受影響的對話類型主要包括包含個人財務信息、健康建議和家庭事務的查詢內容。研究人員估計全球潛在受影響用戶數量超過 2,000 萬。</p>
-
-    <p>漏洞的技術根源在於 WhatsApp AI 聊天功能在處理某些特定格式的查詢時，未能正確實施端到端加密協議，導致部分會話數據以未加密或弱加密狀態在用戶設備與 Meta 後端服務器之間傳輸。CyberSafe Labs 指出，這一缺陷的出現可能與 WhatsApp 工程師在快速迭代 AI 功能時未能充分進行安全審計有關。Meta 官方在收到漏洞通知後承認漏洞存在，並於 24 小時內在全球範圍內緊急推送了修補程式，同時停用了受影響的 AI 功能模塊進行全面安全審查。</p>
-
-    <p>在香港，這一事件迅速引發廣泛關注和社會討論。個人資料私隱專員公署發表聲明，表示已就事件主動聯繫 Meta 香港，要求提供受影響香港用戶的數量和數據類型等詳細資料，並評估是否需要根據《個人資料（私隱）條例》展開正式調查。香港消費者委員會亦發出提示，建議用戶立即更新至最新版本的 WhatsApp，並在確認漏洞修復前避免透過 AI 助理分享任何敏感個人信息。</p>
-
-    <p>連登討論區就此事件展開激烈討論，多個相關帖子累計回覆超過數千條。討論焦點主要集中在三個方面：其一是質疑大型科技公司在快速推進 AI 功能商業化的過程中是否充分重視安全測試；其二是討論 AI 聊天助理的技術架構是否從根本上與端到端加密的設計理念存在衝突；其三是探討普通用戶在使用 AI 聊天功能時應如何保護個人私隱，包括避免分享敏感資料、定期審查 AI 對話記錄和使用更為私隱友好的本地 AI 替代方案。</p>
-
-    <p>這次事件再度引發業界對於 AI 聊天功能私隱保護標準的深層反思。數據安全專家指出，AI 聊天助理的工作機制需要將用戶查詢發送至雲端服務器進行處理，這從根本上就與端到端加密的設計存在張力。在現有技術框架下，真正實現「私隱優先的 AI 聊天」需要在本地推理能力、服務質量和私隱保護三者之間作出艱難取捨。業界普遍認為，此次 WhatsApp 漏洞事件將促使各大即時通訊平台重新審視其 AI 功能的安全架構設計，並可能推動監管機構加快制訂針對 AI 聊天功能的私隱保護專項標準。</p>
-
-    <a class="back" href="/">← 返回首頁</a>
   </div>
+  <h1>10. 🔐 2026-02-25 資安討論：Anthropic 揭中國 AI 公司大規模濫用 Claude 開設 2.4 萬個假帳號</h1>
+
+  <h2>全文翻譯（繁中）</h2>
+
+  <h2>Anthropic 公開指控的核心內容</h2>
+  <p>Anthropic 於 2026 年 2 月 25 日正式公開一份詳細的調查報告，指控包括 DeepSeek 在內的三家中國 AI 公司，以「工業規模」的方式蓄意濫用 Claude 服務。根據報告，相關行為者在 Anthropic 的平台上以虛假身份開設了約 24,000 個偽冒帳號，並透過這些帳號與 Claude 進行了超過 1,600 萬次的對話交流。Anthropic 指控這些大規模交互的目的，疑為系統性地提取 Claude 的回答模式、推理策略和知識輸出，用以訓練相關公司自家的 AI 模型，實質上構成對 Anthropic 智識財產的竊取行為。</p>
+
+  <h2>規模之龐大令業界震驚</h2>
+  <p>2.4 萬個偽冒帳號和 1,600 萬次交互這兩個數字的龐大規模在 AI 業界引發巨大震驚。分析師指出，如此大規模的有組織帳號行動顯然需要相當的技術基礎設施投入，包括自動化帳號創建系統、IP 地址池輪換機制和自動化對話生成腳本，絕非個別人員的隨機行為，而是具有明確組織意圖的系統性操作。Anthropic 表示，其風控系統在過去一段時間內持續偵測到異常行為模式，並在確認足夠的調查證據後才選擇公開披露。</p>
+
+  <h2>服務條款違規與法律追究</h2>
+  <p>Anthropic 在報告中明確表示，上述行為嚴重違反了 Claude 服務的使用條款，公司已全面封禁涉事帳號並切斷相關訪問渠道，同時正在評估向相關方採取法律行動的可行性。法律專家指出，此類案件涉及的法律問題相當複雜，包括：AI 公司的回答是否受到版權保護、提取 AI 回答用於訓練競爭模型是否構成侵權，以及跨境法律管轄等問題。鑑於中美兩國之間複雜的法律互認關係，相關法律追究的實際效果存在相當大的不確定性。</p>
+
+  <h2>資安討論區的激烈辯論</h2>
+  <p>事件在連登資安版和各科技討論平台引發廣泛討論，意見分歧明顯。有聲音對 Anthropic 的指控表示支持，認為以工業規模竊取競爭對手 AI 訓練數據的行為嚴重損害了 AI 行業的健康發展生態，並為開放 AI 服務的可持續商業模式帶來根本性威脅。另一部分聲音則對 Anthropic 的指控持懷疑態度，認為商業公司在 AI 競爭激烈的背景下可能誇大事件的嚴重程度，並質疑以「詢問 AI 問題」的方式獲取的信息是否真的構成可追究的知識財產侵權。</p>
+
+  <h2>地緣政治背景與 AI 技術競爭的深層意涵</h2>
+  <p>多位業界分析師將此事件置於更宏觀的中美 AI 技術競爭背景下進行解讀。在美國持續加強對先進 AI 晶片和技術出口管制的情況下，部分中國 AI 公司可能尋求通過間接途徑獲取技術優勢，包括利用公開 AI 服務收集訓練信號。此事件或將加速 AI 公司採取更嚴格的用戶驗證機制和異常使用偵測系統，並可能推動行業層面形成針對 AI 訓練數據提取行為的倫理規範和法律框架討論。長遠而言，這場爭議亦再次凸顯了在全球化 AI 服務環境中建立公平競爭規則的迫切性。</p>
+
+  <a class="back" href="/posts/2026-02-25.html">← 返回 2026-02-25 每日摘要</a>
+</article>
 </body>
 </html>
