@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>硬件測試：RTX 5090 跑 AI 本地大型模型表現究竟如何？全面實測</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+.wrap { max-width: 680px; margin: 0 auto; }
+.badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+.back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+.back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="badge">硬件測試</span><span class="badge">2026-02-24</span>
+<h1>🖥️ RTX 5090 跑 AI 本地大型模型表現究竟如何？全面實測</h1>
+
+<h2>測試背景與硬件規格</h2>
+<p>連登硬件討論版一名自稱「本地 AI 玩家」的網民發布了目前連登史上最詳盡的 RTX 5090 AI 推理性能測試報告，帖文全文超過 8,000 字並附有大量截圖和圖表，一經發布即獲大量正評和討論。測試者使用的硬件配置為單張 NVIDIA GeForce RTX 5090（32GB GDDR7 顯存）、Intel Core Ultra 9 285K 處理器、96GB DDR5 主記憶體和 PCIe 5.0 NVMe 固態硬盤。測試環境採用 Ubuntu 25.04 作業系統，推理框架為 llama.cpp、vLLM 和 Ollama 三種，以交叉驗證不同框架下的性能差異。</p>
+
+<h2>主力模型推理速度基準測試</h2>
+<p>測試涵蓋多款主流開源大語言模型，其中最引人關注的是 Llama 4 405B 量化版本（Q4_K_M）的測試數據：在 RTX 5090 上的平均推理速度達到 18.3 個 token 每秒，相比 RTX 4090（9.7 tokens/s）幾乎實現了近乎翻倍的提升。Gemma 3 27B（全精度 BF16）的推理速度則達到驚人的 156 tokens/s，流暢度已可與商業 API 服務媲美。Qwen 2.5 72B（Q5_K_M 量化）的測試速度為 47 tokens/s，測試者指出在對話應用場景中的體驗已相當流暢，完全達到實用級別。這些數據令本港本地 AI 玩家社群為之振奮。</p>
+
+<h2>記憶體容量與多模態能力測試</h2>
+<p>RTX 5090 的 32GB GDDR7 顯存是其相較上代最關鍵的升級之一，測試結果顯示這一容量已能在不進行量化的情況下完整載入 Gemma 3 27B 等中型模型，並在量化後支援 70B 級別模型的全顯存推理，大幅提升了推理速度和輸出質量。測試者同時對 Llava 1.7、InternVL3 等多模態視覺語言模型進行了測試，結果顯示 RTX 5090 在處理高解析度圖像輸入的視覺問答任務時，速度和準確率均有顯著提升。他特別指出，未來本地運行的多模態 AI 助理將因此在實際使用體驗上大幅改善。</p>
+
+<h2>散熱、功耗與性價比分析</h2>
+<p>RTX 5090 的滿載功耗達到 575W，是 RTX 4090 的 1.4 倍，測試者指出這對個人電腦的電源系統和散熱環境提出了相當高的要求。在香港夏季高溫環境下長時間運行 AI 推理任務，顯卡核心溫度會升至 85°C 至 90°C 的範圍，測試者建議加裝額外的機箱風扇或考慮水冷方案。從性價比角度分析，RTX 5090 的香港市場售價約為 17,000 至 19,000 港元，較上代 RTX 4090 首發時貴約 30%，但考慮到其在 AI 推理任務上近乎翻倍的性能提升，測試者認為對有本地 AI 運行需求的用戶而言，升級的性價比相當合理。</p>
+
+<h2>本地 AI 運行的實用性評估與展望</h2>
+<p>測試者在結語中對 RTX 5090 在本地 AI 運行場景的整體表現給予了相當正面的評價，並明確指出「單卡本地跑頂級開源模型終於係實用的了」。他特別提到，對於重視數據私隱、希望避免將敏感資訊發送至雲端 API 的個人用戶或小型企業而言，RTX 5090 所代表的本地 AI 運行方案在技術和成本上均已達到可行門檻。帖文引發了大量本地 AI 玩家討論雙卡或多卡組合方案的可行性，多人表示正認真考慮組建本地 AI 工作站，以支援更大規模的模型推理需求。</p>
+
+<a href="/posts/2026-02-24.html" class="back">← 返回 2026-02-24 每日摘要</a>
+</div>
+</body>
+</html>

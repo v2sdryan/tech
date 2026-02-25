@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>09 🖥️ 本地 AI：Ollama 0.6 新功能全面實測 本地 AI 模型部署體驗大幅改善</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">指定文章 09</span>
+    <span class="badge">逐段繁中翻譯</span>
+    <h1>🖥️ 2026-02-25 本地 AI：Ollama 0.6 新功能全面實測 本地 AI 模型部署體驗大幅改善</h1>
+
+    <h2>全文翻譯（繁中）</h2>
+
+    <p>本地 AI 模型部署工具 Ollama 於 2026 年 2 月 24 日正式發佈 0.6 版本，這是該工具自 2023 年推出以來功能更新幅度最大的一次版本迭代。Ollama 0.6 的核心新功能包括：原生支持並發請求處理（最多同時處理 8 個請求）、大幅擴充的模型量化選項（新增 IQ2、IQ3 和 IQ4 系列量化格式）、全新的 GPU 記憶體管理系統，以及改善的跨平台模型緩存機制。連登本地 AI 愛好者版在消息發佈後迅速湧現大量實測帖子，多名資深用戶分享了詳細的升級體驗和性能測試數據。</p>
+
+    <p>在並發請求處理方面，連登網民「LocalAI_Fan」詳細測試了 Ollama 0.6 在 Apple M3 Max 配備 128GB 統一記憶體的 MacBook Pro 上同時運行多個模型的能力。測試結果顯示，在同時運行 Llama 3.2 70B 和 Qwen 2.5 32B 兩個大型模型的情況下，0.6 版本的總體吞吐量較 0.5 版本提升約 65%，GPU 記憶體分配效率明顯改善，模型切換時的冷啟動延遲亦從平均 8 秒縮短至 3 秒。這些改善對於需要在開發工作流程中頻繁切換不同模型的用戶而言具有實際意義。</p>
+
+    <p>新的量化格式支持是 Ollama 0.6 另一個備受關注的功能。IQ（Importance Quantization）系列量化格式是一種相較於傳統 Q 系列量化更為智能的量化方法，能夠根據模型中各組參數對輸出質量的重要程度，差異化地分配量化精度資源。多名網民測試發現，使用 IQ4_XS 格式量化的 Llama 3.3 70B 模型，在記憶體佔用方面比傳統 Q4_0 格式降低約 15%，同時在標準語言理解基準測試中的分數損失極小，僅約 1.2 個百分點，性價比相當出色。</p>
+
+    <p>在 Windows 平台上，Ollama 0.6 帶來的改善尤其顯著。過去 Ollama 在 Windows 系統上的 NVIDIA GPU 支持一直存在記憶體洩漏和偶發崩潰的問題，0.6 版本針對這些問題進行了針對性修復，並對 CUDA 12.x 系列驅動程序的兼容性做了全面優化。多名使用 Windows 平台的網民反映，升級至 0.6 版本後，長時間運行的穩定性有了實質性提升，先前困擾他們的 VRAM 佔用不斷增長問題已基本得到解決。</p>
+
+    <p>整體而言，連登本地 AI 社群對 Ollama 0.6 的反應相當正面。有網民指出，Ollama 的持續完善使本地 AI 模型部署的門檻不斷降低，令更多非專業技術背景的用戶也能夠輕鬆在自己的設備上運行高質量的開源語言模型，實現真正的「本地私隱保護 AI」體驗。同時，社群亦對 Ollama 團隊在下一個版本中加入多模態模型並發運行支持和更完善的 API 兼容層抱有期待，相信這些功能將進一步擴大本地 AI 應用的實用場景範圍。</p>
+
+    <a class="back" href="/">← 返回首頁</a>
+  </div>
+</body>
+</html>
