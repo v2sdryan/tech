@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>硬件測試：RTX 5090 跑 AI 本地大型模型表現究竟如何？全面實測</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
-.wrap { max-width: 680px; margin: 0 auto; }
-.badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
-h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
-h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
-p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
-.back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
-.back:hover { text-decoration: underline; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09. 🔒 2026-02-24 政策討論：AI 芯片出口管制與蒸餾攻擊的深層關聯</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+    .back:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-<div class="wrap">
-<span class="badge">硬件測試</span><span class="badge">2026-02-24</span>
-<h1>🖥️ RTX 5090 跑 AI 本地大型模型表現究竟如何？全面實測</h1>
-
-<h2>測試背景與硬件規格</h2>
-<p>連登硬件討論版一名自稱「本地 AI 玩家」的網民發布了目前連登史上最詳盡的 RTX 5090 AI 推理性能測試報告，帖文全文超過 8,000 字並附有大量截圖和圖表，一經發布即獲大量正評和討論。測試者使用的硬件配置為單張 NVIDIA GeForce RTX 5090（32GB GDDR7 顯存）、Intel Core Ultra 9 285K 處理器、96GB DDR5 主記憶體和 PCIe 5.0 NVMe 固態硬盤。測試環境採用 Ubuntu 25.04 作業系統，推理框架為 llama.cpp、vLLM 和 Ollama 三種，以交叉驗證不同框架下的性能差異。</p>
-
-<h2>主力模型推理速度基準測試</h2>
-<p>測試涵蓋多款主流開源大語言模型，其中最引人關注的是 Llama 4 405B 量化版本（Q4_K_M）的測試數據：在 RTX 5090 上的平均推理速度達到 18.3 個 token 每秒，相比 RTX 4090（9.7 tokens/s）幾乎實現了近乎翻倍的提升。Gemma 3 27B（全精度 BF16）的推理速度則達到驚人的 156 tokens/s，流暢度已可與商業 API 服務媲美。Qwen 2.5 72B（Q5_K_M 量化）的測試速度為 47 tokens/s，測試者指出在對話應用場景中的體驗已相當流暢，完全達到實用級別。這些數據令本港本地 AI 玩家社群為之振奮。</p>
-
-<h2>記憶體容量與多模態能力測試</h2>
-<p>RTX 5090 的 32GB GDDR7 顯存是其相較上代最關鍵的升級之一，測試結果顯示這一容量已能在不進行量化的情況下完整載入 Gemma 3 27B 等中型模型，並在量化後支援 70B 級別模型的全顯存推理，大幅提升了推理速度和輸出質量。測試者同時對 Llava 1.7、InternVL3 等多模態視覺語言模型進行了測試，結果顯示 RTX 5090 在處理高解析度圖像輸入的視覺問答任務時，速度和準確率均有顯著提升。他特別指出，未來本地運行的多模態 AI 助理將因此在實際使用體驗上大幅改善。</p>
-
-<h2>散熱、功耗與性價比分析</h2>
-<p>RTX 5090 的滿載功耗達到 575W，是 RTX 4090 的 1.4 倍，測試者指出這對個人電腦的電源系統和散熱環境提出了相當高的要求。在香港夏季高溫環境下長時間運行 AI 推理任務，顯卡核心溫度會升至 85°C 至 90°C 的範圍，測試者建議加裝額外的機箱風扇或考慮水冷方案。從性價比角度分析，RTX 5090 的香港市場售價約為 17,000 至 19,000 港元，較上代 RTX 4090 首發時貴約 30%，但考慮到其在 AI 推理任務上近乎翻倍的性能提升，測試者認為對有本地 AI 運行需求的用戶而言，升級的性價比相當合理。</p>
-
-<h2>本地 AI 運行的實用性評估與展望</h2>
-<p>測試者在結語中對 RTX 5090 在本地 AI 運行場景的整體表現給予了相當正面的評價，並明確指出「單卡本地跑頂級開源模型終於係實用的了」。他特別提到，對於重視數據私隱、希望避免將敏感資訊發送至雲端 API 的個人用戶或小型企業而言，RTX 5090 所代表的本地 AI 運行方案在技術和成本上均已達到可行門檻。帖文引發了大量本地 AI 玩家討論雙卡或多卡組合方案的可行性，多人表示正認真考慮組建本地 AI 工作站，以支援更大規模的模型推理需求。</p>
-
-<a href="/posts/2026-02-24.html" class="back">← 返回 2026-02-24 每日摘要</a>
-</div>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 09</span>
+      <span class="badge">逐段繁中翻譯</span>
+    </div>
+    <h1>09. 🔒 2026-02-24 政策討論：AI 芯片出口管制與蒸餾攻擊的深層關聯</h1>
+    <h2>全文翻譯（繁中）</h2>
+    <p>Anthropic 於 2026 年 2 月 24 日發佈的蒸餾攻擊報告，直接點燃了 AI 芯片出口管制政策的辯論，並在業界和政策圈引發廣泛討論。長期以來，部分批評者以中國 AI 實驗室在出口管制下仍能快速進步為由，質疑管制的有效性。Anthropic 的報告提供了一個截然不同的解讀框架：若缺乏對蒸餾攻擊的有效監控和阻止機制，中國 AI 的部分快速進步將被錯誤解讀為出口管制無效的佐證，但事實上這些進步在相當程度上依賴於從美國模型中提取的能力。</p>
+    <p>Anthropic 報告的核心論點在於，蒸餾攻擊從根本上改變了出口管制的分析框架。傳統的出口管制邏輯是：限制中國獲取先進 AI 芯片，就能限制其訓練大型前沿模型的算力基礎，從而維持美國的 AI 能力領先優勢。然而蒸餾攻擊提供了一條繞過路徑——即便沒有同等算力，也可透過系統性地提取已訓練完成的美國模型的輸出知識，大幅縮短獨立訓練的能力差距。因此，芯片管制必須與對 API 濫用和蒸餾攻擊的主動監控相結合，才能構成完整的 AI 能力管控體系。</p>
+    <p>在硬件層面，出口管制對蒸餾攻擊本身亦有一定的制約作用。Anthropic 指出，芯片管制限制了中國實驗室可用於將蒸餾所獲知識進一步訓練和強化的算力規模——蒸餾攻擊可以提取特定任務的輸出模式，但若無足夠算力進行後續的強化學習和微調，其所能達到的能力上限亦受到制約。這意味著出口管制和蒸餾監控是相互補充的雙層防線，而非彼此替代的單一手段。Meta 斥巨資購置 Nvidia 芯片，SK Hynix 持續擴大 AI 記憶體產能，均反映出美國陣營在 AI 基礎設施投入上的強烈競爭意識。</p>
+    <p>從地緣政治角度來看，蒸餾攻擊事件進一步強化了 AI 基礎設施競爭的多維性。傳統的科技競爭主要聚焦於算力、數據和人才三個維度，而蒸餾攻擊揭示了「已訓練模型的知識」作為戰略資產的獨特價值——這是一種可以被提取、複製和重用的隱性資產，而現有的大多數法律和監管框架對此並未作出明確的規範。Anthropic 呼籲業界、雲服務提供商和政策制定者共同建立針對此類攻擊的協調應對機制。</p>
+    <p>對香港而言，這場關於出口管制與蒸餾攻擊關係的討論具有特殊的現實意義。香港在《國家安全法》實施後，在科技出口管制方面面臨與中國內地類似的限制，部分美國高端 AI 芯片已對香港實體實施限制或要求許可證審批。與此同時，香港的多家企業和研究機構均是 Anthropic、OpenAI 等美國 AI 公司 API 服務的用戶，這使香港在 API 濫用監控和蒸餾攻擊防範方面同樣處於需要關注的地位。蒸餾事件的政策走向，將直接影響香港科技生態未來獲取和使用全球頂尖 AI 服務的方式。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
 </body>
 </html>
