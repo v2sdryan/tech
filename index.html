@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Daily - 香港科技日報</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: #0a0a0f;
@@ -20,9 +26,10 @@
             z-index: 100;
             background: rgba(10, 10, 15, 0.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding: 0 20px;
         }
+
         .nav-inner {
             max-width: 1100px;
             margin: 0 auto;
@@ -31,6 +38,7 @@
             justify-content: space-between;
             height: 56px;
         }
+
         .nav-logo {
             font-size: 1.2em;
             font-weight: 700;
@@ -40,10 +48,12 @@
             letter-spacing: -0.5px;
             cursor: pointer;
         }
+
         .nav-tabs {
             display: flex;
             gap: 4px;
         }
+
         .nav-tab {
             padding: 8px 16px;
             border-radius: 8px;
@@ -56,12 +66,20 @@
             background: none;
             white-space: nowrap;
         }
-        .nav-tab:hover { color: #e6edf3; background: rgba(255,255,255,0.06); }
+
+        .nav-tab:hover {
+            color: #e6edf3;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
         .nav-tab.active {
             color: #fff;
             background: rgba(99, 102, 241, 0.2);
         }
-        .nav-tab .tab-icon { margin-right: 4px; }
+
+        .nav-tab .tab-icon {
+            margin-right: 4px;
+        }
 
         /* Date Navigation Bar */
         .date-nav {
@@ -70,10 +88,16 @@
             margin: 0 auto;
             padding: 16px 20px 0;
         }
-        .date-nav.active { display: flex; justify-content: space-between; align-items: center; }
+
+        .date-nav.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .date-nav button {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: #e6edf3;
             padding: 8px 18px;
             border-radius: 10px;
@@ -81,26 +105,39 @@
             font-size: 0.9em;
             transition: all 0.2s;
         }
-        .date-nav button:hover { background: rgba(255,255,255,0.08); }
-        .date-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .date-nav button:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .date-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
         .date-nav .date-label {
             font-size: 1.05em;
             font-weight: 600;
             color: #a78bfa;
         }
+
         .date-nav .calendar-link {
             font-size: 0.85em;
             color: #6b7280;
             cursor: pointer;
             transition: color 0.2s;
         }
-        .date-nav .calendar-link:hover { color: #60a5fa; }
+
+        .date-nav .calendar-link:hover {
+            color: #60a5fa;
+        }
 
         /* Header */
         header {
             text-align: center;
             padding: 48px 20px 24px;
         }
+
         header h1 {
             font-size: 2.4em;
             font-weight: 800;
@@ -109,6 +146,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         header p {
             color: #6b7280;
             margin-top: 8px;
@@ -123,9 +161,10 @@
             gap: 16px;
             padding: 16px 20px;
         }
+
         .calendar-nav button {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: #e6edf3;
             padding: 8px 18px;
             border-radius: 10px;
@@ -133,19 +172,29 @@
             font-size: 0.9em;
             transition: all 0.2s;
         }
-        .calendar-nav button:hover { background: rgba(255,255,255,0.08); }
-        .calendar-nav span { font-size: 1.15em; font-weight: 600; }
+
+        .calendar-nav button:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .calendar-nav span {
+            font-size: 1.15em;
+            font-weight: 600;
+        }
+
         .calendar {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px 40px;
         }
+
         .weekday-header {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 6px;
             margin-bottom: 6px;
         }
+
         .weekday-header div {
             text-align: center;
             color: #6b7280;
@@ -155,15 +204,17 @@
             letter-spacing: 0.5px;
             padding: 8px 0;
         }
+
         .days-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 6px;
         }
+
         .day-cell {
             aspect-ratio: 1;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -174,7 +225,12 @@
             position: relative;
             transition: all 0.25s;
         }
-        .day-cell.empty { background: transparent; border: none; }
+
+        .day-cell.empty {
+            background: transparent;
+            border: none;
+        }
+
         .day-cell.has-post {
             background: rgba(59, 130, 246, 0.08);
             border-color: rgba(59, 130, 246, 0.25);
@@ -182,22 +238,27 @@
             cursor: pointer;
             font-weight: 700;
         }
+
         .day-cell.has-post:hover {
             background: rgba(59, 130, 246, 0.15);
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
         }
+
         .day-cell.has-post .dot {
-            width: 5px; height: 5px;
+            width: 5px;
+            height: 5px;
             background: #60a5fa;
             border-radius: 50%;
             position: absolute;
             bottom: 8px;
         }
+
         .day-cell.today {
             border-color: rgba(167, 139, 250, 0.4);
             box-shadow: 0 0 12px rgba(167, 139, 250, 0.15);
         }
+
         .day-cell.viewing {
             background: rgba(167, 139, 250, 0.2);
             border-color: rgba(167, 139, 250, 0.5);
@@ -221,21 +282,26 @@
             padding: 0 20px 20px;
             display: none;
         }
-        .cards-container.active { display: block; }
+
+        .cards-container.active {
+            display: block;
+        }
 
         /* News Card */
         .news-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 14px;
             margin-bottom: 10px;
             overflow: hidden;
             transition: all 0.25s;
         }
+
         .news-card:hover {
             border-color: rgba(96, 165, 250, 0.3);
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
+
         .news-card.expanded {
             border-color: rgba(99, 102, 241, 0.4);
             background: rgba(99, 102, 241, 0.06);
@@ -248,6 +314,7 @@
             cursor: pointer;
             gap: 12px;
         }
+
         .card-number {
             flex-shrink: 0;
             width: 28px;
@@ -261,16 +328,19 @@
             font-weight: 700;
             color: #a78bfa;
         }
+
         .card-title-area {
             flex: 1;
             min-width: 0;
         }
+
         .card-title {
             font-size: 0.95em;
             font-weight: 600;
             color: #e6edf3;
             line-height: 1.4;
         }
+
         .card-snippet {
             font-size: 0.8em;
             color: #6b7280;
@@ -279,12 +349,14 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         .card-chevron {
             flex-shrink: 0;
             color: #4b5563;
             transition: transform 0.25s;
             font-size: 0.9em;
         }
+
         .news-card.expanded .card-chevron {
             transform: rotate(90deg);
             color: #a78bfa;
@@ -295,22 +367,32 @@
             padding: 0 18px 16px 58px;
             line-height: 1.75;
         }
-        .news-card.expanded .card-body { display: block; }
+
+        .news-card.expanded .card-body {
+            display: block;
+        }
+
         .card-body p {
             margin: 4px 0;
             color: #d1d5db;
             font-size: 0.9em;
         }
+
         .card-body a {
             color: #60a5fa;
             text-decoration: none;
             border-bottom: 1px solid rgba(96, 165, 250, 0.3);
             transition: border-color 0.2s;
         }
-        .card-body a:hover { border-bottom-color: #60a5fa; }
+
+        .card-body a:hover {
+            border-bottom-color: #60a5fa;
+        }
 
         /* Hidden raw content */
-        #rawContent { display: none; }
+        #rawContent {
+            display: none;
+        }
 
         /* Footer */
         footer {
@@ -319,24 +401,67 @@
             color: #374151;
             font-size: 0.85em;
         }
-        footer a { color: #4b5563; text-decoration: none; }
-        footer a:hover { color: #6b7280; }
+
+        footer a {
+            color: #4b5563;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #6b7280;
+        }
 
         /* Responsive */
         @media (max-width: 640px) {
-            .nav-inner { flex-direction: column; height: auto; padding: 10px 0; gap: 6px; }
-            .nav-tabs { overflow-x: auto; width: 100%; justify-content: center; }
-            .nav-tab { padding: 6px 12px; font-size: 0.8em; }
-            header h1 { font-size: 1.8em; }
-            .day-cell { font-size: 0.85em; border-radius: 8px; }
-            .card-header { padding: 12px 14px; }
-            .card-body { padding: 0 14px 14px 48px; }
-            .date-nav { flex-wrap: wrap; gap: 8px; justify-content: center; }
+            .nav-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 0;
+                gap: 6px;
+            }
+
+            .nav-tabs {
+                overflow-x: auto;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-tab {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .day-cell {
+                font-size: 0.85em;
+                border-radius: 8px;
+            }
+
+            .card-header {
+                padding: 12px 14px;
+            }
+
+            .card-body {
+                padding: 0 14px 14px 48px;
+            }
+
+            .date-nav {
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
+
 <body>
-    <button id="settingsBtn" style="position:fixed;top:12px;right:12px;z-index:101;background:transparent;color:#6b7280;border:1px solid rgba(255,255,255,0.1);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;opacity:0.6;transition:all 0.2s;" onmouseover="this.style.opacity='1';this.style.color='#a78bfa';" onmouseout="this.style.opacity='0.6';this.style.color='#6b7280';">⚙️</button>
+    <button id="settingsBtn"
+        style="position:fixed;top:12px;right:12px;z-index:101;background:transparent;color:#6b7280;border:1px solid rgba(255,255,255,0.1);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;opacity:0.6;transition:all 0.2s;"
+        onmouseover="this.style.opacity='1';this.style.color='#a78bfa';"
+        onmouseout="this.style.opacity='0.6';this.style.color='#6b7280';">⚙️</button>
     <nav>
         <div class="nav-inner">
             <div class="nav-logo" onclick="showCalendar()">🤖 Tech Daily</div>
@@ -372,7 +497,13 @@
         </div>
         <div class="calendar">
             <div class="weekday-header">
-                <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+                <div>日</div>
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
             </div>
             <div class="days-grid" id="daysGrid"></div>
         </div>
@@ -488,7 +619,7 @@
                 card.className = 'news-card';
                 card.dataset.idx = idx;
 
-                const detailHref = (currentPostDate && hasDetailPages) ? `/posts/${currentPostDate}/${String(articleNo).padStart(2,'0')}.html` : '';
+                const detailHref = (currentPostDate && hasDetailPages) ? `/posts/${currentPostDate}/${String(articleNo).padStart(2, '0')}.html` : '';
                 card.dataset.detailHref = detailHref;
 
                 const snippet = getSnippet(item.bodyHtml);
@@ -537,9 +668,9 @@
 
         async function loadIndex() {
             try {
-                const res = await fetch('posts/index.json');
+                const res = await fetch(`posts/index.json?t=${new Date().getTime()}`);
                 if (res.ok) postIndex = await res.json();
-            } catch(e) {}
+            } catch (e) { }
             sortedDates = Object.keys(postIndex).sort();
 
             if (sortedDates.length > 0) {
@@ -567,11 +698,11 @@
             }
 
             for (let d = 1; d <= daysInMonth; d++) {
-                const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
                 const hasPost = postIndex[dateStr];
                 const isToday = today.getFullYear() === year &&
-                                today.getMonth() === month &&
-                                today.getDate() === d;
+                    today.getMonth() === month &&
+                    today.getDate() === d;
                 const isViewing = dateStr === currentPostDate;
 
                 const cell = document.createElement('div');
@@ -593,7 +724,7 @@
 
         async function loadPost(dateStr) {
             try {
-                const res = await fetch(`posts/${dateStr}.html`);
+                const res = await fetch(`posts/${dateStr}.html?t=${new Date().getTime()}`);
                 if (res.ok) {
                     currentPostDate = dateStr;
                     const html = await res.text();
@@ -629,7 +760,7 @@
                     renderCards();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
-            } catch(e) {
+            } catch (e) {
                 alert('載入失敗');
             }
         }
@@ -664,7 +795,7 @@
 
             try {
                 setStatus('驗證中…');
-                const res = await fetch(`posts/${currentPostDate}.html`);
+                const res = await fetch(`posts/${currentPostDate}.html?t=${new Date().getTime()}`);
                 if (!res.ok) {
                     setStatus('讀取主頁失敗', false);
                     return;
@@ -685,7 +816,7 @@
                 const missing = [];
                 for (const id of list) {
                     try {
-                        const r = await fetch(`posts/${currentPostDate}/${id}.html`);
+                        const r = await fetch(`posts/${currentPostDate}/${id}.html?t=${new Date().getTime()}`);
                         if (!r.ok) {
                             missing.push(id);
                             continue;
@@ -709,95 +840,102 @@
 
         loadIndex();
     </script>
-<div id="settingsPanel" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(3,8,18,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;align-items:center;padding:20px;">
-  <div style="background:linear-gradient(180deg,#111827 0%,#0f172a 100%);color:#e6edf3;padding:22px;border-radius:16px;max-width:420px;width:100%;border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 50px rgba(0,0,0,0.45);">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <h3 style="margin:0;font-size:28px;line-height:1.1;">Settings</h3>
-      <button onclick="closeSettings()" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#94a3b8;width:30px;height:30px;border-radius:8px;cursor:pointer;">✕</button>
-    </div>
+    <div id="settingsPanel"
+        style="display:none;position:fixed;inset:0;z-index:999;background:rgba(3,8,18,0.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);justify-content:center;align-items:center;padding:20px;">
+        <div
+            style="background:linear-gradient(180deg,#111827 0%,#0f172a 100%);color:#e6edf3;padding:22px;border-radius:16px;max-width:420px;width:100%;border:1px solid rgba(255,255,255,0.12);box-shadow:0 20px 50px rgba(0,0,0,0.45);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 style="margin:0;font-size:28px;line-height:1.1;">Settings</h3>
+                <button onclick="closeSettings()"
+                    style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:#94a3b8;width:30px;height:30px;border-radius:8px;cursor:pointer;">✕</button>
+            </div>
 
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:20px;">
-        <span>Theme</span>
-        <select id="themeSelect" style="min-width:170px;background:#0b1220;color:#e6edf3;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 10px;font-size:17px;">
-          <option value="light">Light</option>
-          <option value="dark" selected>Dark</option>
-          <option value="solarized">Solarized</option>
-          <option value="monokai">Monokai</option>
-        </select>
-      </label>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+                <label style="display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:20px;">
+                    <span>Theme</span>
+                    <select id="themeSelect"
+                        style="min-width:170px;background:#0b1220;color:#e6edf3;border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 10px;font-size:17px;">
+                        <option value="light">Light</option>
+                        <option value="dark" selected>Dark</option>
+                        <option value="solarized">Solarized</option>
+                        <option value="monokai">Monokai</option>
+                    </select>
+                </label>
 
-      <label style="display:block;font-size:20px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <span>Font Size</span>
-          <span id="fontSizeValue" style="font-weight:600;color:#c4b5fd;">16px</span>
+                <label style="display:block;font-size:20px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <span>Font Size</span>
+                        <span id="fontSizeValue" style="font-weight:600;color:#c4b5fd;">16px</span>
+                    </div>
+                    <input type="range" id="fontSizeSlider" min="12" max="24" value="16"
+                        style="width:100%;accent-color:#8b5cf6;cursor:pointer;">
+                </label>
+            </div>
+
+            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;">
+                <button onclick="closeSettings()"
+                    style="padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#cbd5e1;cursor:pointer;font-size:16px;">Close</button>
+            </div>
         </div>
-        <input type="range" id="fontSizeSlider" min="12" max="24" value="16" style="width:100%;accent-color:#8b5cf6;cursor:pointer;">
-      </label>
     </div>
+    <script>
+        const settingsPanel = document.getElementById('settingsPanel');
+        const themeSelect = document.getElementById('themeSelect');
+        const fontSizeSlider = document.getElementById('fontSizeSlider');
+        const fontSizeValue = document.getElementById('fontSizeValue');
 
-    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;">
-      <button onclick="closeSettings()" style="padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:#cbd5e1;cursor:pointer;font-size:16px;">Close</button>
-    </div>
-  </div>
-</div>
-<script>
-  const settingsPanel = document.getElementById('settingsPanel');
-  const themeSelect = document.getElementById('themeSelect');
-  const fontSizeSlider = document.getElementById('fontSizeSlider');
-  const fontSizeValue = document.getElementById('fontSizeValue');
+        function openSettings() { settingsPanel.style.display = 'flex'; }
+        function closeSettings() { settingsPanel.style.display = 'none'; }
 
-  function openSettings(){ settingsPanel.style.display='flex'; }
-  function closeSettings(){ settingsPanel.style.display='none'; }
+        function applyTheme(theme) {
+            switch (theme) {
+                case 'light':
+                    document.body.style.background = '#ffffff'; document.body.style.color = '#111827'; break;
+                case 'dark':
+                    document.body.style.background = '#0a0a0f'; document.body.style.color = '#e6edf3'; break;
+                case 'solarized':
+                    document.body.style.background = '#FDF6E3'; document.body.style.color = '#657B83'; break;
+                case 'monokai':
+                    document.body.style.background = '#272822'; document.body.style.color = '#F8F8F2'; break;
+            }
+        }
 
-  function applyTheme(theme){
-    switch(theme){
-      case 'light':
-        document.body.style.background='#ffffff';document.body.style.color='#111827';break;
-      case 'dark':
-        document.body.style.background='#0a0a0f';document.body.style.color='#e6edf3';break;
-      case 'solarized':
-        document.body.style.background='#FDF6E3';document.body.style.color='#657B83';break;
-      case 'monokai':
-        document.body.style.background='#272822';document.body.style.color='#F8F8F2';break;
-    }
-  }
+        function applySettings(closeAfter = false) {
+            const theme = themeSelect.value;
+            const size = fontSizeSlider.value;
+            document.body.style.fontSize = size + 'px';
+            fontSizeValue.textContent = size + 'px';
+            applyTheme(theme);
+            localStorage.setItem('techTheme', theme);
+            localStorage.setItem('techFontSize', size);
+            if (closeAfter) closeSettings();
+        }
 
-  function applySettings(closeAfter = false){
-    const theme = themeSelect.value;
-    const size = fontSizeSlider.value;
-    document.body.style.fontSize = size + 'px';
-    fontSizeValue.textContent = size + 'px';
-    applyTheme(theme);
-    localStorage.setItem('techTheme', theme);
-    localStorage.setItem('techFontSize', size);
-    if (closeAfter) closeSettings();
-  }
+        fontSizeSlider.addEventListener('input', function () {
+            fontSizeValue.textContent = this.value + 'px';
+            applySettings(false);
+        });
 
-  fontSizeSlider.addEventListener('input', function(){
-    fontSizeValue.textContent = this.value + 'px';
-    applySettings(false);
-  });
+        themeSelect.addEventListener('change', function () {
+            applySettings(false);
+        });
 
-  themeSelect.addEventListener('change', function(){
-    applySettings(false);
-  });
+        settingsPanel.addEventListener('click', function (e) {
+            if (e.target === settingsPanel) closeSettings();
+        });
 
-  settingsPanel.addEventListener('click', function(e){
-    if (e.target === settingsPanel) closeSettings();
-  });
+        document.getElementById('settingsBtn').addEventListener('click', openSettings);
 
-  document.getElementById('settingsBtn').addEventListener('click', openSettings);
-
-  (function initSettings(){
-    const savedTheme = localStorage.getItem('techTheme') || 'dark';
-    const savedSize = localStorage.getItem('techFontSize') || '16';
-    themeSelect.value = savedTheme;
-    fontSizeSlider.value = savedSize;
-    fontSizeValue.textContent = savedSize + 'px';
-    document.body.style.fontSize = savedSize + 'px';
-    applyTheme(savedTheme);
-  })();
-</script>
+        (function initSettings() {
+            const savedTheme = localStorage.getItem('techTheme') || 'dark';
+            const savedSize = localStorage.getItem('techFontSize') || '16';
+            themeSelect.value = savedTheme;
+            fontSizeSlider.value = savedSize;
+            fontSizeValue.textContent = savedSize + 'px';
+            document.body.style.fontSize = savedSize + 'px';
+            applyTheme(savedTheme);
+        })();
+    </script>
 </body>
+
 </html>
