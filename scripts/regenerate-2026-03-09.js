@@ -130,32 +130,31 @@ const items = [
   },
   {
     id: 14,
-    section: "遊戲產業",
-    title: "網易據報縮減對《人中之龍》創作者工作室資金",
-    source: "Engadget",
-    sourceTitle: "NetEase is reportedly pulling funding for Yakuza creator's studio",
-    url: "https://www.engadget.com/gaming/netease-is-reportedly-pulling-funding-for-yakuza-creators-studio-182945690.html?src=rss",
-    publishedAt: "2026-03-08T18:29:45Z",
+    section: "AI 產業觀察",
+    title: "AI 發展路線圖再被討論：市場呼籲更務實治理",
+    source: "TechCrunch",
+    sourceTitle: "A roadmap for AI, if anyone will listen",
+    url: "https://techcrunch.com/2026/03/07/a-roadmap-for-ai-if-anyone-will-listen/",
+    publishedAt: "2026-03-08T06:05:26Z",
   },
   {
     id: 15,
-    section: "消費硬件",
-    title: "Apple 傳測試 3D 列印鋁製 iPhone 與 Apple Watch 機殼",
-    source: "Engadget",
+    section: "手機市場",
+    title: "40 美元智能手機推進中，但成本障礙仍高",
+    source: "TechCrunch",
     sourceTitle:
-      "Apple is reportedly looking into 3D printing aluminum iPhones and Apple Watches",
-    url: "https://www.engadget.com/mobile/smartphones/apple-is-reportedly-looking-into-3d-printing-aluminum-iphones-and-apple-watches-163721491.html?src=rss",
-    publishedAt: "2026-03-08T16:37:21Z",
+      "Push for $40 smartphones builds momentum, but still faces cost hurdles",
+    url: "https://techcrunch.com/2026/03/07/push-for-40-smartphones-builds-momentum-but-still-faces-cost-hurdles/",
+    publishedAt: "2026-03-08T05:00:00Z",
   },
   {
     id: 16,
-    section: "AI 企業動態",
-    title: "OpenAI 機械人硬件主管據報離職",
-    source: "Engadget",
-    sourceTitle:
-      "OpenAI's robotics hardware lead resigns following deal with the Department of Defense",
-    url: "https://www.engadget.com/ai/openais-robotics-hardware-lead-resigns-following-deal-with-the-department-of-defense-195918599.html?src=rss",
-    publishedAt: "2026-03-08T14:44:19Z",
+    section: "企業動態",
+    title: "Google CEO 薪酬方案引發市場關注",
+    source: "TechCrunch",
+    sourceTitle: "Google just gave Sundar Pichai a $692M pay package",
+    url: "https://techcrunch.com/2026/03/07/google-just-gave-sundar-pichai-a-692m-pay-package/",
+    publishedAt: "2026-03-08T00:20:10Z",
   },
   {
     id: 17,
@@ -200,6 +199,126 @@ function formatDate(iso) {
   return iso.slice(0, 10);
 }
 
+function decodeHtmlEntities(input) {
+  return input
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8220;/g, '"')
+    .replace(/&#8221;/g, '"')
+    .replace(/&#8230;/g, "...")
+    .replace(/&#8211;/g, "-")
+    .replace(/&#8212;/g, "-");
+}
+
+function stripTags(input) {
+  return decodeHtmlEntities(
+    input
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  );
+}
+
+function isLikelyBoilerplate(text) {
+  const low = text.toLowerCase();
+  const bad = [
+    "subscribe",
+    "newsletter",
+    "privacy policy",
+    "terms of use",
+    "all rights reserved",
+    "cookie",
+    "advertisement",
+    "read more:",
+    "sign up",
+    "follow us",
+  ];
+  return bad.some((k) => low.includes(k));
+}
+
+async function fetchHtml(url) {
+  const res = await fetch(url, {
+    headers: {
+      "user-agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      accept: "text/html,application/xhtml+xml",
+    },
+    redirect: "follow",
+  });
+  if (!res.ok) {
+    throw new Error(`fetch failed: ${res.status} ${url}`);
+  }
+  return await res.text();
+}
+
+function extractParagraphs(html) {
+  const pMatches = [...html.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)].map((m) =>
+    stripTags(m[1])
+  );
+  const liMatches = [...html.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/gi)].map((m) =>
+    stripTags(m[1])
+  );
+  const allMatches = [...pMatches, ...liMatches];
+  const cleaned = [];
+  const seen = new Set();
+  for (const p of allMatches) {
+    if (p.length < 40 || p.length > 3000) continue;
+    if (isLikelyBoilerplate(p)) continue;
+    const key = p.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    cleaned.push(p);
+  }
+  return cleaned.slice(0, 28);
+}
+
+async function translateToZhHk(text) {
+  const url = new URL("https://translate.googleapis.com/translate_a/single");
+  url.searchParams.set("client", "gtx");
+  url.searchParams.set("sl", "en");
+  url.searchParams.set("tl", "zh-TW");
+  url.searchParams.set("dt", "t");
+  url.searchParams.set("q", text);
+  const res = await fetch(url.toString(), {
+    headers: { "user-agent": "Mozilla/5.0" },
+  });
+  if (!res.ok) {
+    throw new Error(`translate failed: ${res.status}`);
+  }
+  const data = await res.json();
+  return data[0].map((part) => part[0]).join("").trim();
+}
+
+async function getTranslatedParagraphs(item) {
+  const html = await fetchHtml(item.url);
+  const paragraphs = extractParagraphs(html);
+  if (!paragraphs.length) {
+    return [
+      "未能從來源頁面抽取可翻譯的正文段落。請直接開啟原文連結查看完整內容。",
+    ];
+  }
+
+  const out = [];
+  for (const p of paragraphs) {
+    try {
+      const zh = await translateToZhHk(p);
+      if (zh) out.push(zh);
+    } catch {
+      out.push(`【翻譯失敗，保留原文】${p}`);
+    }
+  }
+  return out.length
+    ? out
+    : ["翻譯服務暫時不可用。請稍後重試，或直接查看原文內容。"];
+}
+
 function buildDigest() {
   const lines = [`<h1>📅 2026-03-09｜香港科技 Daily（已重整）</h1>`, ""];
   lines.push(
@@ -219,39 +338,12 @@ function buildDigest() {
   return lines.join("\n");
 }
 
-function buildDetail(item) {
+function buildDetail(item, translatedParagraphs) {
   const id = String(item.id).padStart(2, "0");
   const publishDate = formatDate(item.publishedAt);
-  const impactBySection = {
-    "全球科技": "企業營運與工程流程",
-    "政策與產業": "國際貿易與供應鏈決策",
-    "太空科技": "科研投資與太空防禦技術",
-    "網絡安全": "政府級攻防與企業防禦策略",
-    "晶片供應鏈": "晶片供應、ERP 系統與地緣風險",
-    "執法科技": "監控系統安全與法規審核",
-    "攻防自動化": "AI 自動化攻擊與 SOC 防守流程",
-    "生醫 AI": "跨學科研究與倫理監管",
-    "智慧家居": "消費者私隱與智能家居信任",
-    "遊戲硬件": "遊戲設備融資與硬件生態",
-    "AI 政策": "初創公司國防合作風險",
-    "基建與 AI": "基建投資、勞動市場與政策討論",
-    "電動車": "智能出行產品與產業鏈調整",
-    "遊戲產業": "工作室資金配置與 IP 發展",
-    "消費硬件": "硬件製程與供應鏈升級",
-    "AI 企業動態": "AI 公司治理與人才流動",
-    Apple: "高端產品線定位與定價策略",
-    "周邊硬件": "主機配件市場與用戶體驗",
-    "交通科技": "新能源路線與成本平衡",
-    "資安威脅": "關鍵基建威脅偵測與應變",
-  };
-  const impact = impactBySection[item.section] || "科技產業決策";
-
-  const translatedParagraphs = [
-    `原文報道重點係「${item.sourceTitle}」。就呢一則新聞嘅核心內容，翻譯成香港繁體中文後，可以理解為：${item.title}，而且事件已經喺 ${publishDate} 由 ${item.source} 對外發佈，屬於 2026-03-08 至 2026-03-09 時間窗內嘅有效新聞。`,
-    `按原文脈絡，事件唔只係單一公司或單一技術更新，仲反映咗更大範圍嘅行業訊號，包括市場預期、監管壓力、成本結構同埋競爭策略。換句話講，呢篇報道值得留意嘅唔止係標題本身，而係背後點樣影響產品部署、合作模式同風險管理。`,
-    `就香港讀者角度，呢類消息最直接嘅意義通常落喺 ${impact}。如果你係做產品、工程、資訊安全或者投資研究，可以用呢則新聞去校準短期優先次序，例如技術選型、合規路線、供應商評估同埋資源分配。`,
-    `為咗保持資料可信度，本頁保留來源連結同發佈日期，並且將日期明確標示為 ${publishDate}。如需逐字核對全文，建議直接打開原文連結；本頁定位係完整繁中（zh-HK）譯介版，方便你快速掌握內容重點與可執行結論。`,
-  ];
+  const translatedHtml = translatedParagraphs
+    .map((p) => `<p>${p}</p>`)
+    .join("\n    ");
 
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -283,12 +375,7 @@ function buildDetail(item) {
     <h1>${id}. ${publishDate}｜${item.title}</h1>
 
     <h2>全文翻譯（繁體中文・香港）</h2>
-    <p>${translatedParagraphs[0]}</p>
-    <p>${translatedParagraphs[1]}</p>
-
-    <h2>延伸解讀</h2>
-    <p>${translatedParagraphs[2]}</p>
-    <p>${translatedParagraphs[3]}</p>
+    ${translatedHtml}
 
     <a class="back" href="/">← 返回首頁</a>
   </article>
@@ -297,11 +384,18 @@ function buildDetail(item) {
 `;
 }
 
-fs.writeFileSync(path.join(baseDir, `${day}.html`), buildDigest());
-
-for (const item of items) {
-  const file = path.join(detailDir, `${String(item.id).padStart(2, "0")}.html`);
-  fs.writeFileSync(file, buildDetail(item));
+async function main() {
+  fs.writeFileSync(path.join(baseDir, `${day}.html`), buildDigest());
+  for (const item of items) {
+    const translated = await getTranslatedParagraphs(item);
+    const file = path.join(detailDir, `${String(item.id).padStart(2, "0")}.html`);
+    fs.writeFileSync(file, buildDetail(item, translated));
+    console.log(`translated ${String(item.id).padStart(2, "0")} ${item.source}`);
+  }
+  console.log(`Regenerated ${day} digest and ${items.length} detail pages.`);
 }
 
-console.log(`Regenerated ${day} digest and ${items.length} detail pages.`);
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
