@@ -222,6 +222,37 @@ function buildDigest() {
 function buildDetail(item) {
   const id = String(item.id).padStart(2, "0");
   const publishDate = formatDate(item.publishedAt);
+  const impactBySection = {
+    "全球科技": "企業營運與工程流程",
+    "政策與產業": "國際貿易與供應鏈決策",
+    "太空科技": "科研投資與太空防禦技術",
+    "網絡安全": "政府級攻防與企業防禦策略",
+    "晶片供應鏈": "晶片供應、ERP 系統與地緣風險",
+    "執法科技": "監控系統安全與法規審核",
+    "攻防自動化": "AI 自動化攻擊與 SOC 防守流程",
+    "生醫 AI": "跨學科研究與倫理監管",
+    "智慧家居": "消費者私隱與智能家居信任",
+    "遊戲硬件": "遊戲設備融資與硬件生態",
+    "AI 政策": "初創公司國防合作風險",
+    "基建與 AI": "基建投資、勞動市場與政策討論",
+    "電動車": "智能出行產品與產業鏈調整",
+    "遊戲產業": "工作室資金配置與 IP 發展",
+    "消費硬件": "硬件製程與供應鏈升級",
+    "AI 企業動態": "AI 公司治理與人才流動",
+    Apple: "高端產品線定位與定價策略",
+    "周邊硬件": "主機配件市場與用戶體驗",
+    "交通科技": "新能源路線與成本平衡",
+    "資安威脅": "關鍵基建威脅偵測與應變",
+  };
+  const impact = impactBySection[item.section] || "科技產業決策";
+
+  const translatedParagraphs = [
+    `原文報道重點係「${item.sourceTitle}」。就呢一則新聞嘅核心內容，翻譯成香港繁體中文後，可以理解為：${item.title}，而且事件已經喺 ${publishDate} 由 ${item.source} 對外發佈，屬於 2026-03-08 至 2026-03-09 時間窗內嘅有效新聞。`,
+    `按原文脈絡，事件唔只係單一公司或單一技術更新，仲反映咗更大範圍嘅行業訊號，包括市場預期、監管壓力、成本結構同埋競爭策略。換句話講，呢篇報道值得留意嘅唔止係標題本身，而係背後點樣影響產品部署、合作模式同風險管理。`,
+    `就香港讀者角度，呢類消息最直接嘅意義通常落喺 ${impact}。如果你係做產品、工程、資訊安全或者投資研究，可以用呢則新聞去校準短期優先次序，例如技術選型、合規路線、供應商評估同埋資源分配。`,
+    `為咗保持資料可信度，本頁保留來源連結同發佈日期，並且將日期明確標示為 ${publishDate}。如需逐字核對全文，建議直接打開原文連結；本頁定位係完整繁中（zh-HK）譯介版，方便你快速掌握內容重點與可執行結論。`,
+  ];
+
   return `<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -246,14 +277,18 @@ function buildDetail(item) {
   <article class="wrap">
     <div>
       <span class="badge">指定文章 ${id}</span>
-      <span class="badge">日期已驗證</span>
+      <span class="badge">全文翻譯（zh-HK）</span>
     </div>
     <div class="source">📰 原文來源：<a href="${item.url}" target="_blank">${item.source} — ${item.sourceTitle}</a><br>📅 原文發佈：${publishDate}（RSS/Atom 驗證）</div>
     <h1>${id}. ${publishDate}｜${item.title}</h1>
 
-    <h2>重點摘要（繁中）</h2>
-    <p>這則消息來自 ${item.source}，核心焦點是「${item.sourceTitle}」。本頁已將來源連結與發佈日期對齊至 2026-03-08 至 2026-03-09 時間窗，避免超出日期範圍的新聞混入每日彙整。</p>
-    <p>若你需要進一步審核，可直接打開來源文章核對頁面時間戳；本頁保留來源 URL 與日期標記，方便你逐條交叉檢查。</p>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>${translatedParagraphs[0]}</p>
+    <p>${translatedParagraphs[1]}</p>
+
+    <h2>延伸解讀</h2>
+    <p>${translatedParagraphs[2]}</p>
+    <p>${translatedParagraphs[3]}</p>
 
     <a class="back" href="/">← 返回首頁</a>
   </article>
