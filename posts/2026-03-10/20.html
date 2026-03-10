@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20. 2026-03-09｜亞洲關鍵基建受攻擊：涉 Web 漏洞利用與 Mimikatz</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: #007aff; color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin: 0 4px 12px 0; }
+    .source { background: #f0f0f5; border-left: 3px solid #007aff; padding: 10px 14px; border-radius: 4px; margin-bottom: 20px; font-size: 14px; }
+    .source a { color: #007aff; word-break: break-all; }
+    h1 { font-size: 22px; line-height: 1.4; margin-bottom: 16px; }
+    h2 { font-size: 18px; margin: 28px 0 12px; color: #1d1d1f; }
+    p { font-size: 16px; margin-bottom: 16px; text-align: justify; }
+    .back { display: inline-block; margin-top: 32px; color: #007aff; text-decoration: none; font-size: 15px; }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div>
+      <span class="badge">指定文章 20</span>
+      <span class="badge">全文翻譯（zh-HK）</span>
+    </div>
+    <div class="source">📰 原文來源：<a href="https://thehackernews.com/2026/03/web-server-exploits-and-mimikatz-used.html" target="_blank">The Hacker News — Web Server Exploits and Mimikatz Used in Attacks Targeting Asian Critical Infrastructure</a><br>📅 原文發佈：2026-03-09（RSS/Atom 驗證）</div>
+    <h1>20. 2026-03-09｜亞洲關鍵基建受攻擊：涉 Web 漏洞利用與 Mimikatz</h1>
+
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>作為長達數年活動的一部分，位於南亞、東南亞和東亞的高價值組織已成為中國威脅行為者的目標。</p>
+    <p>該活動針對航空、能源、政府、執法、製藥、技術和電信部門，Palo Alto Networks Unit 42 將其歸因於之前未記錄的威脅活動組織 CL-UNK-1068，其中“CL”指“集群”，“UNK”代表未知動機。</p>
+    <p>然而，安全供應商以「中等到高置信度」評估活動的主要目標是網路間諜活動。</p>
+    <p>安全研究員 Tom Fakterman 表示：“我們的分析揭示了一個多方面的工具集，其中包括自定義惡意軟體、修改後的開源實用程式和非本地二進製文件 (LOLBIN)。” “這些為攻擊者提供了一種簡單、有效的方法來在目標環境中保持持久存在。”</p>
+    <p>這些工具旨在針對 Windows 和 Linux 環境，攻擊者依賴開源實用程式和惡意軟體系列的組合，例如 Godzilla、ANTSWORD、Xnote 和快速反向代理程式 (FRP)，所有這些都已被各種中國駭客組織使用。</p>
+    <p>雖然 Godzilla 和 ANTSWORD 都充當 Web shell，但 Xnote 是一個 Linux 後門，自 2015 年以來就在野外被檢測到，並由名為 Earth Berberoka（又名 GamblingPuppet）的敵對團體部署，用於針對在線賭博網站的攻擊。</p>
+    <p>典型的攻擊鏈需要利用 Web 伺服器來傳遞 Web shell 並橫向移動到其他主機，然後嘗試從 Windows Web 伺服器的「c:\inetpub\wwwroot」目錄中竊取與某些副檔名（「web.config」、「.aspx」、「.asmx」、「.asax」和「.dll」）相符的文件，可能是為了竊取憑證。</p>
+    <p>CL-UNK-1068 收集的其他檔案包括 Web 瀏覽器記錄和書籤、桌面和 USER 目錄中的 XLSX 和 CSV 檔案以及 MS-SQL 伺服器中的資料庫備份 (.bak) 檔案。</p>
+    <p>有趣的是，我們觀察到威脅行為者使用 WinRAR 來存檔相關文件，透過執行 certutil -encode 命令對存檔進行 Base64 編碼，然後運行 type 命令透過 Web shell 將 Base64 內容列印到螢幕上。</p>
+    <p>Unit 42 表示：“通過將檔案編碼為文本並將其打印到屏幕上，攻擊者無需實際上傳任何文件即可竊取數據。” “攻擊者可能選擇這種方法，因為主機上的 shell 允許他們運行命令和查看輸出，但不能直接傳輸文件。”</p>
+    <p>這些攻擊中採用的技術之一是使用合法的 Python 可執行檔（「python.exe」和「pythonw.exe」）來發起 DLL 側面載入攻擊並秘密執行惡意 DLL，包括用於持久存取的 FRP、PrintSpoofer 和名為 ScanPortPlus 的基於 Go 的自訂掃描程式。</p>
+    <p>據稱，早在 2020 年，CL-UNK-1068 就已經使用名為 SuperDump 的自訂 .NET 工具從事偵察工作。最近的入侵已轉變為使用批次腳本收集主機資訊並映射本地環境的新方法。</p>
+    <p>對手也利用各種工具來促進憑證盜竊 -</p>
+    <p>Unit 42 總結道：“該組織主要使用開源工具、社區共享的惡意軟體和批次腳本，在滲透關鍵組織的同時成功地維持了秘密行動。”</p>
+    <p>「這一系列活動透過跨 Windows 和 Linux 環境進行操作，為每個作業系統使用不同版本的工具集，展示了多功能性。雖然對關鍵基礎設施和政府部門的憑證盜竊和敏感資料外洩的關注強烈表明存在間諜動機，但我們還不能完全排除網路犯罪意圖。”</p>
+    <p>深入探討保護人工智慧代理免受模型本身之外的現實世界攻擊路徑的影響。</p>
+    <p>量子電腦可能很快就會打破當今的加密 - 加入 Zscaler 的網路研討會，了解後量子密碼學如何確保您的資料未來安全。</p>
+    <p>獲取行業領導者的最新新聞、專家見解、獨家資源和策略 - 全部免費。</p>
+    <p>LsaRecorder ，掛鉤 LsaApLogonUserEx2 來記錄 WinLogon 密碼</p>
+    <p>DumpItForLinux 和 Volatility Framework，從記憶體中提取密碼雜湊值</p>
+    <p>SQL Server Management Studio 密碼匯出工具，用於提取「sqlstudio.bin」的內容，該檔案儲存 Microsoft SQL Server Management Studio (SSMS) 的連接資訊</p>
+
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
