@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>20. 2026-03-09｜亞洲關鍵基建受攻擊：涉 Web 漏洞利用與 Mimikatz</title>
+  <title>20. 2026-03-09｜UNC4899 透過 AirDrop 木馬檔案入侵加密貨幣公司</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.7; padding: 20px 16px 40px; }
@@ -24,31 +24,33 @@
       <span class="badge">指定文章 20</span>
       <span class="badge">全文翻譯（zh-HK）</span>
     </div>
-    <div class="source">📰 原文來源：<a href="https://thehackernews.com/2026/03/web-server-exploits-and-mimikatz-used.html" target="_blank">The Hacker News — Web Server Exploits and Mimikatz Used in Attacks Targeting Asian Critical Infrastructure</a><br>📅 原文發佈：2026-03-09（RSS/Atom 驗證）</div>
-    <h1>20. 2026-03-09｜亞洲關鍵基建受攻擊：涉 Web 漏洞利用與 Mimikatz</h1>
+    <div class="source">📰 原文來源：<a href="https://thehackernews.com/2026/03/unc4899-used-airdrop-file-transfer-and.html" target="_blank">The Hacker News — UNC4899 Breached Crypto Firm After Developer AirDropped Trojanized File to Work Device</a><br>📅 原文發佈：2026-03-09（RSS/Atom 驗證）</div>
+    <h1>20. 2026-03-09｜UNC4899 透過 AirDrop 木馬檔案入侵加密貨幣公司</h1>
 
     <h2>全文翻譯（繁體中文・香港）</h2>
-    <p>作為長達數年活動的一部分，位於南亞、東南亞和東亞的高價值組織已成為中國威脅行為者的目標。</p>
-    <p>該活動針對航空、能源、政府、執法、製藥、技術和電信部門，Palo Alto Networks Unit 42 將其歸因於之前未記錄的威脅活動組織 CL-UNK-1068，其中“CL”指“集群”，“UNK”代表未知動機。</p>
-    <p>然而，安全供應商以「中等到高置信度」評估活動的主要目標是網路間諜活動。</p>
-    <p>安全研究員 Tom Fakterman 表示：“我們的分析揭示了一個多方面的工具集，其中包括自定義惡意軟體、修改後的開源實用程式和非本地二進製文件 (LOLBIN)。” “這些為攻擊者提供了一種簡單、有效的方法來在目標環境中保持持久存在。”</p>
-    <p>這些工具旨在針對 Windows 和 Linux 環境，攻擊者依賴開源實用程式和惡意軟體系列的組合，例如 Godzilla、ANTSWORD、Xnote 和快速反向代理程式 (FRP)，所有這些都已被各種中國駭客組織使用。</p>
-    <p>雖然 Godzilla 和 ANTSWORD 都充當 Web shell，但 Xnote 是一個 Linux 後門，自 2015 年以來就在野外被檢測到，並由名為 Earth Berberoka（又名 GamblingPuppet）的敵對團體部署，用於針對在線賭博網站的攻擊。</p>
-    <p>典型的攻擊鏈需要利用 Web 伺服器來傳遞 Web shell 並橫向移動到其他主機，然後嘗試從 Windows Web 伺服器的「c:\inetpub\wwwroot」目錄中竊取與某些副檔名（「web.config」、「.aspx」、「.asmx」、「.asax」和「.dll」）相符的文件，可能是為了竊取憑證。</p>
-    <p>CL-UNK-1068 收集的其他檔案包括 Web 瀏覽器記錄和書籤、桌面和 USER 目錄中的 XLSX 和 CSV 檔案以及 MS-SQL 伺服器中的資料庫備份 (.bak) 檔案。</p>
-    <p>有趣的是，我們觀察到威脅行為者使用 WinRAR 來存檔相關文件，透過執行 certutil -encode 命令對存檔進行 Base64 編碼，然後運行 type 命令透過 Web shell 將 Base64 內容列印到螢幕上。</p>
-    <p>Unit 42 表示：“通過將檔案編碼為文本並將其打印到屏幕上，攻擊者無需實際上傳任何文件即可竊取數據。” “攻擊者可能選擇這種方法，因為主機上的 shell 允許他們運行命令和查看輸出，但不能直接傳輸文件。”</p>
-    <p>這些攻擊中採用的技術之一是使用合法的 Python 可執行檔（「python.exe」和「pythonw.exe」）來發起 DLL 側面載入攻擊並秘密執行惡意 DLL，包括用於持久存取的 FRP、PrintSpoofer 和名為 ScanPortPlus 的基於 Go 的自訂掃描程式。</p>
-    <p>據稱，早在 2020 年，CL-UNK-1068 就已經使用名為 SuperDump 的自訂 .NET 工具從事偵察工作。最近的入侵已轉變為使用批次腳本收集主機資訊並映射本地環境的新方法。</p>
-    <p>對手也利用各種工具來促進憑證盜竊 -</p>
-    <p>Unit 42 總結道：“該組織主要使用開源工具、社區共享的惡意軟體和批次腳本，在滲透關鍵組織的同時成功地維持了秘密行動。”</p>
-    <p>「這一系列活動透過跨 Windows 和 Linux 環境進行操作，為每個作業系統使用不同版本的工具集，展示了多功能性。雖然對關鍵基礎設施和政府部門的憑證盜竊和敏感資料外洩的關注強烈表明存在間諜動機，但我們還不能完全排除網路犯罪意圖。”</p>
+    <p>被稱為 UNC4899 的北韓威脅行為者被懷疑是 2025 年針對加密貨幣組織的複雜雲端妥協活動的幕後黑手，目的是竊取數百萬美元的加密貨幣。</p>
+    <p>該活動被認為是由國家資助的對手所為，並以密碼 Jade Sleet、PUKCHONG、Slow Pisces 和 TraderTraitor 進行追蹤。</p>
+    <p>這家科技巨頭在與《駭客新聞》分享的 2026 年上半年雲威脅視野報告中指出，“這一事件因其融合了社會工程、利用個人到企業設備點對點數據 (P2P) 傳輸機制、工作流程以及最終轉向雲以採用離雲 (LOTC) 技術而引人注目。”</p>
+    <p>據稱，在獲得雲端環境存取權限後，攻擊者濫用合法的 DevOps 工作流程來取得憑證、突破容器的限制並篡改 Cloud SQL 資料庫，以促進加密貨幣盜竊。</p>
+    <p>谷歌雲端表示，攻擊鏈代表了從開發人員的個人裝置入侵其公司工作站開始，然後跳到雲端對財務邏輯進行未經授權的修改的過程。</p>
+    <p>這一切都始於威脅行為者使用社會工程策略欺騙開發人員下載存檔文件，作為所謂的開源專案協作的一部分。然後，開發人員透過 AirDrop 將相同的文件傳輸到他們的公司設備。</p>
+    <p>谷歌表示：“受害者使用人工智慧輔助的整合開發環境（IDE）與存檔內容進行交互，最終執行嵌入的惡意 Python 程式碼，該程式碼生成並執行了一個偽裝成 Kubernetes 命令行工具的二進位檔案。”</p>
+    <p>然後，該二進位檔案會聯繫攻擊者控制的網域，並充當受害者公司電腦的後門，為攻擊者提供了一種透過可能使用經過驗證的會話和可用憑證轉向 Google Cloud 環境的方法。此步驟之後是初始偵察階段，旨在收集有關各種服務和項目的資訊。</p>
+    <p>隨著發現堡壘主機，攻擊進入下一階段，攻擊者修改其多重身份驗證 (MFA) 策略屬性以存取它並執行額外的偵察，包括導航到 Kubernetes 環境中的特定 Pod。</p>
+    <p>隨後，UNC4899採用了一種脫離雲端（LotC）的方法，透過改變Kubernetes部署配置來設定持久化機制，以便在建立新pod時自動執行bash指令。該命令本身下載了一個後門。</p>
+    <p>下面列出了威脅行為者執行的一些其他步驟 -</p>
+    <p>谷歌表示，這起事件「凸顯了個人與企業的 P2P 資料傳輸方法和其他資料橋、特權容器模式以及雲端環境中不安全的秘密處理所帶來的嚴重風險」。 「組織應該採用深度防禦策略，嚴格驗證身份，限制端點上的資料傳輸，並在雲端運行時環境中強制實施嚴格隔離，以限制入侵事件的影響範圍。”</p>
+    <p>為了應對威脅，建議組織實施上下文感知存取和防網釣魚 MFA，確保僅部署受信任的映像，隔離受感染的節點，使其無法與外部主機建立連接，監視意外的容器進程，採用強大的機密管理，強制執行策略以禁用或限制使用 AirDrop 或藍牙的點對點文件共享，以及在企業設備上安裝非託管外部媒體。</p>
     <p>深入探討保護人工智慧代理免受模型本身之外的現實世界攻擊路徑的影響。</p>
     <p>量子電腦可能很快就會打破當今的加密 - 加入 Zscaler 的網路研討會，了解後量子密碼學如何確保您的資料未來安全。</p>
     <p>獲取行業領導者的最新新聞、專家見解、獨家資源和策略 - 全部免費。</p>
-    <p>LsaRecorder ，掛鉤 LsaApLogonUserEx2 來記錄 WinLogon 密碼</p>
-    <p>DumpItForLinux 和 Volatility Framework，從記憶體中提取密碼雜湊值</p>
-    <p>SQL Server Management Studio 密碼匯出工具，用於提取「sqlstudio.bin」的內容，該檔案儲存 Microsoft SQL Server Management Studio (SSMS) 的連接資訊</p>
+    <p>與受害者的 CI/CD 平台解決方案相關的 Kubernetes 資源被修改為注入在日誌中顯示服務帳戶令牌的命令。</p>
+    <p>攻擊者獲得了高權限 CI/CD 服務帳戶的令牌，允許他們升級權限並進行橫向移動，特別針對處理網路策略和負載平衡的 Pod。</p>
+    <p>被盜的服務帳戶令牌用於對以特權模式運行的敏感基礎設施 Pod 進行身份驗證、逃離容器並部署後門以進行持久存取。</p>
+    <p>威脅行為者進行了另一輪偵察，然後將注意力轉移到負責管理客戶資訊的工作負載上，例如用戶身份、帳戶安全性和加密貨幣錢包資訊。</p>
+    <p>攻擊者用它來提取不安全地儲存在 Pod 環境變數中的靜態資料庫憑證。</p>
+    <p>然後，這些憑證被濫用，透過 Cloud SQL Auth 代理程式存取生產資料庫並執行 SQL 命令來修改使用者帳戶。其中包括多個高價值帳戶的密碼重設和 MFA 種子更新。</p>
+    <p>這次攻擊最終以利用受損帳戶成功提取數百萬美元的數位資產而告終。</p>
 
     <a class="back" href="/">← 返回首頁</a>
   </article>
