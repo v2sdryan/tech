@@ -156,7 +156,16 @@ async function collectItems() {
     seen.add(key);
     return true;
   }).sort((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt)).slice(0, MAX_ITEMS);
-  return out.map((item, i) => ({...item, id: i + 1}));
+
+  const localized = [];
+  for (const [i, item] of out.entries()) {
+    let zhTitle = item.title;
+    try {
+      zhTitle = await translateToZhHk(item.title);
+    } catch {}
+    localized.push({ ...item, id: i + 1, title: zhTitle || item.title });
+  }
+  return localized;
 }
 
 function extractParagraphs(html) {
