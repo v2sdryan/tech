@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10. 2026-03-10｜Microsoft Excel 嚴重錯誤地將 Copilot Agent 用作零點擊資訊外洩攻擊的武器</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 10</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/10/zeroclick_microsoft_info_disclosure_bug/" target="_blank">The Register — Critical Microsoft Excel bug weaponizes Copilot Agent for zero-click information disclosure attack</a><br>📅 原文發佈：2026-03-10</div>
+    <h1>10. 2026-03-10｜Microsoft Excel 嚴重錯誤地將 Copilot Agent 用作零點擊資訊外洩攻擊的武器</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>上個月的補丁星期二事件造成了巨大的損失，微軟的六個缺陷被用作零日漏洞，但三月並沒有像獅子一樣咆哮。在週二發布的 83 個 Microsoft CVE 中，只有兩個被列為公開訊息，並且沒有一個受到積極利用，我們確信這對系統管理員來說是一個受歡迎的變化。</p>
+    <p>83 個 Microsoft CVE 中的另外 8 個被認為是關鍵的，其中一個（引用零日計劃首席錯誤獵人達斯汀·蔡爾茲的話）是“令人著迷的”。另外，它還有一個人工智慧攻擊元件，所以我們將從它開始。</p>
+    <p>CVE-2026-26144 是 Microsoft Excel 中的一個嚴重資訊外洩漏洞。雷德蒙德警告說，這種跨站點腳本缺陷可被利用「導致副駕駛代理模式透過意外的網路出口洩露數據，從而實現零點擊資訊洩露攻擊」。</p>
+    <p>是的，您沒看錯：一個零點擊錯誤，可以將 Excel 電子表格和 Copilot Agent 武器化以竊取資料。正如查爾茲指出的那樣，這是「我們可能會更頻繁地看到的攻擊場景」。</p>
+    <p>此錯誤需要網路存取才能利用，但不需要使用者互動或權限升級。</p>
+    <p>Action1 執行長兼聯合創始人 Alex Vovk 告訴 The Register ：“信息洩露漏洞在 Excel 文件通常包含財務數據、知識產權或運營記錄的企業環境中尤其危險。” “如果被利用，攻擊者可以悄悄地從內部系統中提取機密信息，而不會觸發明顯的警報。”</p>
+    <p>盡快修補此問題，如果必須延遲修補程式部署，Vovk 建議限制 Office 應用程式的出站網路流量、監視 Excel 進程產生的異常網路請求，並停用或限制 Copilot Agent，直到應用修復程式。</p>
+    <p>被列為公開已知但在披露時尚未被利用的兩個 Microsoft 錯誤包括 CVE-2026-26127，這是 .NET 中的越界讀取問題，允許未經授權的攻擊者拒絕透過網路提供服務。儘管已公開披露，但雷德蒙德認為「不太可能被利用」。</p>
+    <p>另外，CVE-2026-21262 也是眾所周知的，它是由於 SQL Server 中的存取控制不當導致授權攻擊者可以透過網路提升權限。微軟表示，這項漏洞「不太可能」在野外被利用。</p>
+    <p>在八個嚴重評級的 CVE 中，其中兩個 - CVE-2026-26110 和 CVE-2026-26113 - 是可以透過預覽窗格觸發的 Office 遠端程式碼執行錯誤，這意味著使用者可能不需要完全開啟惡意文件，攻擊者就可以利用系統。</p>
+    <p>Action1 漏洞研究總監 Jack Bicer 告訴 The Register ：“當簡單的文件預覽可以觸發程式碼執行時，攻擊者就獲得了直接進入系統的大門。”</p>
+    <p>正如查爾茲指出的那樣，這些在去年變得越來越普遍。 「他們開始出現在活躍的攻擊中只是時間問題，」他說。</p>
+    <p>CVE-2026-26110 是 Microsoft Office 中的一個類型混淆缺陷，允許遠端攻擊者在本機執行程式碼。當應用程式使用不相容的資料類型存取資源時，就會發生類型混淆，從而導致記憶體處理不正確。</p>
+    <p>CVE-2026-26113 是由 Microsoft Office 中不受信任的指標取消引用缺陷引起的，該缺陷還允許遠端攻擊者在本機執行程式碼。 Bicer 表示：「當 Microsoft Office 不正確地處理記憶體指標時，就會出現此問題，攻擊者可能會操縱應用程式存取記憶體的方式。」®</p>
+    <p>暫存器咬住了 IT 的手</p>
+    <p>騙子危害 WordPress 網站，透過虛假驗證碼提示推送訊息竊取者</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
