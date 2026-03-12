@@ -31,8 +31,7 @@ function main() {
   const startIndex = Number(dayState.nextStartIndex || 0);
 
   if (startIndex >= maxItems) {
-    console.log(JSON.stringify({ ok: true, day, done: true, message: `${day} 今日 20 篇已全部完成，無需更新。` }));
-    return;
+    process.exit(0);
   }
 
   const env = { ...process.env, START_INDEX: String(startIndex), BATCH_SIZE: String(batchSize) };
