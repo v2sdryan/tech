@@ -5,6 +5,8 @@ const baseDir = '/Users/hoisanng/Desktop/tech/posts';
 const targetDay = process.argv[2] || hkToday();
 const detailDir = path.join(baseDir, targetDay);
 const indexPath = path.join(baseDir, 'index.json');
+const dataDir = path.join(baseDir, '_data');
+const snapshotPath = path.join(dataDir, `${targetDay}.json`);
 const MAX_ITEMS = 20;
 const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || '4', 10);
 const START_INDEX = parseInt(process.env.START_INDEX || '0', 10);
@@ -138,7 +140,11 @@ function inWindow(publishedAt) {
   return ts >= start && ts <= end;
 }
 
-async function collectItems() {
+async function collectItems(forceRefresh = false) {
+  fs.mkdirSync(dataDir, { recursive: true });
+  if (!forceRefresh && fs.existsSync(snapshotPath)) {
+    return JSON.parse(fs.readFileSync(snapshotPath, 'utf8'));
+  }
   let out = [];
   for (const feed of FEEDS) {
     try {
@@ -165,6 +171,7 @@ async function collectItems() {
     } catch {}
     localized.push({ ...item, id: i + 1, title: zhTitle || item.title });
   }
+  fs.writeFileSync(snapshotPath, JSON.stringify(localized, null, 2));
   return localized;
 }
 
@@ -266,7 +273,7 @@ function updateIndex(day) {
 
 async function main() {
   fs.mkdirSync(detailDir, { recursive: true });
-  const items = await collectItems();
+  const items = await collectItems(process.env.FORCE_REFRESH === '1');
   if (!items.length) throw new Error(`No items found for ${targetDay}`);
   const visibleItems = items.slice(0, Math.min(items.length, START_INDEX + BATCH_SIZE));
   const batchItems = items.slice(START_INDEX, START_INDEX + BATCH_SIZE);
