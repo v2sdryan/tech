@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14. 2026-03-13｜憑證竊取人員欺騙來自 Cisco、Fortinet 和其他公司的 VPN 用戶端</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 14</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/13/vpn_clients_spoofed/" target="_blank">The Register — Credential-stealing crew spoofs VPN clients from Cisco, Fortinet, and others</a><br>📅 原文發佈：2026-03-13</div>
+    <h1>14. 2026-03-13｜憑證竊取人員欺騙來自 Cisco、Fortinet 和其他公司的 VPN 用戶端</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>據微軟稱，一群被追蹤為 Storm-2561 的網路犯罪分子正在使用來自 CheckPoint、Cisco、Fortinet、Ivanti 和其他供應商的虛假企業 VPN 用戶端來竊取用戶的憑證。</p>
+    <p>Storm-2561 是一個新的犯罪團夥（「Storm」後跟數字是微軟追蹤仍在開發中的組織的方式），自 2025 年 5 月以來一直存在，通常使用 SEO 定位和冒充供應商來分發惡意軟體。這場從一月中旬開始的活動也不例外。</p>
+    <p>攻擊者透過操縱搜尋結果來獲得對受害者的初步訪問權限，並將偽裝成企業 VPN 更新的惡意網站推送到清單頂部。因此，當使用者搜尋「Pulse VPN 下載」或「Pulse Secure 用戶端」等 VPN 用戶端時，最上方的結果會指向模仿真實供應商頁面的欺騙網站。除了上面列出的 VPN 供應商之外，這些產品還包括 SonicWall、Sophos 和 WatchGuard 的產品。</p>
+    <p>點擊該連結會將使用者重新導向到惡意 GitHub 儲存庫，該儲存庫託管偽裝成 Microsoft Windows Installer (MSI) 檔案的虛假 VPN 用戶端。</p>
+    <p>雷德蒙德的威胁情报团队在周四的博客中表示：“微软已经观察到各种 VPN 软件品牌的欺骗行为，并观察到以下两个域的 GitHub 链接：vpn-fortinet[.]com 和 ivanti-vpn[.]org”。 GitHub 儲存庫現已刪除。 （請閱讀部落格的最後，了解一長串妥協指標。）</p>
+    <p>安裝程式在安裝過程中旁載入惡意動態連結程式庫 (DLL) 檔案、dwmapi.dll 和spector.dll，而虛假 VPN 軟體會提示使用者輸入其憑證。這會捕獲使用者名稱和密碼，然後將它們發送到攻擊者控制的命令和控制伺服器，同時看起來是合法的客戶端應用程式。</p>
+    <p>MSI 檔案和惡意 DLL 是使用太原利華近資訊科技有限公司提供的有效（現已撤銷）數位憑證進行簽署的。</p>
+    <p>接下來是最棘手的部分：使用者在虛假登入頁面輸入憑證後，應用程式立即顯示錯誤訊息，指出安裝失敗，然後指示受害者從供應商的官方網站下載合法的 VPN 用戶端。在某些情況下，該應用程式甚至會打開用戶的瀏覽器訪問合法網站。</p>
+    <p>該部落格寫道：“如果用戶隨後成功安裝並使用合法的 VPN 軟體，並且 VPN 連接按預期工作，則不會有任何跡象表明最終用戶受到損害。” “用戶可能會將初始安裝失敗歸因於技術問題，而不是惡意軟體。”</p>
+    <p>毫不奇怪，由於這是一份微軟威脅情報報告，這家軟體巨頭推薦其產品和服務來防止憑證盜竊。但我們要強調一些關鍵（且與供應商無關）的安全建議。</p>
+    <p>首先 - 我們必須強調這一點 - 對所有帳戶實施多重身份驗證 (MFA)。確保刪除被排除在 MFA 之外的用戶，並要求所有裝置隨時隨地進行 MFA。</p>
+    <p>第二：提醒員工不要將工作場所憑證儲存在使用個人憑證保護的瀏覽器或密碼庫中。 ®</p>
+    <p>暫存器咬住了 IT 的手</p>
+    <p>微軟發現 ClickFix 活動讓用戶在 Windows 終端機上自我破解</p>
+    <p>Microsoft Excel 嚴重錯誤地將 Copilot Agent 用作零點擊資訊外洩攻擊的武器</p>
+    <p>與伊朗有關的網路人員稱他們襲擊了美國醫療科技公司</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
