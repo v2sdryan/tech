@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>18. 2026-03-16｜Nvidia 推出搭載 256 個 Vera 處理器的新機架系統，進一步進軍 CPU 市場</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 18</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/16/nvidia_vera_cpu_rack/" target="_blank">The Register — Nvidia powers further into the CPU market with new rack systems packing 256 Vera processors</a><br>📅 原文發佈：2026-03-16</div>
+    <h1>18. 2026-03-16｜Nvidia 推出搭載 256 個 Vera 處理器的新機架系統，進一步進軍 CPU 市場</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>GTC 英特爾和 AMD 注意到了這一點。週一在 GTC 上，Nvidia 推出了最新的液冷機架系統。但與 NVL72 機架不同的是，機架不是由 GPU 甚至 Groq LPU 提供動力，而是由 256 個客製化 Vera CPU 提供動力。</p>
+    <p>該系統旨在支援強化學習等人工智慧訓練技術以及無法單獨在 GPU 上運行的代理人工智慧框架和服務。</p>
+    <p>Nvidia 超大規模和 HPC 副總裁 Ian Buck 週日對媒體表示：「代理程式不僅僅在 GPU 上運行。它們需要 CPU 來完成工作，無論我們是訓練代理模型還是為它們提供服務，現在的 GPU 實際上都會調用 CPU 來執行工具調用、SQL 查詢和代碼編譯。」「這種沙箱執行是跨資料中心訓練和部署代理的關鍵部分。」</p>
+    <p>這些 CPU 需要夠快才能避免成為瓶頸。巴克認為，這需要一種新型的人工智慧優化 CPU，它可以平衡每個核心的頻率、密度和功效。</p>
+    <p>Nvidia 對 CPU 設計並不陌生。其首款資料中心 CPU Grace 於近五年前發布，自此已成為該公司 Grace-Hopper 和 Grace-Blackwell 機架系統不可或缺的一部分。</p>
+    <p>雖然大多數部署都與 GPU 系統或 HPC 叢集相關，但 Meta 最近透露了在其資料中心內大規模部署 Nvidia 獨立 Grace CPU 的計劃。</p>
+    <p>Vera 是 Nvidia 最新的 CPU，帶來了多項顯著改進，包括 88 個客製化 Olympus Arm 核心、支援同時多執行緒、更寬的記憶體匯流排以及更快的晶片間互連。</p>
+    <p>除了為今年稍早在 CES 上發布的 Nvidia Vera-Rubin 超級晶片提供動力外，Nvidia 還計劃提供其 CPU 作為英特爾和 AMD 的 x86 晶片的替代品。</p>
+    <p>該公司對其最新的 CPU 超級晶片做出了一些相當大膽的聲明。如果 Nvidia 可信的話，Vera 將提供比當代 x86 處理器多 3 倍的記憶體頻寬和 1.5 倍的每核心效能。</p>
+    <p>這種性能很大程度上取決於 Nvidia 的新 Olympus Arm 內核，該內核現在具有 10 寬解碼管道，Nvidia 稱之為“神經分支預測器”，每個週期可以執行兩個分支預測。</p>
+    <p>分支預測是現代 CPU 效能的關鍵，涉及預測未來的程式碼路徑並在需要之前執行它們。透過每個週期預測兩條路徑，Vera 降低了預測失誤的可能性，理論上提高了過程的效能。</p>
+    <p>Nvidia 也受益於其使用 LPDDR5X 記憶體（更常見於筆記型電腦），而不是傳統伺服器使用的 RDIMM。</p>
+    <p>每個 Vera CPU 均可配備高達 1.5 TB 的 LPDDR5 SOCAMM 記憶體模組，每個插槽的頻寬可達 1.2 TB/s。作為參考，當使用 8800 MT/s MRDIMM 時，Intel 的頂級 6900P 處理器的最高頻寬為 825 GB/s，而 AMD 的 Turin 處理器的最高頻寬為 560 到 600 GB/s。</p>
+    <p>這些晶片還具有更快的 NVLink-C2C 互連功能，使它們能夠以高達 900 GB/s（宣傳為 1.8 TB/s 雙向頻寬）的任一方向將資料傳輸到其他 CPU 或 GPU 或從其他 CPU 或 GPU 傳輸資料。</p>
+    <p>代理系統執行的許多任務都涉及檢索資料並針對資料執行程式碼，這使得高記憶體頻寬成為避免瓶頸的關鍵。</p>
+    <p>Vera 將提供單插槽和雙插槽配置，由常見的 ODM 和 OEM 廠商提供，包括富士康、緯創資通、戴爾科技、聯想和 HPE 等。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>

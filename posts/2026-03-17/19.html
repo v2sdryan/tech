@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19. 2026-03-16｜Nvidia 將 20B 美元的 Groq 技術投入到大型新 LPX 機架中，以加快 AI 回應時間</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 19</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/16/nvidia_lpx_groq_3/" target="_blank">The Register — Nvidia slaps $20B Groq tech into massive new LPX racks to speed AI response time</a><br>📅 原文發佈：2026-03-16</div>
+    <h1>19. 2026-03-16｜Nvidia 將 20B 美元的 Groq 技術投入到大型新 LPX 機架中，以加快 AI 回應時間</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>GTC 執行長 Jensen Huang 在周一的 GTC 主題演講中透露，Nvidia 將使用 Groq 的語言處理單元 (LPU)（該公司斥資 200 億美元購買的技術）來提高其新發布的 Vera Rubin 機架系統的推理性能。</p>
+    <p>Nvidia 超大規模和 HPC 副總裁 Ian Buck 在周日黃仁勳發表主題演講之前告訴媒體，利用這項技術，這家 GPU 巨頭現在可以以每秒數百甚至數千個代幣的速度為每個用戶提供數萬億個參數的大型語言模型 (LLM)。</p>
+    <p>到目前為止，超低延遲推理一直由少數精品晶片廠商主導，例如 Cerebras、SambaNova，當然還有 Groq，後者幾乎被 Nvidia 在去年底收購時吸收了。</p>
+    <p>過去一年，對這些所謂的優質代幣的需求有所增長。 OpenAI 正在使用 Cerebras 的餐盤大小的加速器來為 GPT-5.3 Codex-Spark 等模型實現近乎瞬時的程式碼生成。</p>
+    <p>透過將其 GPU 與 Groq 的 LPU 結合，Nvidia 投注推理提供者將能夠對產生的每百萬代幣收取高達 45 美元的費用。從這個角度來看，OpenAI 目前針對其頂級 GPT-5.4 模型的 API 存取收取每百萬輸出代幣約 15 美元的費用。</p>
+    <p>需要明確的是，LPU 不會取代 Nvidia 的 GPU，而是對其進行增強。</p>
+    <p>LLM 推理包含兩個階段：處理提示的計算量大的預填階段，以及產生回應的頻寬大的解碼階段。</p>
+    <p>Nvidia 新推出的 Rubin GPU 的速度高達 50 petaFLOP，不會對運算造成影響，但憑藉 22 TB/s 的 HBM4 記憶體頻寬，Groq 的最新晶片技術速度提高了近 7 倍，每塊達到 150 TB/s。</p>
+    <p>這使得 Groq 的 LPU 成為理想的解碼加速器。 Nvidia 計劃將 256 個晶片裝入新的 LPX 機架系統中，該系統將透過客製化的 Spectrum-X 互連連接到鄰近的 Vera-Rubin NVL72 機架系統。 GPU 將處理運算密集型提示處理，而 LPU 則輸出令牌。</p>
+    <p>GPU 巨頭需要這麼多晶片，因為雖然 SRAM 可能很快，但這些晶片既不寬敞也不計算密集。</p>
+    <p>每個 Groq 3 LPU 的 FP8 速度為 1.2 petaFLOPS，並包含 500 MB 板載記憶體。這大約是 Nvidia Rubin GPU 容量的 1/500。</p>
+    <p>「LPU 嚴格針對極端、低延遲的代幣生成進行了優化，提供每秒數千個代幣的代幣速率。當然，代價是您需要許多晶片才能執行這種性能，」巴克解釋道。 “每個晶片每秒的令牌數實際上相當低。”</p>
+    <p>換句話說，為了做任何有趣的事情，英偉達將需要很多這樣的人。</p>
+    <p>即使每個機架有 256 個晶片，也只有 128 GB 的超快內存，對於像 Kimi K2 這樣的萬億參數模型來說還遠遠不夠。在 4 位元精度下，您需要至少 512 GB 記憶體或大約一千個 LPU 才能在記憶體中保存 1 兆個參數模型。</p>
+    <p>Nvidia 表示，多個 LPX 機架可以組合在一起以支援這些更大的型號。</p>
+    <p>將 Groq 的最新 LPU 整合到 Nvidia 的 LPX 機架中，代表著這家人工智慧基礎設施巨頭的路線修正。 Nvidia 先前曾在去年的 Computex 上推出了一款名為 Rubin CPX 的專用預填處理器。基本概念是使用配備 GDDR7 的 Rubin CPX 處理器進行預先填充處理，並使用配備 HBM 的 Rubin GPU 進行解碼。然而，該項目似乎已被放棄，取而代之的是 Groq 的基於 LPU 的解碼加速器。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
