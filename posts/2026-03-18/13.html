@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. 2026-03-17｜AWS用右手給予，用左手打破</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 13</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/17/aws_ends_support_postgresql_13_rds/" target="_blank">The Register — AWS giveth with its right hand and breaketh with its left</a><br>📅 原文發佈：2026-03-17</div>
+    <h1>13. 2026-03-17｜AWS用右手給予，用左手打破</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>本月早些時候，AWS 終止了對 RDS 上 PostgreSQL 13 的標準支援。想要繼續使用受支援的資料庫的客戶（正如 AWS 積極鼓勵他們這樣做的那樣）需要升級到 PostgreSQL 14 或更高版本。</p>
+    <p>這是有道理的，因為 PostgreSQL（發音為 POST-gruh-SQUEAL，如果你像我一樣，想惹惱聽力範圍內的每個人）13 在去年年底達到了社區生命週期。</p>
+    <p>2021 年發布的 PostgreSQL 14 預設採用更安全的密碼身份驗證方案（SCRAM-SHA-256，適合那些已經讀到這裡而無需動用鍵盤來糾正我之前的括號的書呆子）。它也恰好破壞了 AWS Glue，他們的託管 ETL（提取-轉換-載入）服務，無法處理該驗證方案。如果您升級 RDS 資料庫以遵循 AWS 自己的安全指南，AWS 自己的資料管道工具會回應「不支援身分驗證類型 10」並停止運作。</p>
+    <p>鑑於這兩種服務往往都在大多數公司稱為「生產」的環境中運行，這並不是很好！</p>
+    <p>棄用並沒有造成這個問題。它只是消除了避免已存在五年的問題的能力，除非您承擔額外的維護負擔或支付擴展支援稅。</p>
+    <p>以下是 Catch-22 的技術形態，剝離了重要的內容：當您遷移到 RDS 上較新的 PostgreSQL 時，Glue 的連接測試基礎設施使用早於較新身份驗證支援的內部驅動程式。 「測試連線」按鈕—您在將生產資料信任到您的設定之前單擊該按鈕來驗證您的設定是否有效—根本不起作用。 AWS 支援論壇上的一位社群專家三年前承認“測試儀正在等待驅動程式升級”，並向使用者保證爬蟲程式使用自己的驅動程式並且應該可以正常工作。同一線程中的用戶報告說爬蟲程式也失敗了。針對 RDS PostgreSQL 運行 Glue 是一種基本的資料工程模式，而不是邊緣案例 — 這是一條鋪好的道路，但 AWS 卻讓它年久失修。</p>
+    <p>自 2021 年 PostgreSQL 14 發布以來，這種不相容性就已為人所知。 PG13 的棄用時間表已提前公佈。 RDS 和 Glue 兩個團隊大概都在追蹤產業發展。顯然，兩人都懶得去追蹤對方。</p>
+    <p>關於這種情況如何發生的慈善讀物也是正確的：AWS 將數萬名工程師組織成數百個半自治服務團隊。 RDS 團隊在 RDS 生命週期中棄用，Glue 團隊維護 Glue 路線圖上的驅動程式依賴關係，並且沒有人明確擁有它們之間的差距。客戶通常在不方便的時間發現生產中的不相容性。</p>
+    <p>這不是陰謀，因為 AWS 缺乏實現其中一項目標所需的內部凝聚力。這也不是一個精心建構的收入增強機制，因為與它產生的客戶惡意相比，擴展支援收入幾乎肯定是 AWS 資產負債表上的一個舍入誤差。相反，這只是組織複雜性所做的事情。這與您公司的內部工具無法相互通信的原因相同； AWS 只是在其爆炸半徑是其他人的生產資料庫的規模上做這件事。當這些邊界跨越多個恰好共享母公司的數十億美元的企業時，跨服務邊界的整合測試確實非常困難。没有人醒来并决定打破胶水。它是从工厂那样来的。</p>
+    <p>我想澄清的是，我真的相信這一點，因為我要描述的替代方案與意圖無關。</p>
+    <p>慈善讀物的問題在於它並不重要</p>
+    <p>如果您在凌晨 2 點盯著環境中破損的管道，原因是學術性的。你需要修復。 AWS 提供了其中三個，但都很糟糕。您可以將資料庫上的密碼加密降級為較舊的、安全性較低的標準：根據 AWS 自己的建議，您剛剛升級的標準。您可以自帶 JDBC 驅動程序，這會停用連接測試，並且可能不支援您想要的所有功能。或者，您可以將 ETL 工作流程重寫為 Python shell 作業。</p>
+    <p>每次退出都意味著放棄託管服務的整個價值主張（大概是您一開始陷入困境的原因），或者退回您剛剛被告知要進行的安全改進。</p>
+    <p>對於留在 PG13 以避免此特定問題的客戶，擴充支援現在會自動運行，除非您在叢集建立時選擇退出，這一細節很容易被忽略。前兩年每 vCPU 小時 0.10 美元，第三年翻倍。一個 16 vCPU 多可用區執行個體每年僅擴展支援費用就接近 30,000 美元。這不是一次動搖。但這是出現在帳單上的一個數字，來自一家也控制解決問題的時間表的公司，而且所有客戶回應選項都很糟糕。</p>
+    <p>AWS 不需要進行調整。它們只需要足夠大，以便結果與一個沒有區別。</p>
+    <p>這種模式並非 AWS 所獨有，而且也不會消失。每個主要的雲端提供者（實際上是每個主要的技術提供者）都是半自治團隊的組合，其路線圖偶爾會在客戶環境中發生衝突。這種情況還會再次發生，但會有不同的服務、不同的身份驗證協議和不同的計費行項目。問題不在於組織結構圖是否會產生另一個這樣的差距。會的。問題是差距出現後會發生什麼：回應看起來像是問責制——在棄用截止日期之前而不是之後承認不相容——還是看起來像是聳聳肩和三個付費替代方案？</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
