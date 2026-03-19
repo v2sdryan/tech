@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. 2026-03-18｜谷歌警告稱，國家窺探者和間諜軟體供應商在 iPhone 上植入資訊竊取惡意軟體</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 08</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/18/darksword_exploit_kit_steals_iphone/" target="_blank">The Register — State snoops and spyware vendors planting info-stealing malware on iPhones, Google warns</a><br>📅 原文發佈：2026-03-18</div>
+    <h1>08. 2026-03-18｜谷歌警告稱，國家窺探者和間諜軟體供應商在 iPhone 上植入資訊竊取惡意軟體</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>安全研究人員週三表示，「多個」間諜軟體供應商和可疑的民族國家暴徒正在濫用一種針對 iPhone 用戶並竊取其敏感資料的新漏洞利用工具包。</p>
+    <p>該漏洞利用工具包名為 DarkSword，至少從 2025 年 11 月開始使用。它支援 iOS 版本 18.4 至 18.7，並利用六個不同的漏洞部署三個不同的後門，竊取大量個人信息，包括訊息、錄音、位置歷史記錄、登入帳戶、加密貨幣錢包資料等。</p>
+    <p>在周三發布的協調研究中，Google、iVerify 和 Lookout 分析了該惡意軟體，並指出這是本月第二次他們發現不同的犯罪集團使用單一 iOS 漏洞利用工具包來監視 iPhone 用戶。早期的漏洞利用框架稱為 Coruna，早期濫用 Coruna 的組織之一（被追蹤為 UNC6353 的疑似俄羅斯間諜人員）也一直在針對烏克蘭人的水坑活動中使用 DarkSword。</p>
+    <p>DarkSword漏洞利用工具包濫用了六個漏洞：CVE-2025-31277、CVE-2025-43529、CVE-2026-20700、CVE-2025-14174、CVE-2025-43510和CVE-2025-14174、CVE-2025-43510和CVE-2025-43520。所有六個版本均已修復，因此請務必更新至最新的 iOS 版本。</p>
+    <p>蘋果沒有回應 The Register 的置評請求。</p>
+    <p>該攻擊需要 iPhone 用戶導航到惡意網站才能觸發漏洞鏈。根據 iVerify 的分析，犯罪分子首先利用 CVE-2025-31277 或 CVE-2025-43529（取決於 iOS 版本）來實現遠端程式碼執行。</p>
+    <p>這兩個錯誤都允許攻擊者獲取任意記憶體讀取/寫入原語，一旦他們完成此操作，他們就會透過利用 CVE-2026-20700 繞過可信任路徑唯讀 (TPRO) 和指標身份驗證程式碼 (PAC) 緩解措施。</p>
+    <p>iVerify 的 Matthias Frielingsdorf 和 Mateusz Krzywicki 寫道：“這使他們能夠通過線程狀態操作完全避開 SPRR 和 JIT Cage 緩解措施，並在 WebContent 進程中實現任意代碼執行。”</p>
+    <p>然後，攻擊者透過濫用Angle越界寫入漏洞（CVE-2025-14174），透過GPU進程逃離沙箱，結合相同的PAC繞過方法，在GPU進程中取得任意記憶體讀寫和任意函數呼叫原語。</p>
+    <p>從這裡開始，攻擊者透過 AppleM2ScalerCSCDriver 驅動程式中的選擇器 1 以 XNU 核心為目標。這會觸發寫入時複製漏洞 (CVE-2025-43510)。研究人員寫道：“這個缺陷被利用，透過暴露的 XPC 介面在 mediaplaybackd 守護程序中建立任意記憶體讀/寫和任意函數調用原語。”</p>
+    <p>最後，攻擊者濫用 CVE-2025-43520 提升核心權限，並將記憶體中的 JavaScript 植入程式註入其他系統進程，以從 Apple 裝置中提取敏感資料。</p>
+    <p>谷歌的研究詳細介紹了三個不同的組織濫用這一攻擊鏈，但也指出“其他商業監控供應商或威脅行為者也可能在使用 DarkSword。”</p>
+    <p>威脅情報團隊寫道，它追蹤的一個名為 UNC6748 的威脅集群，使用 Snapchat 主題的網站 snapshare[.]chat，「在 2025 年 11 月期間多次」使用 DarkSword 來瞄準沙烏地阿拉伯用戶。</p>
+    <p>這些攻擊最終部署了 GhostKnife，這是一個基於 JavaScript 的後門，其中包含用於竊取不同類型資料的模組，包括登入帳戶、訊息、瀏覽器資料、位置歷史記錄和錄音。</p>
+    <p>除了竊取資料之外，它還從命令和控制伺服器下載文件，截取受害者設備的螢幕截圖，並從裝置的麥克風錄製音訊。</p>
+    <p>在 2025 年 11 月下旬的另一場 DarkSword 活動中，Google的威脅情報小組發現土耳其商業監控供應商 PARS Defense 對土耳其 iOS 用戶使用該漏洞。然後，在一月份，他們觀察到另一個 PARS Defense 客戶針對馬來西亞的受害者。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
