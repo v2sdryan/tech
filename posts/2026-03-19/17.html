@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17. 2026-03-18｜亞馬遜安全主管稱犯罪分子在披露前幾週就濫用了最高安全性的思科防火牆漏洞</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 17</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/18/amazon_cisco_firewall_0_day_ransomware/" target="_blank">The Register — Amazon security boss says crims abused max-security Cisco firewall flaw weeks before disclosure</a><br>📅 原文發佈：2026-03-18</div>
+    <h1>17. 2026-03-18｜亞馬遜安全主管稱犯罪分子在披露前幾週就濫用了最高安全性的思科防火牆漏洞</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>亞馬遜安全主管 CJ Moses 表示，勒索軟體犯罪分子利用思科安全防火牆管理中心軟體中的一個最嚴重漏洞 CVE-2026-20131 作為零日漏洞，而思科在一個多月前就修補了漏洞。</p>
+    <p>這嚴重的安全漏洞允許未經身份驗證的遠端攻擊者以 root 身分在易受攻擊的裝置上執行任意 Java 程式碼。思科於 3 月 4 日發布了修復漏洞的軟體更新，但攻擊者搶先一步。</p>
+    <p>亞馬遜整合安全公司首席資訊安全官摩西週三表示：“我們的研究發現，Interlock 從 1 月 26 日開始，在公開披露前 36 天就開始利用該漏洞。”</p>
+    <p>思科發言人告訴 The Register，它將更新其安全公告以反映此漏洞。</p>
+    <p>「我們感謝亞馬遜在這方面的合作，我們已經用最新資訊更新了我們的安全公告，」發言人說。 “我們強烈敦促客戶盡快升級，並參考我們的安全公告以獲取更多詳細信息和指導。”</p>
+    <p>Interlock 是 2025 年出現的勒索軟體團隊，此後感染了醫院和醫療機構，包括腎臟透析公司 Davita 和 Kettering Health，犯罪分子不僅擾亂了化療療程和術前預約，還在網路上洩露了癌症患者的詳細資訊。</p>
+    <p>該犯罪集團還聲稱今年夏天從聖保羅市竊取了 43 GB 的文件，迫使明尼蘇達州首府宣布進入國家緊急狀態。</p>
+    <p>亞馬遜在其 MadPot 蜜罐網路中捕獲了入侵者，該網路記錄了與 Interlock 基礎設施相關的漏洞流量。而且，威胁情报团队还发现了一个配置错误的基础设施服务器，该服务器暴露了 Interlock 的攻击工具包，这对网络防御者来说是一个有益的转变。</p>
+    <p>該工具包包括一個 PowerShell 腳本，旨在獲取有關受害者 Windows 環境的信息，例如作業系統和硬體詳細資訊；運行服務；安裝的軟體；儲存配置； Hyper-V 虛擬機清單；桌面、文件和下載目錄中的使用者文件清單；以及來自 Windows 事件日誌的 RDP 驗證事件。它還會收集瀏覽器歷史記錄，例如書籤、儲存的憑證以及 Chrome、Edge、Firefox、Internet Explorer 和 360 瀏覽器的擴充功能。</p>
+    <p>從受害者的電腦收集所有這些資料後，腳本將其壓縮到以每個主機命名的 ZIP 檔案中。摩西寫道：“這種結構化的每主機輸出格式表明該腳本在網絡內的多台機器上運行——這是為組織範圍內的加密做準備的勒索軟體入侵鏈的標誌。”</p>
+    <p>Interlock 還使用多個自訂遠端存取木馬 (RAT) 來維持對受感染電腦的持久存取。 JavaScript 植入會覆寫瀏覽器控制台方法以隱藏惡意軟體偵測工具，然後使用 PowerShell 和 Windows Management Instrumentation 收集大量有關受感染主機的資訊。植入程式也會收集系統身分、網域成員資格、使用者名稱、作業系統版本和權限上下文，然後加密這些數據，使用持久的 WebSocket 連線將其傳送到攻擊者控制的命令和控制伺服器。</p>
+    <p>此外，它還提供互動式 shell 存取、任意命令執行、雙向檔案傳輸以及用於隧道 TCP 流量的 SOCKS5 代理功能。它會自我更新並可以自我刪除，從而允許勒索軟體操作者刪除或替換它，而不會重新感染電腦。</p>
+    <p>【翻譯失敗，保留原文】After breaking in, Interlock also uses its illicit access to drop a second implant, this one Java-based and built on GlassFish ecosystem libraries for identical capabilities. Using nearly identical implants in two different programming languages provides a backup for the criminals, ensuring that they can maintain access to victims' devices even if one of the implants is detected.</p>
+    <p>此外，亞馬遜還發現了一個 Bash 腳本，該腳本將 Linux 伺服器配置為 HTTP 反向代理，執行系統更新，每五分鐘擦除一次日誌，並確保即使在機器重新啟動時也能保持持久性。</p>
+    <p>攻擊者還部署了其他 Java 類別文件，包括駐留在記憶體中的後門，該後門可攔截記憶體中的 HTTP 請求（它不會將檔案寫入磁碟），以進一步躲避防毒掃描工具，以及充當輕量級網路信標的工具，用於驗證程式碼執行並確認網路連接埠的可達性。</p>
+    <p>除了使用自訂惡意軟體之外，勒索軟體傳播者還部署了合法軟體，使其流量與授權的遠端存取混合在一起。這包括用於遠端桌面控制的 ConnectWise ScreenConnect；開源內存取證工具 Volatility； Certify 是紅隊用來利用 Active Directory 憑證服務 (AD CS) 中的錯誤配置的另一個開源攻擊性安全工具。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
