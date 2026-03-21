@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. 2026-03-20｜WSL 圖形驅動程式更新為 Linux 應用程式帶來更好的 GPU 支持</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 13</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/20/linux_directx_and_opengl/" target="_blank">The Register — WSL graphics driver update brings better GPU support for Linux apps</a><br>📅 原文發佈：2026-03-20</div>
+    <h1>13. 2026-03-20｜WSL 圖形驅動程式更新為 Linux 應用程式帶來更好的 GPU 支持</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>無論您運行什麼作業系統，您都有更好的機會運行非本機應用程式。在 Windows 上執行虛擬化 Linux 的速度將會略有加快，在 64 位元 Linux 和 macOS 上執行 Windows 應用程式的速度也會略有加快。</p>
+    <p>兩種截然不同類型的圖形驅動程式堆疊本週都收到了更新，儘管它們無關，但都追求相同的目標：在不同作業系統上運行非本機應用程式時獲得更好的圖形效能。</p>
+    <p>其中第一個是 The Register 之前提到的——儘管是很久以前的事了。六年前，我們介紹了 Microsoft 的新 dxgkrnl 驅動程序，該驅動程式允許在 WSL2 下運行的 Linux 存取屬於主機作業系統的 GPU 的 DirectX 功能。微軟當時熱衷於推廣這一點，甚至現在該驅動程式在微軟文件網站上也有自己的部分。</p>
+    <p>Dxgkrnl 幾乎整整四年沒有被碰過。在 2020 年推出後，它在 2022 年進行了重大重建——實際上是版本 2——幾個月後，微軟重構了程式碼，以使其清晰且易於審查，並將其標記為 PATCH v3 。 Linux 核心郵件清單上的新補丁引入了該驅動程式的版本 4。</p>
+    <p>該版本支援純運算 GPU，用於運行那些令人痛苦的時尚——或者只是簡單的痛苦——LLM，加上每個虛擬機的多個虛擬 GPU，以及透過 dma-fence 共享驅動程式緩衝區。當然，DirectX 本身仍然是閉源的，除了在 Windows 之上的 Hyper-V 下運行之外，驅動程式在任何其他環境中都沒有用處。</p>
+    <p>WSL2 在 Windows 中執行 Linux 的單一真實副本，並使用容器模擬不同的發行版。這與十年前最初的 WSL 形成了鮮明對比。現在稱為 WSL1，它提供了一個轉換層，用於將 Linux API 呼叫轉換為 Windows API 調用，該轉換層源自於早已消失的 Project Astoria 運行時，用於在 Windows Phone 上運行 Android 應用程式。</p>
+    <p>事實上，WSL1 與 WINE 的工作方式比 WSL2 更相似。 WINE 也是一個轉換層，可將 Windows API 呼叫轉換為 Linux 等效項。正如我們在 2024 年初報告的那樣，WINE 9.0 引入了 32 位元到 64 位元 thunking：它可以在 64 位元主機作業系統上運行 32 位元 Windows 二進位文件，而無需在主機上使用任何 32 位元子系統 - 這對於自 10.15「Catalina」都是必需的 macOS 版本。在今年的 WINE 11 版本中，它的整合度如此之高，以至於不再有 wine32 或 wine64 指令。</p>
+    <p>由於採用 Valve，WINE 近年來蓬勃發展。它的 SteamOS 3 發行版最初是為 Steam Deck 手持遊戲機構建造的，使用 Valve 的 Proton 在 Linux 上運行 Windows 遊戲，Proton 內建於 Valve 的 Steam 遊戲平台的 Linux 用戶端中。 SteamOS 3 的表現非常出色，以至於 Valve 計劃在今年稍後推出更多 Steam 硬體。</p>
+    <p>Valve 在銷售基於作業系統級模擬的消費者遊戲硬體方面取得的成功不僅僅推動了 Linux 的發展。它也推動了 OpenGL 的改變。</p>
+    <p>早在 2024 年，Codeweavers 的 Derek Lesho 在 mesa-dev 郵件列表上提出了一個新問題：幫助 Wine 將 64 位元 Mesa OGL 驅動程式用於 32 位元 Windows 應用程式。去年，他對 Mesa 的 GitLab 進行了更多解釋。當 WINE 在 64 位元主機作業系統上執行 32 位元 Windows 遊戲時，該問題會影響 WINE。當 WINE 使用 glMapBuffer API 為遊戲分配 GPU 記憶體區塊時，該緩衝區的位址將是 64 位元位址 - 但如果該位址不適合 32 位元位址範圍，WINE 無法將該位址傳遞給 32 位元應用程式。</p>
+    <p>（任何嘗試在 Windows XP 電腦上新增超過 4 GB RAM 卻發現 32 位元 XP 無法看到額外記憶體的人都遇到了相同問題的不同方面。）</p>
+    <p>經過一番討論，結果就是一個新的 OpenGL API，名為 MESA_map_buffer_client_pointer 。它的摘要說：</p>
+    <p>此擴充允許應用程式指定應映射緩衝區的指標範圍。</p>
+    <p>換句話說，在分配緩衝區時，它允許應用程式請求該緩衝區位於給定的位址範圍內，以便 32 位元程式碼可以存取該緩衝區，而無需進行緩慢的複製操作。</p>
+    <p>自從 The Register 報導 Vulkan 1.0 開放圖形規範以來已經十年了，但其先驅 OpenGL 的開發仍在進行中。即使 Microsoft 已經放棄了 Windows 對 16 位元應用程式的支持，並且 Apple 也停止了 macOS 對 32 位元應用程式的支持，WINE 仍在努力保持這些舊的 Windows 二進位檔案在現代 64 位元類 Unix 作業系統上運作良好。 ®</p>
+    <p>暫存器咬住了 IT 的手</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
