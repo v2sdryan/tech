@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. 2026-03-24｜告訴人工智慧模型它是專家程式設計師會使其成為更糟糕的程式設計師</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 01</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/24/ai_models_persona_prompting/" target="_blank">The Register — Telling an AI model that it’s an expert programmer makes it a worse programmer</a><br>📅 原文發佈：2026-03-24</div>
+    <h1>01. 2026-03-24｜告訴人工智慧模型它是專家程式設計師會使其成為更糟糕的程式設計師</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>許多人開始使用人工智慧時，會提示機器想像它是他們希望它執行的任務的專家，但研究人員發現這種技術可能是徒勞無功的。</p>
+    <p>基於角色的提示（涉及在模型提示中使用「您是機器學習專家程式設計師」等指令）可以追溯到 2023 年，當時研究人員開始探索角色扮演指令如何影響人工智慧模型的輸出。</p>
+    <p>現在，線上提示指南中很常見，其中包含這樣的段落：“您是專家級全端開發人員，負責從頭開始建立一個完整的、可用於生產的全端 Web 應用程式。”</p>
+    <p>但研究過這種方法的學者報告說，它並不總是能產生優異的結果。</p>
+    <p>在一篇題為「專家角色改善 LLM 對齊但損害準確性：使用 PRISM 引導基於意圖的角色路由」的預印本論文中，南加州大學 (USC) 附屬研究人員發現基於角色的提示是依賴任務的，他們說這解釋了混合結果。</p>
+    <p>對於依賴對齊的任務，例如寫作、角色扮演和安全，角色確實可以提高模型效能。對於數學和編碼等依賴預先訓練的任務，使用該技術會產生更糟糕的結果。</p>
+    <p>原因似乎是告訴模型它是某個領域的專家實際上並沒有傳遞任何專業知識——訓練資料中沒有添加任何事實。</p>
+    <p>事實上，告訴模型它是特定領域的專家會阻礙模型從預訓練資料中獲取事實的能力。</p>
+    <p>研究人員使用測量大規模多任務語言理解 (MMLU) 基準（一種評估法學碩士表現的方法）來測試基於人物角色的提示，結果發現「當法學碩士被要求在多項選擇答案之間做出決定時，專家人物角色在所有四個學科類別中的表現始終低於基本模型（總體準確率：68.0％ vs. 基本模型的71.6％）。</p>
+    <p>但基於角色的指導確實有助於引導模型做出滿足基於法學碩士的法官評估一致性的回應。例如，作者指出，“專門的‘安全監視器’角色提高了所有三個安全基準的攻擊拒絕率，其中 JailbreakBench 的增幅最大（從 53.2% 上升到 70.9%，增加了 17.7 個百分點）。”</p>
+    <p>南加州大學博士生、該研究的合著者之一鬍子兆在一封電子郵件中告訴 The Register，根據該研究的結果，要求人工智慧採用專家程式設計師的角色無助於提高程式碼品質或實用性。</p>
+    <p>但在談到我們上面連結的即時指導時，胡說：“許多其他方面，例如 UI 偏好、專案架構和工具偏好，都更傾向於對齊方向，這確實受益於詳細的角色。”</p>
+    <p>“在提供的示例中，我們認為一般的專家角色是不必要的，例如‘您是專家全端開發人員’，而細粒度的個性化項目需求可能有助於模型生成滿足用戶需求的代碼。”</p>
+    <p>鑑於有關專業知識的提示確實會產生影響，胡及其同事穆罕默德·羅斯塔米 (Mohammad Rostami) 和傑西·托馬森 (Jesse Thomason) 等研究人員提出了一種稱為 PRISM（通過基於意圖的自我建模的角色路由）的技術，該技術試圖利用專家角色的好處而不造成傷害。</p>
+    <p>“我們使用門控 LoRA [低階適應]機制，其中基礎模型完全保留並用於依賴於預先訓練的知識的世代，”他解釋道，並補充說“這個決策過程是由門學習的。”</p>
+    <p>當基於角色的行為改善輸出時，LoRA 適配器被激活，否則會退回到未修改的模型。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
