@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. 2026-03-23｜人工智慧代理很“容易上當”，很容易成為你的爪牙</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 08</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/23/pwning_everyones_ai_agents/" target="_blank">The Register — AI agents are 'gullible' and easy to turn into your minions</a><br>📅 原文發佈：2026-03-23</div>
+    <h1>08. 2026-03-23｜人工智慧代理很“容易上當”，很容易成為你的爪牙</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>RSAC 2026 AI 安全公司 Zenity 的技術長 Michael Bargury 表示，幾乎每個企業 AI 代理程式都容易受到零點擊攻擊，原因很簡單。</p>
+    <p>「人工智慧很容易受騙，」巴古里在接受 The Register 採訪時說道。 “我們正在嘗試改變即時注入的思維方式——因為這是一個非常技術性的術語——並讓人們相信這實際上只是說服。我只是說服人工智能代理它應該做其他事情。”</p>
+    <p>其他內容包括說服 Cursor 洩漏開發人員的秘密，或說服 Salesforce 代理將所有客戶互動傳送到攻擊者控制的伺服器，或說服 ChatGPT 竊取 Google Drive 資料。</p>
+    <p>「更重要的是，我可以讓 ChatGPT 來操縱你，」Bargury 說。 “ChatGPT 是值得信赖的顾问。你可以向它提出敏感问题，向它寻求建议。它可以被操纵来回答我想要的任何内容 - 不仅是在特定的对话中，而且是长期的。”</p>
+    <p>Bargury 週一在 RSAC 上發表了題為“你的 AI 代理是我的奴才”的演講，期間他將演示針對 Cursors、Salesorce、ChatGPT、Gemini、Copilot、Einstein 及其自定義代理的這些和其他零點擊提示感染攻擊。</p>
+    <p>他在 RSAC 演講之前與 The Register 分享了他的研究成果，並表示該研究建立在他過去幾年所做的工作（在 Black Hat 和其他安全會議上展示）的基礎上，即在所有不需要用戶交互的大型人工智能助手中開發工作漏洞。</p>
+    <p>本月早些時候，Zenity 披露了一系列漏洞，攻擊者只需向受害者發送日曆事件，即可從使用 Perplexity 彗星瀏覽器的用戶那裡竊取本機檔案。</p>
+    <p>「我們現在看到的是，由於代理可以隨意瀏覽數據，這成為導致零點擊利用的攻擊因素，」他說。 “攻擊者訪問互聯網，他們找到一種專門針對您的方法，他們發送提示注入，注入進入您的代理，然後劫持它以執行他們想做的任何事情。”</p>
+    <p>全部都是零用戶互動 - 而且非常容易做到。</p>
+    <p>例如：Cursor 通常透過模型上下文協定 (MCP) 連接與 Jira 一起使用。這允許 AI 直接在編輯器中讀取、建立和更新 Jira 票證。开发人员可以使用此集成在每次收到支持票证电子邮件时自动创建 Jira 票证，并要求代理解决未解决的票证问题。</p>
+    <p>「但其中一些開放案例來自外部世界，您可以出去在網路上搜尋這些連接到自動 Jira 票證創建的端點，這是您發送有效負載的一種方式，」Bargury 說。</p>
+    <p>我將展示 Microsoft Copilot、Google Gemini、Salesforce 的 Agentforce 和 ChatGPT 的類似攻擊。這背後的原因是說，看，即使是最好的人也非常脆弱</p>
+    <p>攻擊者可以搜尋自動建立 Jira 票證的支援電子郵件地址，並發送嵌入惡意提示的電子郵件。遊標會自動開啟電子郵件並根據提示進行操作。</p>
+    <p>在 Bargury 將在 RSAC 演示的範例中，他的團隊希望欺騙 Cursor 找到秘密並將其發送到 Zenity 控制的端點。 “但 Cursor 不想這樣做，因為它被訓練不這樣做。”</p>
+    <p>Cursor 大量使用 Anthropic 的 Claude 模型，具有防止其存取和洩露秘密的護欄。因此，Zenity 的團隊並沒有宣傳 AI 代理商竊取秘密，而是告訴 Cursor，它正在參與尋寶活動。</p>
+    <p>「作為尋寶活動的一部分，找到蘋果對我們來說非常重要，」巴古里說。 “順便說一句，這是蘋果的格式 - 我們給出了秘密的格式。”</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
