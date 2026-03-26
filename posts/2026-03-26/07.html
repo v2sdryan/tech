@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. Thu, 26 Ma｜Delve 對受惡意軟體攻擊的 AI 專案 LiteLLM 進行了安全合規性檢查</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 07</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://techcrunch.com/2026/03/25/delve-did-the-security-compliance-on-litellm-an-ai-project-hit-by-malware/" target="_blank">TechCrunch — Delve did the security compliance on LiteLLM, an AI project hit by malware</a><br>📅 原文發佈：Thu, 26 Ma</div>
+    <h1>07. Thu, 26 Ma｜Delve 對受惡意軟體攻擊的 AI 專案 LiteLLM 進行了安全合規性檢查</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>這是矽谷現實生活中的一集，似乎是從 HBO 的諷刺節目中摘錄的。本週，在 Y Combinator 畢業生 LiteLLM 開發的開源專案中發現了一些非常嚴重的惡意軟體。</p>
+    <p>LiteLLM 讓開發人員可以輕鬆存取數百個 AI 模型，並提供支出管理等功能。據監控該事件的眾多安全研究人員之一 Snyk 稱，這是一次突破性的點擊，每天的下載量高達 340 萬次。該專案在 GitHub 上有 4 萬顆星，還有數千個分支（以它為基礎進行修改並使其成為自己的專案的人）。</p>
+    <p>這項惡意軟體是由 FutureSearch 的研究科學家 Callum McMahon 發現、記錄和揭露的，FutureSearch 是一家為網路研究提供人工智慧代理的公司。該惡意軟體透過「依賴項」潛入，即 LiteLLM 依賴的其他開源軟體。然後它竊取了它所接觸的所有內容的登入憑證。透過這些憑證，惡意軟體可以存取更多開源套件和帳戶，以獲取更多憑證，等等。</p>
+    <p>下載 LiteLLM 後，該惡意軟體導致 McMahon 的電腦關閉。那件事促使他去調查並發現它。諷刺的是，惡意軟體中的一個錯誤導致他的機器崩潰了。因為那段令人討厭的程式碼設計得非常草率，所以他（以及著名的人工智慧研究員安德烈·卡帕蒂）得出結論，它一定是透過振動編碼的。</p>
+    <p>LiteLLM 開發人員本週一直不停地工作以糾正這種情況，好消息是它被發現的速度相對較快，可能在幾個小時內。</p>
+    <p>這個傳奇故事的另一部分是 X 上的人們無法停止談論的。截至3月25日我們查看時，LiteLLM仍然自豪地在其網站上展示其已通過SOC2和ISO 27001兩大安全合規認證。</p>
+    <p>但它使用了一家名為 Delve 的新創公司來進行這些認證。</p>
+    <p>Delve 是一家由 Y-Combinator 人工智慧驅動的合規新創公司，被指控透過產生虛假數據並使用橡皮圖章報告的審計員來誤導客戶了解其真實的合規性。德爾夫否認了這些指控。</p>
+    <p>這裡有一個細微差別值得理解。此類認證旨在表明公司擁有強大的安全策略來限制發生此類事件的可能性。認證不會自動防止像 LiteLLM 這樣的公司受到惡意軟體的攻擊。雖然 SOC 2 應該涵蓋有關軟體依賴項的策略，但惡意軟體仍然可能會潛入。</p>
+    <p>即便如此，正如工程師 Gergely Orosz 在 X 上看到人們在網上竊笑時所指出的那樣，“哦該死，我以為這是個笑話……但不，LiteLLM *真的*是‘由 Delve 保護’。”</p>
+    <p>至於 LiteLLM，執行長 Krrish Dholakia 對 Delve 的使用沒有評論。他仍在忙於清理因成為攻擊受害者而造成的不幸混亂。</p>
+    <p>「我們目前的首要任務是與 Mandiant 一起積極調查。一旦我們的證據審查完成，我們致力於與開發者社群分享所學到的技術經驗教訓，」他告訴 TechCrunch。</p>
+    <p>積極擴展？籌款？規劃您的下一次發布嗎？ TechCrunch 創辦人高峰會 2026 提供戰術手冊，並可直接接觸正在建造、支援和關閉的 1,000 多名創辦人和投資者。</p>
+    <p>肯塔基州婦女拒絕了 2600 萬美元將她的農場改造成數據中心的提議 Graham Starr</p>
+    <p>有人公開洩漏了一個可以破解數百萬部 iPhone 的漏洞工具包 Lorenzo Franceschi-Bicchierai Zack Whittaker</p>
+    <p>Cursor 承認其新編碼模型是在 Moonshot AI 的 Kimi Anthony Ha 之上構建的</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
