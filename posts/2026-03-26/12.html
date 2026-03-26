@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12. 2026-03-25｜人工智慧供應鏈攻擊甚至不需要惡意軟體…只需發布中毒文件即可</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 12</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/25/ai_agents_supply_chain_attack_context_hub/" target="_blank">The Register — AI supply chain attacks don’t even require malware…just post poisoned documentation</a><br>📅 原文發佈：2026-03-25</div>
+    <h1>12. 2026-03-25｜人工智慧供應鏈攻擊甚至不需要惡意軟體…只需發布中毒文件即可</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>一項幫助編碼代理程式及時了解 API 呼叫的新服務可能會引發巨大的供應鏈漏洞。</p>
+    <p>兩週前，人工智慧企業家兼史丹佛大學兼職教授 Andrew Ng 推出了 Context Hub，這是一項為編碼代理提供 API 文件的服務。</p>
+    <p>「編碼代理經常使用過時的 API 和幻覺參數，」Ng 在 LinkedIn 帖子中寫道。 “例如，當我要求 Claude Code 調用 OpenAI 的 GPT-5.2 時，它使用舊的聊天完成 API，而不是新的響應 API，即使新的 API 已經發布一年了。Context Hub 解決了這個問題。”</p>
+    <p>也許是這樣。但同時，該服務似乎提供了一種透過簡化軟體供應鏈攻擊來欺騙編碼代理的方法：文件入口網站可用於透過惡意指令毒害人工智慧代理。</p>
+    <p>名為 lap.sh 的替代策劃服務的創建者 Mickey Shmueli 發布了一個概念驗證攻擊，證明了這種風險。</p>
+    <p>「Context Hub 透過 MCP 伺服器向 AI 代理提供文檔，」Shmueli 在一篇解釋性部落格文章中寫道。 “貢獻者以 GitHub 拉取請求的形式提交文檔，維護者合併它們，代理按需獲取內容。管道在每個階段都進行零內容清理。”</p>
+    <p>一段時間以來，開發人員社群都知道人工智慧模型有時會產生幻覺包名稱，安全專家已經證明，可以透過在發明的套件名稱下上傳惡意程式碼來利用這一缺陷。</p>
+    <p>Shmueli 的 PoC 透過建議文件中的虛假依賴項來消除幻覺步驟，然後編碼代理將這些依賴項合併到設定檔（例如，requirements.txt）和產生的程式碼中。</p>
+    <p>攻擊者只需建立一個拉取請求（對儲存庫提交的變更），如果它被接受，中毒就完成了。目前看來，這種情況發生的可能性相當高。在 97 個關閉的 PR 中，有 58 個被合併。</p>
+    <p>Shmueli 在一封電子郵件中告訴 The Register，「審核過程似乎優先考慮文檔量而不是安全審核。文檔 PR 很快就會合併，其中一些是由核心團隊成員自己合併的。我在 GitHub 存儲庫中沒有找到任何自動掃描提交文檔中的可執行指令或包引用的證據，儘管我不能確定內部發生了什麼。」</p>
+    <p>他表示，他沒有提交 PR 來測試 Content Hub 的回應方式，「因為公共記錄顯示安全貢獻並未參與」。他還指出了幾個涉及安全問題的未決問題和拉取請求作為證據。</p>
+    <p>吳沒有立即回應置評請求。</p>
+    <p>「代理商從 [Context Hub] 獲取文檔，讀取中毒內容，並建立項目，」Shmueli 在他的帖子中說。 “回應看起來完全正常。工作代碼。乾淨的說明。沒有警告。”</p>
+    <p>【翻譯失敗，保留原文】None of this is particularly surprising given that it's simply a variation on the unsolved risk of AI models – indirect prompt injection . When AI models process content, they cannot reliably distinguish between data and system instructions.</p>
+    <p>對於 PoC，創建了兩份中毒文檔，一份用於 Plaid Link，一份用於 Stripe Checkout，每個文檔都包含一個偽造的 PyPI 包名稱。</p>
+    <p>在 40 次運行中，Anthropopic 的 Haiku 模型每次都會將文件中引用的惡意套件寫入專案的requirement.txt 檔案中，但在其輸出中卻沒有提及。該公司的 Sonnet 模型表現更好，在 48% 的運行中 (19/40) 發出警告，但仍有 53% 的運行 (21/40) 將惡意庫寫入requirements.txt。 AI 產業的頂級 Opus 模型表現更好，在 75% 的時間 (30/40) 發出警告，並且最終沒有將錯誤的依賴項寫入 requests.txt 檔案或程式碼。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
