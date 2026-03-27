@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05. 2026-03-26｜AWS 寧願忘記 3 月在其阿聯酋地區發生過的事情</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 05</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/26/aws_would_prefer_to_forget/" target="_blank">The Register — AWS would prefer to forget March ever happened in its UAE region</a><br>📅 原文發佈：2026-03-26</div>
+    <h1>05. 2026-03-26｜AWS 寧願忘記 3 月在其阿聯酋地區發生過的事情</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>本週我收到了來自 AWS 的電子郵件/帳單通知，這可能是雲端運算史上最巧妙的通訊。這是它，去掉了周圍常見的樣板：</p>
+    <p>“AWS 將於 2026 年 3 月免除 ME-CENTRAL-1 區域中所有與使用相關的費用。此免除將自動適用於您的帳戶，您無需採取任何操作。”</p>
+    <p>沒有解釋。沒有提及 3 月 1 日伊朗無人機襲擊摧毀了該地區三個可用區域中的兩個。沒有提到發生故障的 109 項服務，也沒有提到那些花了數週時間無法透過控制台終止 EC2 執行個體的客戶，因為控制平面與其下面的硬體一樣死機。沒有人承認整整一個月的雲端基礎設施其實已經不存在。甚至沒有連結到他們非常短的（大概是因為它沒有侮辱英國《金融時報》的報道）公司博客文章，解釋說你可能不應該指望該地區很快就能再次可靠地工作。</p>
+    <p>只是：我們將免除費用。不客氣。繼續前進。</p>
+    <p>我想澄清的是：我對此沒有任何問題。這是一個艱難的局面，而且這不是 AWS 的錯，因為亞馬遜還沒有常備軍事力量。</p>
+    <p>但這就是引起我注意的部分。電子郵件繼續說道：“處理完成後，您將不會在成本和使用情況報告或 Cost Explorer 中看到 ME-CENTRAL-1 區域在 2026 年 3 月的任何使用情況。”</p>
+    <p>他們不僅免除一個月的客戶費用；他們正在刪除帳單和庫存資料！</p>
+    <p>對於大多數組織來說，AWS 帳單不僅僅是一張發票。它是基礎設施存在、運作地點以及存在時間的規範記錄。成本和使用情況報告 (CUR) 是許多公司最接近準確描述其雲端足跡的單一事實來源的東西。即使是最近推出的 AWS Resource Explorer（聲稱是庫存服務）也缺少一些關鍵資源類型。列出所有內容的一件事仍然是 AWS 帳單；關於雲端環境中到底發生了什麼的單一事實來源。</p>
+    <p>合規團隊依賴它。審計員要求這樣做。 FinOps 團隊的整個實踐都以此為基礎。當您的安全團隊想知道您 3 月在中東運行的資源是否超出 CloudTrail 所說的範圍時，他們會檢查 CUR。截至 3 月 31 日，當他們詢問亞馬遜時，答案將是：不。你沒有。那裡什麼也沒有。乾淨、空虛的一個月。</p>
+    <p>基礎設施已經存在了。它跑了，或者至少它確實嘗試過。客户需要为无法关闭的资源付费，因为 API 无法访问，因为当三个可用区域中的两个无响应或完全被破坏时，任何东西都无法正常工作。現在所有這些記錄都被清除了。</p>
+    <p>在任何人開始撰寫他們的“AWS 應該為此做好準備”的熱門觀點之前：不。停止。</p>
+    <p>AWS 針對某些類型的故障設計了可用區。硬體死機、斷電、光纖被其天敵「強大的反鏟」割斷、冷卻系統故障等等？ AZ 處理這些。它們的設計是為了確保一個區域的問題不會連鎖到另一個區域。該模型有效。這是經過反覆測試的。它是 AWS 上每個架構良好的部署的支柱。不管您是否知道，幾乎每個 AWS 客戶的資料復原策略都取決於這一點。</p>
+    <p>可用區並不是為決定資料中心不再存在的國家行為者而設計的。</p>
+    <p>沒有人的故障樹分析包括「建築物被軍用無人機擊中」。世界上沒有災難復原操作手冊有標題為「區域武裝衝突」的章節。</p>
+    <p>老實說？不應該。嘗試將其納入您公司的數據恢復計劃中，您會比我在投資公司貝萊德時更快地不受業務連續性計劃的邀請，當時我指出，如果舊金山和 us-east-1 都無法使用，那麼在可預見的未來（如果有的話）絕對沒有人會關心我們的機器人顧問。 （我無法想像為什麼我被解雇了。）雲端基礎設施的整個前提是你從處理物理問題的人那裡租用容量，這樣你就可以專注於你的軟體。該合約沒有考慮到資料中心成為軍事目標，而且很難責怪五角大樓這邊的任何人沒有將這項特定項目列入風險登記冊。</p>
+    <p>我可以想到兩種解釋，它們並不互相排斥。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
