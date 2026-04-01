@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19. 2026-03-31｜Anthropic 裸體，意外暴露 Claude 程式碼來源</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 19</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/31/anthropic_claude_code_source_code/" target="_blank">The Register — Anthropic goes nude, exposes Claude Code source by accident</a><br>📅 原文發佈：2026-03-31</div>
+    <h1>19. 2026-03-31｜Anthropic 裸體，意外暴露 Claude 程式碼來源</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>你想近距離觀察克勞德嗎？ Anthropic 的某人需要做一些解釋，因為 Claude Code 的官方 npm 包附帶了一個映射文件，該文件似乎公開了流行的 AI 編碼工具的整個源代碼。</p>
+    <p>至少從週二早上開始，安全研究員手超凡似乎已經發現了這個漏洞並告訴了全世界。 Claude Code 原始碼的快照很快就備份到了 GitHub 儲存庫中，該儲存庫迄今已被分叉超過 41,500 次，將其傳播給大眾，並確保 Anthropic 的錯誤仍然是人工智慧和網路安全社群的收穫。</p>
+    <p>根據公開的 Claude Code 原始碼的 GitHub 上傳，洩漏實際上是由於對 Claude Code 的 npm 套件中包含的映射檔案中未混淆的 TypeScript 來源的引用造成的（映射檔案用於將捆綁的程式碼連接回原始來源）。反過來，該引用指向 Anthropic 的 Cloudflare R2 儲存桶上託管的 zip 存檔，Shou 和其他人能夠下載該存檔並將其解壓縮到他們想要的內容。</p>
+    <p>zip 檔案中包含豐富的資訊：大約 1,900 個 TypeScript 文件，其中包含超過 512,000 行程式碼、完整的斜線命令庫和內建工具 - 簡而言之，就是作品。</p>
+    <p>也就是說，Claude Code 的來源並不是一個完全的謎，雖然這次曝光讓我們直接從漏水桶中看到了 Claude Code 的新版本，但它並沒有揭開迄今為止的秘密。</p>
+    <p>Claude Code 已經過逆向工程，並且各種項目已經形成了一個完整的網站，專門用於公開 Claude Code 中尚未向公眾發布或與公眾共享的隱藏部分。</p>
+    <p>換句話說，我們擁有的是 CCLeaks 運營商的有用比較點和更新來源，也許當人們挖掘暴露的程式碼時，一些新的秘密將會被揭露。</p>
+    <p>更有趣的是，Anthropic 的某人犯了一個錯誤，就像在發布配置中留下地圖檔案一樣嚴重。發布地圖檔案通常不受歡迎，因為它們用於調試混淆或捆綁的程式碼，而不是生產所必需的。不僅如此，正如我們在本範例中所看到的，它們可以輕鬆地用於公開原始程式碼，因為它們是原始程式碼的參考文件。</p>
+    <p>正如軟體工程師 Gabriel Anhaia 在深入研究公開程式碼時指出的那樣，這應該提醒即使是最好的開發人員檢查他們的建置管道。</p>
+    <p>「package.json 中一個配置錯誤的 .npmignore 或 files 欄位可能會暴露一切，」Anhaia 在對 Claude 程式碼洩漏的分析中寫道。</p>
+    <p>Anthropic 在給 The Register 的聲明中承認了這一點，並表示，是的，這是良好的人為錯誤造成了這次混亂。</p>
+    <p>「今天早些時候，克勞德程式碼發布包括一些內部原始碼，」一位 Anthropic 發言人在一封電子郵件中告訴我們，並補充說沒有涉及或暴露任何客戶資料或憑證。 “這是由人為錯誤引起的發布包裝問題，而不是安全漏洞。我們正在採取措施防止這種情況再次發生。”</p>
+    <p>截至撰寫本文時，將 Claude Code 原始碼上傳到 GitHub 的原始上傳者已將其儲存庫重新調整用途，以託管 Claude Code 的 Python 功能端口，而不是 Anthropic 直接公開的源代碼，理由是擔心他可能因託管 Anthropic 的知識產權而承擔法律責任。對於那些想要檢查暴露代碼的人來說，仍然有大量的叉子和鏡子。</p>
+    <p>我們詢問 Anthropic 是否正在考慮要求人們刪除其公開原始碼的儲存庫，但該公司除了聲明之外沒有其他說法。 ®</p>
+    <p>Anthropic 承認 Claude Code 用戶達到使用限制的速度“比預期快得多”</p>
+    <p>Anthropic 推出 Claude 程式碼安全檢查器，資訊安全社群陷入恐慌</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
