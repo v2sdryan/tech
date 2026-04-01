@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. 2026-03-31｜微軟警告不要打開 WhatsApp 訊息</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 07</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/31/whatsapp_message_bad_msi_packages/" target="_blank">The Register — Don't open that WhatsApp message, Microsoft warns</a><br>📅 原文發佈：2026-03-31</div>
+    <h1>07. 2026-03-31｜微軟警告不要打開 WhatsApp 訊息</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>請小心您點擊的內容。不法分子在多階段攻擊中濫用 WhatsApp 訊息，傳遞惡意 Microsoft 安裝程式 (MSI) 軟體包，使犯罪分子能夠控制受害者的電腦並存取其所有資料。</p>
+    <p>據我們所知，該活動於 2 月底開始，攻擊鏈始於一條傳遞惡意 Visual Basic Sc​​ript (VBS) 檔案的 WhatsApp 訊息。我們不確定該騙局的社會工程部分到底是如何運作的——我們已向雷德蒙德詢問更多細節，如果我們收到任何細節，我們將更新這個故事。</p>
+    <p>The Register 也聯繫了 Meta 旗下的 WhatsApp 徵求意見，但沒有收到回應。</p>
+    <p>但攻擊者以某種方式誘騙訊息接收者在其係統上執行惡意檔案。他們可能會使用受損的 WhatsApp 會話來執行此操作，以便該訊息看起來來自受害者的現有聯絡人之一。或者，他們用包含緊迫感的誘惑來轟炸用戶，促使收件人匆忙打開文件。</p>
+    <p>執行後，惡意腳本會在 C:\ProgramData 中建立隱藏資料夾，並刪除合法 Windows 公用程式的重新命名版本 - 例如，curl.exe 重新命名為 netapi.dll，bitsadmin.exe 重新命名為 sc.exe。</p>
+    <p>將合法的 Windows 工具用於邪惡目的，使得攻擊者能夠混入正常的網路活動 - 防御者稱之為「靠山為生」 - 但不法分子在重命名這些二進位檔案時確實犯了一個錯誤。</p>
+    <p>微軟研究人員在周二的部落格中寫道：“值得注意的是，這些重命名的二進位檔案保留了其原始 PE（可移植可執行檔）元數據，包括仍將它們標識為curl.exe 和bitsadmin.exe 的 OriginalFileName 欄位。” “這意味著 Microsoft Defender 和其他安全解決方案可以利用這種元數據作為嵌入信號的，標記文件名與其嵌入的實例的元差異”。</p>
+    <p>犯罪分子使用重命名的二進位檔案從 AWS、騰訊雲端和 Backblaze B2 等可信任雲端服務下載輔助 VBS 有效負載（auxs.vbs、2009.vbs）。同樣，這使得區分正常企業活動和惡意下載變得更加困難。</p>
+    <p>然後，惡意軟體會更改使用者帳戶控制 (UAC) 設置，嘗試以提升的權限啟動 cmd.exe，直到成功（這意味著惡意軟體將在系統重新啟動後倖存），或者進程被強制終止。</p>
+    <p>最後，攻擊者部署惡意 MSI 安裝程序，微軟表示這些安裝程序包括 Setup.msi、WinRAR.msi、LinkPoint.msi 和 AnyDesk.msi。壞人再次使用 AnyDesk 等真正的工具（而不是自訂惡意軟體）隱藏在眾目睽睽之下。</p>
+    <p>然而，最終的有效負載都沒有簽名，這應該向防禦者表明他們正在處理惡意軟體，而不是合法的企業軟體。</p>
+    <p>這些安裝程式使攻擊者能夠遠端存取受害者的系統，以便他們可以竊取數據，在受感染的系統上部署更多惡意軟體（例如勒索軟體），或使用受感染的電腦作為更大網路的一部分來發動其他攻擊。</p>
+    <p>雖然微軟的部落格包含了一些建議，指導人們使用他們的安全產品來避免這種類型的妥協，但我們特別喜歡的一個供應商中立的提示涉及教育用戶如何發現社會工程活動。</p>
+    <p>雷德蒙建議：「訓練員工識別可疑的 WhatsApp 附件和意外訊息，強化即使是熟悉的平台也可能被利用來傳播惡意軟體。」®</p>
+    <p>Meta，國際警察使用手銬和人工智慧來阻止詐騙者</p>
+    <p>俄羅斯網路犯罪分子透過網路釣魚入侵官員的 Signal 和 WhatsApp 帳戶</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
