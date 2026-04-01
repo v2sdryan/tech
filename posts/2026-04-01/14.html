@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14. 2026-03-31｜供應鏈爆炸：頂級 npm 包被後門，在開發機器上投放髒 RAT</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 14</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/03/31/axios_npm_backdoor_rat/" target="_blank">The Register — Supply chain blast: Top npm package backdoored to drop dirty RAT on dev machines</a><br>📅 原文發佈：2026-03-31</div>
+    <h1>14. 2026-03-31｜供應鏈爆炸：頂級 npm 包被後門，在開發機器上投放髒 RAT</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>在攻擊者劫持維護者帳戶並將遠端存取木馬 (RAT) 植入兩個看似合法的 axios 版本後，npm 最廣泛使用的 HTTP 用戶端庫之一短暫地成為惡意軟體交付工具，這被稱為「有史以來最有影響力的 npm 供應鏈攻擊之一」。</p>
+    <p>中毒版本「axios@1.14.1」和「axios@0.30.4」在被拉出之前就已經進入了 npm 註冊表，儘管在此之前一些不幸的開發人員和 CI 管道將它們拉了進來。入侵者並沒有篡改 axios 自己的程式碼，而是採取了一種更微妙的路線，滑入了一種與那裡無關的依賴關係，並且在庫的功能中沒有任何作用。</p>
+    <p>Axios 是一種廣泛使用的 JavaScript HTTP 用戶端，開發人員依靠它在應用程式和 Web 服務之間發送請求。它嵌入到從前端應用程式到後端系統的所有內容中，每週的下載量約為 1 億次，這意味著即使是短暫的妥協也可以迅速傳播。</p>
+    <p>這些版本也沒有經過專案通常的建置過程。安全公司 StepSecurity 發現這兩個版本都是透過該專案的主要維護者「jasonsaayman」受損的 npm 帳戶發布的，據報道，在推送軟體包時，他的帳戶被鎖定。</p>
+    <p>攻擊者將該帳戶的電子郵件地址替換為匿名 ProtonMail 收件匣，並透過 npm CLI 手動推送受感染的軟體包，完全繞過了該專案的 GitHub Actions CI/CD 管道以及開發人員傾向於假設的安全措施。</p>
+    <p>新增的套件「plain-crypto-js@4.2.1」純粹作為一種交付機製而存在。它的安裝後腳本會打電話回家，獲取第二階段的有效負載，然後開始刪除針對其發現的任何內容定制的惡意軟體。在 macOS 上，它會將自己偽裝成系統守護進程，在 Windows 上，它依賴 PowerShell，在 Linux 上，它會退回到 Python 後門。它也試圖掩蓋自己的蹤跡，清除可能洩漏遊戲真相的痕跡。</p>
+    <p>StepSecurity 表示，該活動的計劃水平遠遠超出了通常的砸搶 npm 妥協。該公司首席技術長兼聯合創始人 Ashish Kurmi 表示：「這不是機會主義。」「惡意依賴項提前 18 小時上演。為三個作業系統預先建構了三個獨立的有效負載。兩個版本分支都在 39 分鐘內遭到攻擊。每個追蹤都被設計為自毀。這是有史以​​來針對前 10 個 npm 軟體包記錄的操作最複雜的供應鏈之一」。</p>
+    <p>該事件也發生在 npm 的艱難時期。 「Shai-Hulud」及其後續活動「Shai-Hulud 2.0」等活動表明，攻擊者越來越多地將目標瞄準軟體供應鏈本身，植入惡意軟體包以竊取憑證、劫持環境或悄悄地維持開發人員工具中的持久性。</p>
+    <p>我們敦促安裝了受影響版本的開發人員立即採取行動。 「如果您安裝了 axios@1.14.1 或 axios@0.30.4，則假設您的系統已受到威脅，」Kurmi 說。</p>
+    <p>實際上，這意味著消除依賴關係、輪換憑證，對某些人來說，還需要從頭開始重建機器。考慮到 axios 的使用範圍，清理工作不會很快。</p>
+    <p>Google威脅情報小組 (GTIG) 週二將 axios NPM 供應鏈攻擊與它追蹤為 UNC1069 的可疑北韓威脅行為者聯繫起來，而不是與 TeamPCP 聯繫起來，TeamPCP 是最近 Trivy 漏洞掃描器漏洞和隨後針對其他流行開源專案的攻擊背後的組織。</p>
+    <p>GTIG 首席分析師 John Hultquist 告訴 The Register，axios 供應鏈攻擊「與最近的 TeamPCP 供應鏈問題無關」。 「我們將這次攻擊歸因於我們追蹤的可疑北韓威脅行為者 UNC1069。北韓駭客在供應鏈攻擊方面擁有豐富的經驗，他們歷來利用這些攻擊來竊取加密貨幣。這一事件的全面範圍仍不清楚，但考慮到受感染軟體包的受歡迎程度，我們預計它將產生深遠的影響。」®</p>
+    <p>已於 3 月 31 日更新，並添加了 Google 的聲明，稱 UNC1069 是此次攻擊的可疑組織。</p>
+    <p>npmx 套件瀏覽器以 alpha 版本發布，以解決使用 npmjs 的痛苦</p>
+    <p>PostHog 承認 Shai-Hulud 2.0 是其有史以來最大的安全漏洞</p>
+    <p>犯罪者利用代幣挖礦惡意軟體毒害了超過 15 萬個 npm 軟體包</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
