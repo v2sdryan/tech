@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15. 2026-04-13｜冒牌 Linux 領導者利用 Slack 誘騙開發人員交出秘密</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 15</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/13/linux_foundation_social_engineering/" target="_blank">The Register — Fake Linux leader using Slack to con devs into giving up their secrets</a><br>📅 原文發佈：2026-04-13</div>
+    <h1>15. 2026-04-13｜冒牌 Linux 領導者利用 Slack 誘騙開發人員交出秘密</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>想像一下，當權者要求做某件事。一個透過 Slack 針對開源軟體開發人員的未知惡意軟體攻擊者冒充真正的 Linux 基金會官員，並使用 Google.com 上託管的頁面竊取開發人員的憑證並接管他們的系統。</p>
+    <p>開源安全基金會 (OpenSSF) 技術長 Christopher Robinson 告訴 The Register，社會工程活動專門為 Linux 基金會主辦的兩個專案 TODO（公開討論、公開開發）和 CNCF（雲端原生運算基金會）。</p>
+    <p>TODO 旨在協助組織共享管理開源計畫的最佳實踐和工具，CNCF 支援雲端原生項目，包括 Kubernetes、Envoy 和 Prometheus。</p>
+    <p>攻擊者冒充 Slack 中值得信賴的 Linux 基金會社群領導者後，試圖誘騙開發人員點擊 Google 協作平台上託管的網路釣魚連結：https://sites[.]google[.]com/view/workspace-business/join。</p>
+    <p>此連結模仿合法的 Google Workspace 登入流程，但會引導使用者進入詐欺性身分驗證流程，提示他們輸入憑證，然後安裝偽裝成 Google 憑證的虛假根憑證。</p>
+    <p>該虛假憑證是惡意軟體，在 macOS 上，它從遠端 IP (2.26.97.61) 下載並執行二進位檔案 (gapi)，而在 Windows 電腦上，它會透過瀏覽器信任對話框提示安裝惡意憑證。</p>
+    <p>在過去的幾個月裡，其他 LF 計畫也面臨類似的社會工程式的努力。這項最新的努力與那些非常一致</p>
+    <p>兼任 Linux 基金會首席安全架構師的 Robinson 在 4 月 7 日的安全諮詢中表示：“安裝該證書可以攔截加密流量並防止憑證被盜。” “執行二進製文件可能會導致整個系統受到損害。”</p>
+    <p>Robinson 拒絕透露透過 Slack 冒充的 Linux 基金會官員的身份，他告訴我們，他不知道誰對憑證竊取企圖負責。</p>
+    <p>他告訴 The Register ：“根據涉及的人員情況，這可能是一次有針對性的攻擊，目的是利用社會工程來利用該人的聲譽。” “在過去的幾個月裡，其他 LF 項目也面臨著類似的社會工程風格的努力。這項最新的努力與這些努力非常一致，特別是所共享的 URL。”</p>
+    <p>谷歌發言人表示，這家雲端巨頭的安全分析師正在調查這項活動，並已刪除了這些欺騙性頁面。</p>
+    <p>谷歌發言人告訴我們：“這一活動是一場社會工程活動，濫用谷歌協作平台託管網絡釣魚頁面；這不是谷歌工作空間中的安全漏洞或潛在缺陷。” “我們將繼續監控並減少此類平台濫用行為，以保護更廣泛的生態系統。”</p>
+    <p>發言人也指出，合法的 Google Workspace 驗證永遠不會要求使用者手動安裝根憑證或從連結下載二進位檔案來「驗證」帳戶。</p>
+    <p>如果您認為自己可能受到此活動的危害，羅賓遜敦促斷開網路連接，刪除所有新安裝的證書，撤銷活動會話和令牌，並輪換所有憑證。</p>
+    <p>羅賓遜在安全警報中寫道：“這次活動凸顯了一個日益增長的趨勢：攻擊者的目標是開發人員工作流程和信任關係，而不僅僅是軟體漏洞。” “在採取行動之前保持警惕並進行驗證對於保護個人環境和更廣泛的開源生態系統至關重要。”</p>
+    <p>此次針對 LF 專案的社會工程嘗試是在 3 月針對開源開發人員發起的另外兩起備受矚目的攻擊之後進行的。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
