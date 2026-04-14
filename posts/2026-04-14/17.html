@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17. 2026-04-13｜克勞德代碼快取混亂引發配額投訴</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 17</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/13/claude_code_cache_confusion/" target="_blank">The Register — Claude Code cache chaos creates quota complaints</a><br>📅 原文發佈：2026-04-13</div>
+    <h1>17. 2026-04-13｜克勞德代碼快取混亂引發配額投訴</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Anthropic 上個月將許多請求的 Claude Code 提示快取的 TTL（生存時間）從一小時減少到五分鐘，但表示這不會增加成本，儘管用戶報告配額耗盡速度更快。</p>
+    <p>用戶 Sean Swanson 發布了一份錯誤報告，顯示 Anthropic 在 2 月 1 日左右為 Claude Code 上下文引入了一小時緩存，然後在 3 月 7 日左右將其改回五分鐘緩存。 「5m TTL 對於定義 Claude Code 使用的長會話、高上下文用例來說是不成比例的懲罰，」Swanson 說。</p>
+    <p>當使用人工智慧編碼助理或代理時，上下文是與使用者提示一起發送的附加數據，例如現有程式碼或後台指令。上下文提高了人工智慧的準確性，但也需要更多的處理。</p>
+    <p>Claude 提示快取避免重新處理先前使用的提示，包括上下文和背景資訊。快取的 TTL 可以是五分鐘或一小時。寫入五分鐘快取的令牌成本高出 25%，寫入一小時快取高出 100%，但從快取讀取的成本約為基本價格的 10%。</p>
+    <p>Bun JavaScript 運行時的創建者、現任職於 Anthropic 的 Jarred Sumner 同意這種分析是“很好的偵探工作”，但聲稱改回五分鐘緩存使 Claude Code 的成本更低，因為“Claude Code 的請求中有意義的一部分是一次性調用，其中緩存的上下文僅使用一次，無法重新訪問全局 Sumner 表示</p>
+    <p>另一個因素是，Claude Opus 4.6 或 Sonnet 4.6 模型的付費計劃中提供的大型一百萬代幣上下文視窗會增加成本，特別是在快取未命中的情況下。 Claude Code 創建者 Boris Cherny 表示，「使用 1M 令牌上下文窗口時提示緩存未命中的成本很高......如果您離開電腦一個多小時然後繼續過時的會話，則通常是完全緩存未命中。」他表示，Anthropic 正在研究默認情況下包含 400,000 個令牌的上下文窗口，如果願意，還可以選擇 100 萬個令牌。已經有一個為此的配置設定。</p>
+    <p>切爾尼表示，更大的環境現在很常見，因為用戶「需要大量技能，或運行許多代理商或後台自動化」。</p>
+    <p>一些開發人員相信，快取重建和快取未命中是 Claude Code 配額耗盡的主要因素，這已經達到了 Pro 用戶（每月 20 美元）可能在 5 小時內收到兩次提示的程度。快取代碼中存在許多錯誤，一位用戶表示：“在修復這些錯誤之前，任何 5 分鐘與 1 小時的討論都毫無意義，因為數字完全有缺陷。”</p>
+    <p>對快取優化的關注也可能證明，在幕後，Anthropic 的配額只是購買了比實際更少的處理時間。</p>
+    <p>斯旺森並不是唯一一個報告克勞德表現下降的人。例如，企業團隊計劃的一位用戶說：「三月份，我可以整天使用 Opus，它取得了很好的效果。從三月份的最後一周到四月份，我在一些會議中在 2 小時內使用了最大會話使用量，但它陷入了過度思考的循環，多次輪流實現同一件事，幾十個段落‘但是等等，實際上我需要做 x’，但略有不同的。</p>
+    <p>快取優化可能很重要，但似乎不太可能解決所有這些報告的問題。 ®</p>
+    <p>Anthropic 裸體，意外暴露 Claude 程式碼來源</p>
+    <p>【翻譯失敗，保留原文】AMD's AI director slams Claude Code for becoming dumber and lazier since last update</p>
+    <p>如果給太多命令，克勞德代碼就會繞過安全規則</p>
+    <p>Anthropic 的 Claude 正在朝向人工智慧市場的頂端邁進</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
