@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. 2026-04-13｜隨著代理接管互聯網，Cloudflare 改進了 CLI</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 07</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/13/cloudflare_expanding_wrangler_cli_functionality/" target="_blank">The Register — Cloudflare revamps CLI as agents take over the internet</a><br>📅 原文發佈：2026-04-13</div>
+    <h1>07. 2026-04-13｜隨著代理接管互聯網，Cloudflare 改進了 CLI</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Cloudflare 正在重建 Wrangler 的命令列工具，為仍缺乏 CLI 支援的產品和介面添加命令。是的，人工智慧代理是一個重要原因。</p>
+    <p>毫無疑問，適用於 Cloudflare 整個 API 介面和大量軟體堆疊的單一 CLI 工具對於人類開發人員來說是件好事。然而，正如 Cloudflare 週一表示的那樣，人工智慧代理正在迅速成為其主要的 API 用戶，似乎並沒有出現在鍵盤上打字的情況。</p>
+    <p>該公司表示：“代理商越來越多地成為我們 API 的主要客戶。” “我們希望以代理商所需的所有方式提供每款 Cloudflare 產品。”</p>
+    <p>抱歉，人類開發人員，但看起來 CLI 現在是 AI 代理的地盤，而你只是生活在其中。</p>
+    <p>Cloudflare 首席技術官 Dane Knecht 在給 The Register 的電子郵件中解釋道：“Wrangler 的下一版本正在重建，為代理提供一致的可編程界面來配置 Cloudflare 產品並與之交互。” “這是為了讓代理更輕鬆地在 Cloudflare 上構建和操作應用程序，從開發環境到基礎設施配置。”</p>
+    <p>該公司解釋說，雖然 Cloudflare 的整個 API 現在可在單一程式碼模式 MCP 伺服器中使用，但在向命令列公開 Cloudflare 產品時「還有很多領域需要涵蓋」。 Cloudflare 希望涵蓋的領域包括 Workers 綁定、SDK、設定檔、Terraform 提供者、開發人員文件、OpenAPI 架構、代理技能等。</p>
+    <p>「許多 Clo​​udflare 產品在 Wrangler 中沒有 CLI 命令，」該公司表示。 “代理喜歡 CLI……因此我們一直在重建 Wrangler CLI，使其成為所有 Cloudflare 的 CLI。”</p>
+    <p>作為 Cloudflare 為代理時代重建 Wrangler 過程的一部分，該公司正在發布現已推出的技術預覽版。有興趣的可以透過執行 npx cf 或透過 npm install -g cf 進行全域安裝來嘗試。</p>
+    <p>Cloudflare 表示，Wrangler 重新設計的一個主要部分包括該公司重新思考其整個代碼生成管道，從而創建了一個新的 TypeScript 模式，據稱“可以定義 API、CLI 命令和參數的全部範圍，以及生成任何接口所需的上下文”，從而可以輕鬆地將未來的 Cloudflare 產品合併到 AI CLI 中，以滿足 AI 代理的需求。</p>
+    <p>另外，為了機器人而不是人類，Cloudflare 表示將開始在模式層強制執行預設 CLI 命令，以確保使用 Wrangler 的 AI 代理不會因為代理不知道的不太標準的命令而失敗。</p>
+    <p>該公司表示：“它總是得到，而不是信息。總是——強制，從不——跳過確認。” “代理希望 CLI 保持一致。”</p>
+    <p>所有這些新功能對於人類開發人員來說也都很棒，但 Cloudflare 至少向其人類用戶推出了新的 CLI 功能。</p>
+    <p>Local Explorer 現已在 Wrangler 和 Cloudflare Vite 插件的公開測試版中提供，使用者可以檢查 Cloudflare Workers 以查看它們附加了哪些綁定以及針對它們儲存了哪些資料。這裡的想法是消除 Worker 介面中的盲點，該盲點使得很難確定他們正在存取的資料是否是本地的。</p>
+    <p>Cloudflare 表示：「到目前為止，要弄清楚本地儲存了哪些數據，您需要進行逆向工程、檢查 .wrangler/state 目錄的內容或安裝第三方工具。」本地資源管理器的 API 可在任何與 Wrangler 或 Vite 插件相容的應用程式中的 /cdn-cgi/explorer/api 中使用。</p>
+    <p>Cloudflare 正在收集針對 Local Explorer 和新版本 Wrangler CLI 的回饋，甚至來自人類的回饋，並鼓勵那些嘗試過的人透過其開發者 Discord 管道提供回饋。</p>
+    <p>至於 Cloudflare CLI 用戶（無論是人類還是其他用戶）何時可以期望 Wrangler 能夠提供除了迄今為止預覽版中添加的有限功能之外的更多功能，該公司並未透露具體信息。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
