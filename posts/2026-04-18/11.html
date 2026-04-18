@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11. 2026-04-17｜CISA 要求聯邦政府修補受到主動攻擊的 13 年之久的 Apache ActiveMQ 漏洞</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 11</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/17/cisa_tells_feds_to_patch/" target="_blank">The Register — CISA tells feds to patch 13-year-old Apache ActiveMQ bug under active attack</a><br>📅 原文發佈：2026-04-17</div>
+    <h1>11. 2026-04-17｜CISA 要求聯邦政府修補受到主動攻擊的 13 年之久的 Apache ActiveMQ 漏洞</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>CISA 對新利用的 Apache ActiveMQ 漏洞發出警報，要求聯邦機構在兩週內進行修補，因為攻擊者已經發現了一個已經悄悄潛伏了十多年的漏洞。</p>
+    <p>美國網路安全機構週四將這個編號為 CVE-2026-34197 的漏洞添加到其已知可利用漏洞 (KEV) 目錄中，從而觸發了具有約束力的操作指令 (BOD) 22-01 的最後期限，該指令要求聯邦民事行政部門機構在 4 月 30 日之前修復其係統或準備好解釋原因。</p>
+    <p>該漏洞存在於 Apache ActiveMQ 中，Apache ActiveMQ 是一個開源訊息代理，用於在應用程式和服務之間傳輸數據，並允許經過身份驗證的使用者透過代理的 Jolokia 管理 API 執行任意程式碼，從而有效地將訊息傳遞主力轉變為遠端命令執行程式。</p>
+    <p>就在一周前，Horizo​​​​n3 研究員 Naveen Sunkavally 披露了這一消息，他使用 Anthropic 的 Claude AI 助手來幫助挖掘它。據 Horizo​​n3 稱，這個問題已經在程式碼庫中存在了 13 年，直到現在才被注意到。 ActiveMQ 版本 5.19.5 和 6.2.3 中提供了補丁。</p>
+    <p>Sunkavally 表示：「CVE-2026-34197 是 Apache ActiveMQ Classic 中的一個遠端程式碼執行漏洞，它已經隱藏在眾目睽睽之下 13 年了。」「攻擊者可以透過 ActiveMQ 的 Jolokia API 呼叫管理操作，以欺騙代理程式取得遠端設定檔並執行任意作業系統命令。」</p>
+    <p>雖然該錯誤從技術上講需要身份驗證，但 Horizo​​n3 指出，許多部署仍然依賴預設憑證 - 始終可靠的「admin:admin」 - 使得初始存取變得微不足道。更糟的是，在某些版本（6.0.0 到 6.1.1）上，較舊的缺陷 CVE-2024-32114 可以在完全沒有身份驗證的情況下暴露 Jolokia API，從而將其轉變為無需憑證的遠端程式碼執行鏈。</p>
+    <p>Sunkavally 說：“漏洞需要憑證，但預設憑證在許多環境中很常見。” “在某些版本上......根本不需要憑證......在這些版本中，CVE-2026-34197 實際上是未經身份驗證的 RCE。”</p>
+    <p>這種組合正是在 CISA 的 KEV 清單中出現錯誤的類型，該清單是為已經在野外利用的漏洞保留的。還有大量的暴露表面可供瞄準：威脅監控機構 ShadowServer 正在追蹤可從公共互聯網存取的 8,000 多個 ActiveMQ 實例。</p>
+    <p>這也不是 ActiveMQ 第一次與攻擊者發生衝突。該平台的特點是存在相當多的妥協，從加密貨幣礦工到殭屍網路基礎設施。正如 Sunkavally 指出的那樣，這一切都不是特別新穎，這讓管理員有責任迅速採取行動。 ®</p>
+    <p>就像竊賊關門一樣，Apache ActiveMQ 攻擊者在闖入後修補關鍵漏洞</p>
+    <p>紅帽中間件在戰略洗牌中退居二線</p>
+    <p>加密郵件服務 Proton 將嫌疑人的個人資訊交給當地警察</p>
+    <p>關鍵的 Apache ActiveMQ 缺陷受到「笨拙」勒索軟體犯罪分子的攻擊</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
