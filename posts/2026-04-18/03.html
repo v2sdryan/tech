@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. 2026-04-17｜Claude Opus 花費 2,283 美元編寫了一個 Chrome 漏洞程序</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 03</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/17/claude_opus_wrote_chrome_exploit/" target="_blank">The Register — Claude Opus wrote a Chrome exploit for $2,283</a><br>📅 原文發佈：2026-04-17</div>
+    <h1>03. 2026-04-17｜Claude Opus 花費 2,283 美元編寫了一個 Chrome 漏洞程序</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Anthropic 拒絕公開發布其 Mythos 錯誤查找模型，因為擔心它會讓攻擊者在任何人做出反應之前發現並利用漏洞。</p>
+    <p>但該公司的 Opus 4.6 模型已被周四發布的 Opus 4.7 所取代，能夠開發功能性漏洞利用程式碼。</p>
+    <p>在周三的一篇部落格文章中，Hacktron 首席技術長 Mohan Pedhapati (s1r1us) 描述了他如何使用 Opus 4.6 創建針對 Chrome 138 中 V8 JavaScript 引擎的完整漏洞利用鏈，該引擎捆綁到當前版本的 Discord 中。</p>
+    <p>「我們使用的 V8 [越界錯誤] 來自 Chrome 146，與 Anthropic 自己的 Claude Desktop 運行的版本相同，」他說。 「一周來來回回，23 億個代幣，2,283 美元的 API 成本，我花了大約 20 個小時將其從死胡同中解開。它彈出了計算。”</p>
+    <p>最終，任何有足夠耐心和 API 金鑰的腳本小子都將能夠彈出 shell</p>
+    <p>「彈出計算」是指開啟計算器應用程序，這是概念驗證漏洞利用程式碼中常用的事件，表示攻擊損害了目標系統。</p>
+    <p>Pedhapati 表示，雖然 2,283 美元對個人來說是一筆巨款，但如果考慮到一個人在沒有幫助的情況下開發類似的漏洞需要幾週的時間，這個數字就很小了。即使您為 Pedhapati 花費數千美元來維護模型，這仍然遠低於人們從 Google 和 Discord 的漏洞獎勵計劃中可能獲得的理論獎勵（約 15,000 美元）。這只是合法市場 – 誰知道犯罪者可能會為熱門 0day 付出什麼代價？</p>
+    <p>根據 Opus 4.7 系統卡的說法，「Opus 4.7 在網路能力方面與 Opus 4.6 大致相似。」但它的能力顯然不如 Mythos Preview，並且配備了「自動檢測和阻止表明禁止或高風險網路安全用途的請求的保護措施」。</p>
+    <p>但對 Pedhapati 來說，具體型號並不是問題。相反，程式碼產生的持續改進需要改變安全態勢和程序。</p>
+    <p>「神話是否被過度炒作並不重要，」佩德哈帕蒂說。 「曲線並沒有變平。如果不是 Mythos，那麼就是下一個版本，或者之後的版本。最終，任何有足夠耐心和 API 密鑰的腳本小子都將能夠在未打補丁的軟體上彈出 shell。這是一個何時的問題，而不是是否的問題。”</p>
+    <p>對於基於 Chrome 的 Electron 框架（例如 Slack、Discord 等）的應用程序，問題是它們何時將程式碼庫更新到最新版本，該版本仍然落後於最新的 Google Chrome 版本。</p>
+    <p>Electron 41.2.1 於 4 月 15 日發布，捆綁了 Chrome 146.0.7680.188，僅比當天發布的桌面版 Google Chrome 版本 (147.0.7727.101/102) 低一個版本。但 Electron 應用程式的開發人員不一定會立即更新其相依性並發布新版本。用戶不一定會立即獲得這些更新。</p>
+    <p>Pedhapati 表示，他選擇 Discord 作為目標是因為「它位於 Chrome 138 上，比目前版本落後 9 個主要版本」。</p>
+    <p>Pedhapati 認為，隨著人工智慧模型的漏洞開發能力越來越強，修補程式視窗就會變得越來越小。</p>
+    <p>他認為，“每個修補程式基本上都是一個漏洞利用提示”，並補充說，這對於開源專案來說尤其困難，因為在修訂版本發布之前，修復程式通常會在程式碼中公開可見。</p>
+    <p>他對開發人員的建議是，在推送程式碼之前更多地關注安全性，並更加關注依賴關係，以便可以快速做出更改。他還認為，安全補丁應該自動完成，這樣人們就不會因為忘記接受更新而容易受到攻擊。他表示，像 V8 這樣的開源專案在公開漏洞細節時會更加謹慎。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
