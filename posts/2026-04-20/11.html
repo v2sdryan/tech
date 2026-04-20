@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11. 2026-04-19｜我本來就是想這麼做的！人工智慧供應商對漏洞不承擔責任</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 11</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/19/ai_vendors_response_to_security/" target="_blank">The Register — I meant to do that! AI vendors shrug off responsibility for vulns</a><br>📅 原文發佈：2026-04-19</div>
+    <h1>11. 2026-04-19｜我本來就是想這麼做的！人工智慧供應商對漏洞不承擔責任</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>觀點 AI 供應商：“您需要使用 AI 來對抗 AI 威脅（並完成企業 IT 環境中的其他所有工作）。”人工智慧供應商也表示：“這不是安全缺陷；它正在按預期工作。”</p>
+    <p>隨著數位炒作者告訴企業使用人工智慧來做所有事情，尤其是在檢測和阻止安全問題方面，這種模式變得越來越普遍。也就是說，除非人工智慧本身有安全缺陷，否則它就是「預期行為」或「設計風險」。</p>
+    <p>如果幸運的話，也許有過錯的人工智慧公司會在其文件中悄悄發布新的安全注意事項。但根本問題並沒有解決。在某些情況下（例如即時注入），供應商無法真正修復缺陷，即使他們願意。</p>
+    <p>最近的幾個例子展示了這是如何發揮作用的。</p>
+    <p>研究人員最近展示瞭如何劫持與 GitHub Actions 整合的三種流行的 AI 代理來竊取 API 金鑰和存取令牌。這三個代理商分別是 Anthropic 的 Claude Code Security Review、Google 的 Gemini CLI Action 和 Microsoft 的 GitHub Copilot，所有三個供應商都為這些發現支付了錯誤賞金。</p>
+    <p>Anthropic 支付了 100 美元的賞金，將嚴重程度從 9.3 升級到 9.4，並更新了其文件中的「安全注意事項」部分。谷歌為這一發現支付了 1,337 美元的獎勵。 GitHub 在最初稱這是一個他們「無法重現」的「已知問題」後，最終向研究人員的披露支付了 500 美元的獎金。</p>
+    <p>沒有供應商分配 CVE 或發佈公共安全公告。</p>
+    <p>另一個漏洞搜尋團隊揭露了 Anthropic 模型上下文協定 (MCP) 中的一個設計缺陷，他們表示，該缺陷使多達 20 萬台伺服器面臨被完全接管的風險。</p>
+    <p>他們「一再」要求 Anthropic 修補根本問題，並一再被告知該協議按預期工作 - 儘管為使用 MCP 的各個開源工具和 AI 代理髮布了 10 個（到目前為止）高嚴重性和嚴重嚴重性的 CVE。</p>
+    <p>漏洞搜尋者聲稱，根修補程式可以降低下載總量超過 1.5 億次的軟體包的風險，並保護數百萬下游用戶。</p>
+    <p>Anthropic 不修復缺陷的理由是什麼？預期行為。 「這是 MCP stdio 伺服器工作方式的明確部分，我們認為這種設計並不代表安全默認，」這家人工智慧公司告訴研究人員。</p>
+    <p>這意味著，保護這些複雜的、非確定性人工智慧系統的非常混亂的問題再次被推給了 IT 商店或最終用戶。在這種情況下，這包括在其應用程式或開源專案中使用 Anthropic 官方 MCP 軟體開發套件的任何開發人員，以及將此開源程式碼和 AI 工具引入其環境的任何公司。</p>
+    <p>進一步縮小一分鐘：值得注意的是，美國聯邦人工智慧法規完全缺乏對人工智慧公司的限制。儘管其中一個公司（Anthropic）上週警告稱，其最新模型非常擅長發現安全漏洞，因此向公眾發布它會非常危險。很難想像在其他任何行業，一家公司可以告訴人們“我們的產品使每個人都面臨嚴重風險”，但仍然被允許不受懲罰地運營。</p>
+    <p>我試著向我的孩子傳達這樣一種觀念：成熟和贏得信任意味著對自己的選擇和行為負責，並承認自己的錯誤。這包括承認錯誤，盡可能改正錯誤，並修正，以便下次做得更好。</p>
+    <p>人工智慧公司的所有這些「不是我」的行為都表明安全是別人需要解決的問題，這表明他們完全缺乏成熟度，甚至缺乏普遍的正派。人們只想知道客戶要花多久時間才能得出同樣的結論。 ®</p>
+    <p>研究人員表示，Anthropic 不會承認 MCP 的「設計缺陷」會導致 20 萬台伺服器面臨風險</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
