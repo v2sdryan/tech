@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13. 2026-04-20｜Claude Desktop 更改您尚未安裝的瀏覽器的應用程式存取設定</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 13</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/20/anthropic_claude_desktop_spyware_allegation/" target="_blank">The Register — Claude Desktop changes app access settings for browsers you don't even have installed yet</a><br>📅 原文發佈：2026-04-20</div>
+    <h1>13. 2026-04-20｜Claude Desktop 更改您尚未安裝的瀏覽器的應用程式存取設定</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>在未經您明確同意的情況下，一個應用程式不應修改另一個應用程式。然而，Anthropic 的 macOS 版 Claude Desktop 甚至在安裝這些應用程式之前就安裝了影響其他供應商應用程式的文件，並且在未經同意的情況下授權瀏覽器擴充功能。</p>
+    <p>隱私顧問兼 The Register 偶爾撰稿人 Alexander Hanff 認為，這使得 Claude Desktop 成為“間諜軟體”，並違反了歐洲隱私法。</p>
+    <p>「我想直言不諱，」漢夫週末在一篇部落格文章中寫道。 「這是一種黑暗模式。在我的專業意見中，這也直接違反了指令 2002/58/EC（電子隱私指令）第 5(3) 條以及大量計算機訪問和濫用法律（通常是刑法），其規模足夠大，對於一個為被視為具有安全意識的人工智能實驗室而付出巨大努力的供應商來說，其規模足夠大。」</p>
+    <p>第 5 條第 (3) 款要求尋求存取個人資料的服務提供者提供有關資料存取請求的明確詳細資訊並獲得同意，除非存取對於提供服務是絕對必要的。</p>
+    <p>Hanff 解釋說，他在嘗試偵錯另一個使用 Native Messaging 的應用程式時發現了未公開的檔案安裝，Native Messaging 是 Chrome 和其他應用程式之間進行通訊的 API。 Claude Desktop 依賴跨平台 Electron 框架，而後者又依賴 Chromium 的捆綁版本。</p>
+    <p>Claude Desktop 安裝的檔案是：</p>
+    <p>com.anthropic.claude_browser_extension.json</p>
+    <p>它是一個本機訊息傳遞清單文件，當基於 Chromium 的瀏覽器想要執行本機可執行檔時會呼叫該文件。該檔案預先授權了三個不同的 Chrome 擴充功能識別碼（例如 Chrome 擴充功能中的 Claude ），以便關聯的瀏覽器將執行清單檔案中標識的二進位檔案。</p>
+    <p>基本上，Claude Desktop 正在設定其 AI 模型存取各種瀏覽器以實現自動化操作的能力。它會針對使用者裝置上尚未存在的瀏覽器執行此操作，以便這些瀏覽器在將來某個時候安裝時將授予 Claude 存取權限。</p>
+    <p>但漢夫聲稱，出於隱私和安全考慮，他從未安裝過任何 Anthropic 瀏覽器擴充功能。 Claude Desktop 在沒有透露或未經許可的情況下為他做到了這一點。</p>
+    <p>瀏覽器擴充功能放大了安全性和隱私挑戰，因為它們經常要求過於廣泛的權限。 Hanff 觀察到 Chrome 中的 Claude 已通過身份驗證的會話訪問，並且可以閱讀網頁、填寫表單和捕獲螢幕。更重要的是，他說，二進位橋應用程式在使用者權限層級的瀏覽器沙箱之外運行，不會出現任何權限提示。</p>
+    <p>漢夫表示，人擇的方法有許多問題。這相當於透過為其他供應商的瀏覽器編寫設定檔來強制跨越信任邊界進行捆綁。預設情況下它是不可見的，無需選擇加入。很難去除。它預先授權尚未安裝的瀏覽器擴充功能。其文件的命名方式未能闡明所允許的範圍。除其他問題外，它還預先授權不存在的瀏覽器使用本機訊息傳遞二進位檔案。</p>
+    <p>Hanff 表示，「Anthropic 自己的安全資料表明，在沒有採取緩解措施的情況下，Claude for Chrome 很容易受到提示注入的影響，成功率為 23.6%，而在當前採取緩解措施的情況下，成功率為 11.2%。…透過在使用者筆記型電腦上預先安裝橋接器，針對 Claude for Chrome的成功提示注入有一條路徑，通過擴展程序、通過橋接器，到達以用戶權限在瀏覽器沙箱外部運行的幫助程序二進製文件。</p>
+    <p>Anthropic 沒有回應置評請求。</p>
+    <p>我們注意到，Claude Desktop 本機訊息主機有一個未修復的錯誤，該錯誤已於 2 月 28 日由 GitHub Actions 機器人自動關閉。問題在於 Claude Code 和 Claude Desktop 本機訊息主機註冊相互衝突，因此關聯的 Chrome 擴充功能因 Claude Code 而失敗。</p>
+    <p>顧問公司 Digital 520 的創始人兼首席顧問 Noah M. Kenney 對漢夫使用「間諜軟體」一詞提出異議，但表示他的調查結果似乎支持他的法律推理。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>

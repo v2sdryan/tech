@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15. 2026-04-20｜Linux 7.1 將有一個可選的新 NTFS 驅動程式</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 15</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/20/linux_71_new_ntfs/" target="_blank">The Register — Linux 7.1 will have an optional new NTFS driver</a><br>📅 原文發佈：2026-04-20</div>
+    <h1>15. 2026-04-20｜Linux 7.1 將有一個可選的新 NTFS 驅動程式</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Linux 核心 7.1 的功能清單正在形成，並且一個出色的新增功能已經落地：新的讀寫 NTFS 驅動程式。</p>
+    <p>現在內核 7.0 已經發布，托瓦爾茲的全視之眼已將目光轉向未來的內核 7.1，該版本可能會在幾個月後出現。一個突出的功能已經被合併：一個新的核心讀寫驅動程序，用於 Windows 的預設磁碟格式 NTFS。 Linus 稱之為 Namjae Jeon 的 ntfs 復活。一些更令人興奮的 Linux 部落格對此感到喘不過氣來——但以我們的拙見，他們錯過了真正的資訊。</p>
+    <p>這並不代表性能或類似情況的巨大轉變。現有的核心內 NTFS 支援已經相當快了。從中學到的真正教訓是關於乾淨、可維護、經過徹底註釋的程式碼，這意味著一個開發人員甚至可以在幾十年後從另一個開發人員那裡接管它。</p>
+    <p>Reg FOSS 服務台在 2025 年 10 月描述了該驅動程序，我們回顧了當時的歷史。它來自韓國開發人員 Namjae Jeon，他曾在三星工作，但現在與 Samba 合作。他正在成為 Linux 檔案系統大師之一：正如我們在 2022 年報告的那樣，當時他貢獻了程式碼，允許 Linux 修復損壞的 exFAT 卷，我們現在確信它已經保存了許多大型閃存儲存媒體用戶的資料。</p>
+    <p>這並不是一個巨大的 Linux 新功能。正如 Linux-NTFS 專案網頁的存檔副本所示，Linux 在 1997 年獲得了使用核心 2.1.74 讀取 NTFS 磁碟區的能力。僅僅十多年後，由 Tuxera 贊助的 FUSE NTFS-3G 驅動程式也加入了這項功能。因為它作為用戶模式程式運行，而不是在核心內部運行，所以 NTFS-3G 速度不那麼快，並且有一些限制：例如，您無法從它啟動。</p>
+    <p>這種情況在 2021 年發生了變化，當時 Paragon Software 向核心捐贈了新的讀寫 GPL NTFS 驅動程式。經過大量的努力和討論，在這隻禿鷹加入 The Register 團隊之前不久，它就進入了內核 5.15。不過，向 Linux 核心捐贈一個大型且複雜的驅動程式並不是一個一次性的專案：它需要不斷維護，並且在大約六個月內，這開始成為一個問題。</p>
+    <p>大約在那個時候，Namjae 開始對原始 20 世紀 90 年代的唯讀 NTFS 驅動程式進行現代化改造，添加寫入支援並對其進行修改以使用現代核心檔案系統處理功能（例如大型作品集）。</p>
+    <p>現在，原來的NTFS驅動程式已經被取代了。當核心的下一個次要版本出現時，它將是可選的，並且可以使用名為 NTFS_FS 的 Kconfig 開關啟用。目前，Paragon 的 NTFS3 驅動程式將保留在樹中，但看起來它的日子已經屈指可數了。</p>
+    <p>新的驅動程式應該稍微快一些，並且它已經通過了更多的合規性測試。拉取請求說：</p>
+    <p>新的 ntfs 驅動程式通過了 326 次 xfs 測試，而 ntfs3 則通過了 273 次。 ntfs3 通過的所有測試都是此實現通過的測試的完整子集。新增了對 Fallocate、idmapped 安裝、權限等的支援。</p>
+    <p>Paragon 花了好幾個月的時間才讓其程式碼被接受，正如 The Register 當時記錄的那樣：在最初提交 27,000 行程式碼後，Paragon 將其重構為四個版本中可管理的區塊，並在第二年獲得了接受。</p>
+    <p>也許五年後，所有的努力都會像淚水消失在時間的雨中。</p>
+    <p>這是需要注意的重要事情，每個振動編碼「10x 開發人員」都應該注意。當然，他們不是，但我們其他人是。 ®</p>
+    <p>Linux 7.0 首次亮相，Linus Torvalds 思考人工智慧的錯誤查找能力</p>
+    <p>終止 i486 支援的補丁命中 Linux 核心合併佇列</p>
+    <p>【翻譯失敗，保留原文】AI bug reports went from junk to legit overnight, says Linux kernel czar</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
