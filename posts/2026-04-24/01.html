@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. 2026-04-24｜安全性薄弱意味著攻擊者可以禁用城市的所有公共電動車充電器</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 01</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/24/rentable_iot_security_flaws/" target="_blank">The Register — Weak security means attackers could disable all of a city's public EV chargers</a><br>📅 原文發佈：2026-04-24</div>
+    <h1>01. 2026-04-24｜安全性薄弱意味著攻擊者可以禁用城市的所有公共電動車充電器</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Black Hat Asia 租賃物聯網基礎設施（例如公共電動車充電器和共享電動自行車）的開發商將用戶便利性置於安全之上，從而使自己的服務面臨大規模拒絕服務攻擊。</p>
+    <p>這篇令人恐懼的論文是中國清華大學硬體和物聯網安全研究員史鶴田週五在黑帽亞洲會議上發表演講的主題。</p>
+    <p>施在會議上表示，租用物聯網服務的本質意味著它們存在獨特的安全問題：任何人都可以存取設備並檢查它們是否有漏洞。研究人員在獲得許可的情況下進行了探測，並以合乎道德的方式披露了結果——對此我們都應該表示感謝，因為他發現一些可租賃設備包含調試端口或 UART 連接器，這使得檢查其操作對於受過教育的攻擊者來說是一項簡單的任務。</p>
+    <p>他自己的努力產生了設備韌體中共享身份驗證金鑰的證據，以及無法正確驗證用戶身份的後端服務。</p>
+    <p>研究人員還調查了可租賃物聯網提供者發布的應用程序，以便消費者可以訪問他們的服務，並再次發現安全性薄弱，這使得他能夠做一些事情，例如創建可租賃物聯網服務無法與實際客戶區分開的虛擬客戶端。使用幻象客戶端可以讓攻擊者以零成本為汽車充電或租賃踏板車。</p>
+    <p>石說，他開發的技術還可以透過暴露可出租物聯網服務的後端來洩漏個人資訊。</p>
+    <p>他創建了一個名為「IDScope」的工具，可以利用他發現的許多缺陷，並在演講中透過為中國公共電動車充電站提供者運行 iOS 應用程式來演示該工具。</p>
+    <p>施要求觀眾提名一個中國城市——上海是最受歡迎的選擇——然後在主要購物和娛樂區人民廣場尋找可用的充電器。該應用程式產生了一份充電器清單以及哪些充電器可供使用。</p>
+    <p>史要求觀眾選擇他應該攻擊哪個可用的充電器，記下應用程式中列出的該充電器的 ID 號，並將該號碼輸入到腳本中。一兩秒後，應用程式中該充電器的圖示顏色從綠色（表示可充電）變為灰色，表示連接埠已停用。</p>
+    <p>該應用程式是中文的，而你們的記者無法閱讀該語言，因此我無法肯定地說出我所看到的內容，但演示引起了觀眾中其他人自發的掌聲 - 而且 Black Hat 的很多人都來自華語世界。</p>
+    <p>史認為，他創造的技術還可以拒絕服務，並且可以大規模地這樣做——創造了摧毀整個城市的電動車充電網路的可能性。</p>
+    <p>不僅在中國：研究人員測試了歐洲共享自行車和滑板車提供者發布的 11 個應用程序，發現了類似的問題 - 這表明他的發現將適用於其他地方。</p>
+    <p>他推測，他發現的缺陷是開發人員試圖以犧牲安全性為代價來建立用戶覺得方便的服務的結果。 ®</p>
+    <p>混合雲有兩個攻擊面，而您對其中任何一個都沒有給予足夠的重視</p>
+    <p>電動車充電器公司 ELECQ 遭勒索軟體騙子攻擊，客戶聯絡資料被盜</p>
+    <p>Pwn2Own Automotive 2026 發現 76 個零日漏洞，支付超過 100 萬美元</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
