@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06. 2026-04-23｜Anthropic 承認，當它試圖讓它變得更聰明時，它卻讓克勞德變得愚蠢</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 06</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/23/anthropic_says_it_has_fixed/" target="_blank">The Register — Anthropic admits it dumbed down Claude when trying to make it smarter</a><br>📅 原文發佈：2026-04-23</div>
+    <h1>06. 2026-04-23｜Anthropic 承認，當它試圖讓它變得更聰明時，它卻讓克勞德變得愚蠢</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>克勞德用戶抱怨人工智慧服務在過去一個月中產生的回應品質較低，但他們並沒有想像到這一點。</p>
+    <p>Anthropic 週四發布了一項公司調查結果，發現 3 月和 4 月的三個明顯變化使使用 Claude Code、Claude Agent SDK 和 Claude Cowork 的客戶的情況變得更糟。</p>
+    <p>該公司表示，Claude 的 API 並未受到影響。</p>
+    <p>Claude 用戶在 3 月和 4 月期間對 Claude 的輸出品質提出了嚴厲的抱怨，而服務可用性問題只會讓事情變得更糟。</p>
+    <p>Anthropic 堅稱它並沒有故意降低其模型的性能。相反，有些調整出了差錯，這些失誤讓人感覺人工智慧的無能正在蔓延。</p>
+    <p>首先，3 月 4 日，Anthropic 將 Claude Code 的預設推理努力等級從高調整為中。努力程度控制模型在特定推理任務上投入的努力程度。 Anthropic 希望它所做的改變能減少長時間思考帶來的潛伏期。</p>
+    <p>該公司表示：“這是錯誤的權衡。” “在用戶告訴我們他們更願意默認更高的智能並選擇減少簡單任務的工作量後，我們於 4 月 7 日恢復了這一更改。”</p>
+    <p>據推測，降低 Opus 4.6 和 Sonnet 4.6 的預設工作量水平也會減輕推理負擔——模型會「思考」得更少，消耗更少的代幣，更明智地使用有限的容量。</p>
+    <p>最新的 Claude Code 版本 v2.1.118 在 Sonnet 4.6 上預設為「xhigh」。</p>
+    <p>Anthropic 的第二次失敗是 3 月 26 日引入的一個錯誤，當時快取最佳化變更最終導致在提示和回應週期的每個循環中清除快取的會話資料。</p>
+    <p>Claude 將輸入令牌快取一小時，這使順序 API 呼叫更快、更便宜，從而使用戶受益。公司工程師決定清除閒置一小時的使用者的輸出令牌（思考會話），因為在這麼長時間之後快取將不再使用。</p>
+    <p>Anthropic 做出這項改變的動機是透過處理不再相關的舊思維痕跡來降低復原會話的成本。相反，工程師——克勞德？ – 引入了一個錯誤，可以清除每回合的思考過程。結果就是克勞德變得「健忘、重複」。 Sonnet 4.6 和 Opus 4.6 已於 4 月 10 日修復此問題。</p>
+    <p>第三，4 月 16 日，Anthropic 修改了系統提示等措施，努力讓 Claude 模型變得不那麼冗長。新增的段落聽起來無害：</p>
+    <p>“長度限制：將工具呼叫之間的文字保持在 ≤25 個單字以內。除非任務需要更多細節，否則將最終回應保持在 ≤100 個單字以內。”</p>
+    <p>經過幾週的內部測試，模型品質評估表明該更改是安全的。但在與 Opus 4.7 一起發布修正後的系統提示後，後續的消融測試（包括刪除系統提示指令以衡量其缺失的影響）顯示 Opus 4.6 和 4.7 的性能均下降了 3%。相關係統提示調整已於4月20日恢復。</p>
+    <p>Anthropic 承諾將為 Claude Code 的未來公共構建進行更多內部測試，改進其代碼審查工具，更好地評估系統提示更改，並在社交媒體網站 X 上建立新的 @ClaudeDevs 帳戶，“為我們提供深入解釋產品決策及其背後推理的空間。”</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
