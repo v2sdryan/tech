@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12. 2026-04-24｜Ubuntu Resolute Raccoon 吐出了 Xorg，但仍然允許您運行 X11 應用程式</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 12</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/24/ubuntu_resolute_raccoon/" target="_blank">The Register — Ubuntu Resolute Raccoon spits out Xorg, but still lets you run X11 apps</a><br>📅 原文發佈：2026-04-24</div>
+    <h1>12. 2026-04-24｜Ubuntu Resolute Raccoon 吐出了 Xorg，但仍然允許您運行 X11 應用程式</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Ubuntu 26.04「Resolute Raccoon」是 Canonical 的最新 LTS 版本，隨 GNOME 50、Linux 核心 7.0 一起發布，並從 Ubuntu 桌面中刪除了 Xorg 選項，同時仍透過 Xwayland 執行 X11 應用程式。</p>
+    <p>此版本基於核心 7.0，使用 GNOME 50，並附帶 Firefox 150。這些是一組令人愉悅的版本號，但在 Resolute 的支援生命週期內，其 Firefox 版本將不斷攀升，並且隨著臨時版本的發布，LTS 支援堆疊也將提供更新的核心。 （systemd 260 來得太晚了，所以 Resolute 附帶了 systemd 259。）作為最新的 LTS 版本，Resolute 將在接下來的五年內（直到 2031 年）獲得免費更新，並且可以透過 Canonical 的「Ubuntu Pro」服務獲得另外十年的安全更新，該服務將於 2022 年提供最多五台機器。</p>
+    <p>如今，Ubuntu 桌面預設安裝相當基本的 Firefox，僅此而已。 - 點擊放大</p>
+    <p>預設的 Ubuntu 桌面使用 GNOME，自 Ubuntu 17.10 以來一直如此。我們上月初查看了 GNOME 50 版本，並在月底查看了 Resolute 的測試版。儘管一些捆綁的應用程式和配件已被替換，但它與 2021 年的 GNOME 40 並沒有太大區別，而且只是相對於整整十年前的 GNOME 3 的增量變化。它看起來很棒，如果您喜歡 GNOME，那也沒關係。然而，這個版本有一個很大的功能差異，從外觀上看不出來：它現在只支援 Wayland – 沒有使用 Xorg 登入的選項。 X11 應用程式可以透過 Xwayland 運行，但使用者執行一些進階操作（例如螢幕擷取、螢幕共用和遠端控制等）將需要找到並適應新工具。</p>
+    <p>除了預設的 GNOME 桌面版本外，Edubuntu 26.04 還使用 GNOME 50。或者，還有其他八種官方桌面版本，具有不同的軟體包。</p>
+    <p>對於那些喜歡傳統的類似 Windows 佈局的人來說，有多種選擇。 Kubuntu 26.04 提供 KDE Plasma 6.6，它也用於 Ubuntu Studio 26.04 中。如果您喜歡相對纖薄的基於 Gtk4 的現代桌面但傳統佈局的想法，可以選擇 Ubuntu Budgie 26.04 以及僅支援 Wayland 的 Budgie 10.10。最輕的風味是 Lubuntu 26.04 和 LXQt 2.3。</p>
+    <p>Xubuntu 26.04 最終將目前的 Xfce 4.20 桌面引入了 Ubuntu 的 LTS 版本，對於我們來說，它提供了 Linux 桌面空間中功能、可自訂性和輕資源使用的最佳組合。對於那些不喜歡 Canonical 的 Snap 打包格式的人來說，特殊的 Xubuntu 最小版本根本沒有任何 Snap 套件。這意味著刪除 snapd 很簡單。然後，您可以安裝 extrepo 命令，並使用它來啟用 Mozilla 的 APT 儲存庫等。這將讓你可以使用可靠的舊 apt 命令直接從 Mozilla 安裝 Firefox ESR，或從 Google 的儲存庫或任何你喜歡的東西安裝 Chrome。一旦電腦連網，您可以複製並貼上幾個命令來阻止重新安裝 snapd。然後你可以切換到當前的 Firefox 或其他任何東西，而無需重新潛入。你也可以下載 Xubuntu Minimal 作為一個單獨的、更小的 ISO 檔案 - 這對於任何其他風格來說都是不正確的。</p>
+    <p>我們特別向喜歡 GNOME 2 雙面板佈局的人推薦 Xubuntu，遺憾的是沒有 Ubuntu MATE 26.04。專案負責人 Martin Wimpress 已轉向一個新項目，他在上屆 Ubuntu 高峰會上就此發表了演講：Nøughty Linux，這是他正在開發的新混音版。它的主頁仍然是一個預告片，但 Github 頁面有更多資訊。另一個傳統主義選項是 Ubuntu Cinnamon 26.04 ，它提供 Cinnamon 6.4.13。</p>
+    <p>Ubuntu 確實要求一些追蹤訊息，但比我們可以命名的一些專有 PC 作業系統要少得多 - 點擊放大</p>
+    <p>當一扇門關閉時（我們希望是暫時的），另一扇門打開了：Ubuntu Unity 26.04 將 Canonical 的二十世紀中期的內部桌面帶回了家庭。由於專案負責人 Rudra Saraswat 正忙於大學學習，因此混音版跳過了 25.10 的發布週期。一些新的維護人員挺身而出，修復了一堆錯誤，更新了一些組件，並且它再次運作良好。據報道，它包含 Unity 7.7.1。</p>
+    <p>值得注意的是，Ubuntu Unity 26.04 並不是 LTS 版本。沒有一個版本能夠像 GNOME 版本那樣獲得完整的五年支持，但像 Kubuntu 這樣歷史悠久的版本卻獲得了三年的支持。</p>
+    <p>除了各種桌面版本之外，還有伺服器版本。我們懷疑這個版本的支援收入是 Canonical 持續發展的動力。 Ubuntu Server 可在 x86-64、Arm64、PowerPC、RISC-V 和 IBM Z 大型主機上使用，雖然它沒有桌面，但它為伺服器管理員提供了工具，例如用於自動化的 Juju、用於配置虛擬機器的 Multipass 工具、用於裸機網路部署的 MAAS 以及用於管理整個系統容器和虛擬機器的 LXD。</p>
+    <p>26.04 的桌面版本提供 TPM 支援的全磁碟加密作為標準功能，但在此 LTS 中，如果您想要加密的伺服器，則必須手動配置它。</p>
+    <p>此版本的 Ubuntu Server 帶來了多個開發人員工具的新版本。 Java 透過 CRaC 獲得 OpenJDK 25 LTS 和 Kotlin 2.0.4。 Resolute 還包括 Microsoft 的跨平台執行時間、.NET 10 和新的 Zig 程式語言，儘管目前僅提供對 x86-64 和 Arm64 的全面支援。</p>
+    <p>我們在上次 Ubuntu 峰會上採訪過的工程主管 Jon Seager 告訴 The Register，該公司正在努力將 Zig 引入 PowerPC、S/390 和 RISC-V，但稱其為「引導工作」。對 Zig 的支援也意味著儲存庫中有 Mitchell Hashimoto 的 Ghostty 終端模擬器套件。</p>
+    <p>他告訴我們，這個 LTS 為開發人員和虛擬化工具提供了一種新方法。現在它包括 Nvidia CUDA 和 AMD ROCm 工具，雖然還沒有，但 DOCA-OFED 即將推出。他表示，將會有一個雙軌容器和虛擬機器堆疊，有滾動版本和穩定版本。例如，發佈時提供的有 Docker 29、QEMU 10.2.1、libvirt 12.0.0，這些版本將在 LTS 的生命週期內持續存在，但您可以選擇追蹤上游的較新版本。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
