@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05. 2026-04-24｜DeepSeek 的新模型非常高效，可以在烤麵包機上運行…我們指的是華為的 NPU</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 05</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/24/deepseek_v4/" target="_blank">The Register — DeepSeek's new models are so efficient they'll run on a toaster ... by which we mean Huawei's NPUs</a><br>📅 原文發佈：2026-04-24</div>
+    <h1>05. 2026-04-24｜DeepSeek 的新模型非常高效，可以在烤麵包機上運行…我們指的是華為的 NPU</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>中國人工智慧寵兒 DeepSeek 帶著新的開放權重大型語言模型回歸，其性能有望與美國最好的專有法學碩士相媲美。也許更重要的是，它聲稱可以大幅降低推理成本，並擴展了對華為 Ascend 系列人工智慧加速器的支援。</p>
+    <p>DeepSeek V4 於週五發布，可在流行的模型儲存庫（例如 Hugging Face）、該公司的 API 和兩種新風格的 Web 服務上下載。第一個是較小的 2840 億個參數 Flash 專家混合 (MoE) 模型，具有 130 億個活動參數，而兩個模型中較大的是一個 1.6 兆個參數模型，其中 490 億個參數在任何給定時刻都在使用。</p>
+    <p>V4-Pro 接受了 33 兆代幣的訓練，如果 DeepSeek 可信的話，它擊敗了所有開放權重的 LLM，同時在其基準套件中與西方最好的專有模型相媲美。</p>
+    <p>以下是 DeepSeek 表示其 V4 模型在競爭中的優勢。 - 點擊放大</p>
+    <p>當然，這些說法應該要保留態度。雖然 DeepSeek 憑藉其 V3 和 R1 系列車型擁有良好的業績記錄，使這家中國開發者家喻戶曉，但僅僅因為它在預製基準測試中表現良好，並不意味著它會在現實世界的應用中經受住考驗。</p>
+    <p>我們預計 DeepSeek V4-Pro 會比該公司先前的產品好得多。新模型的參數增加了近萬億倍，並且在推理過程中使用了更多的主動參數。但與 DeepSeek V3 的情況一樣，它表明可以使用比之前想像的更少的計算來訓練大型前沿模型，基準測試並不能說明全部。</p>
+    <p>在底層，DeepSeek V4 引入了一些新穎的架構變化，據開發人員稱，這些變化應該會使模型的服務成本大大降低。</p>
+    <p>第一個相當簡單。這次，DeepSeek 發布了第二個較小的 Flash 模型，該模型需要更少的基礎設施來運行，並將以更低的成本提供更具互動性的使用者體驗。較小的型號的服務成本較低。</p>
+    <p>這本身並不是一種新策略，但 DeepSeek 現在才採用這種策略，至少就其內部模型而言是如此。</p>
+    <p>更大、更有意義的變化在於 DeepSeek 計算注意力的方式。模型的注意力機制會影響它將提示轉換為用於產生輸出標記的鍵值對的方式。</p>
+    <p>在與新模型一起發表的一篇論文中，DeepSeek 研究人員描述了一種混合注意力機制，該機制結合了兩種技術：壓縮稀疏注意力和重壓縮注意力，以減少推理期間所需的計算量以及用於跟踪模型狀態的 KV 緩存所需的內存。</p>
+    <p>後一個元素是 DeepSeek V4 效率的關鍵，因為這些快取可能非常大。推理提供者也傾向於將這些卸載到系統記憶體或閃存，以避免冷啟動懲罰。壓縮程度較高的 KV 快取意味著大規模推理部署所需的記憶體和儲存更少。</p>
+    <p>這些技術結合意味著該模型可以支援一百萬個令牌上下文窗口，同時使用的記憶體比 DeepSeek V3.2 少 9.5 倍至 13.7 倍。</p>
+    <p>為了進一步減少模型的記憶體佔用，DeepSeek 繼續其使用較低精度資料類型的傳統。 DeepSeek V3 是首批在 FP8 上訓練的開放權重模型之一。</p>
+    <p>現在，兩種 V4 型號都混合使用 FP8 和 FP4 精度。具體來說，模型開發人員對 MoE 專家權重使用了量化感知訓練。</p>
+    <p>正如我們之前所討論的，與 FP8 相比，FP4 有效地將存儲模型權重所需的內存減少了一半，如果您能夠忍受精度的損失，那麼可以顯著節省內存。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
