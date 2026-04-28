@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04. 2026-04-27｜持續的供應鏈攻擊「明確針對」安全、開發工具</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 04</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/27/supply_chain_campaign_targets_security/" target="_blank">The Register — Ongoing supply-chain attack 'explicitly targeting' security, dev tools</a><br>📅 原文發佈：2026-04-27</div>
+    <h1>04. 2026-04-27｜持續的供應鏈攻擊「明確針對」安全、開發工具</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>軟體安全測試機構 Checkmarx 成為最新一家陷入對安全工具提供者持續攻擊的組織。該公司表示，在 Lapsus$ 勒索者聲稱洩露了該公司的原始碼、機密和其他敏感資料後，網路上發布的資料似乎來自其 GitHub 儲存庫之一。</p>
+    <p>Checkmarx 在周日的更新中表示，調查仍在進行中，正在努力「驗證數據的性質和範圍」。然而，目前的證據表明，“這些數據源自 Checkmarx 的 GitHub 存儲庫，並且通過 2026 年 3 月 23 日的最初供應鏈攻擊促進了對該存儲庫的訪問。”</p>
+    <p>該安全商店已鎖定對受影響存儲庫的訪問，並表示，如果調查確定任何客戶資訊在網上發布，它將立即通知“所有相關方”。</p>
+    <p>一天前，Lapsus$ 資料竊賊將 Checkmarx 添加到其洩漏網站的受害者名單中。在 Dark Web Informer 在 X 上分享的一篇貼文中，勒索者聲稱已經洩露了大量敏感信息，包括原始碼、API 金鑰、MongoDB 和 MySQL 登入憑證以及員工詳細資訊。</p>
+    <p>Checkmarx 沒有回應 The Register 關於被盜數據和 Lapsus$ 索賠的詢問。該供應商週日承諾“在 24 小時內提供更詳細的更新”，因為這條供應鏈的混亂波及了安全和開發工具領域。</p>
+    <p>Checkmarx 在其公告中提到的最初攻擊發生在 3 月 23 日，當時一個名為 TeamPCP 的新興網路犯罪團夥使用了從 Trivy 竊取的 CI/CD 機密，他們最初於 2 月底洩露了這些機密。</p>
+    <p>Trivy 是由 Aqua Security 維護的開源漏洞掃描器。 3 月 16 日，TeamPCP 將竊取憑證的惡意軟體注入掃描儀，取得了大量開發人員的機密、雲端憑證、SSH 金鑰和 Kubernetes 設定文件，然後在開發人員的電腦上植入持久後門。</p>
+    <p>這次入侵也為攻擊者提供了進入其他幾個開源工具的初始存取向量，包括 LiteLLM、Telnyx 和 KICS（由 Checkmarx 維護的開源靜態分析工具）。</p>
+    <p>3 月 23 日，TeamPCP 將相同的憑證竊取惡意軟體注入 KICS，並將中毒映像推送到由 Checkmarx 維護的官方 checkmarx/kics Docker Hub 儲存庫。</p>
+    <p>Socket 的研究團隊在早期對 Checkmarx 供應鏈攻擊的分析中寫道：“對中毒圖像的分析表明，捆綁的 KICS 二進製文件經過修改，包含了合法版本中不存在的數據收集和滲透功能。”</p>
+    <p>供應鏈安全研究人員寫道：“我們的調查發現，有證據表明，該惡意軟體可以生成未經審查的掃描報告，對其進行加密，並將其發送到外部端點，從而為使用 KICS 掃描可能包含憑據或其他敏感配置數據的基礎設施即代碼文件的團隊帶來嚴重風險。”</p>
+    <p>除了木馬化的 KICS 映像之外，不法分子還破壞了其他 Checkmarx 開發人員工具，包括 Checkmarx GitHub Actions 和兩個 Open VSX 外掛程式。</p>
+    <p>Checkmarx 在其最初的安全公告中表示：“2026 年 3 月 23 日，Checkmarx 成為網路安全供應鏈事件的目標，該事件影響了透過 Open VSX 市場分發的兩個特定插件和我們的兩個 GitHub Actions 工作流程。”</p>
+    <p>攻擊者故意針對開發人員被告知最信任的工具：安全掃描器、密碼管理器以及其他直接連接到開發人員環境的高權限軟體</p>
+    <p>上週晚些時候，Socket 研究人員透露，開源密碼管理器 Bitwarden 的 CLI 也因 Checkmarx 入侵而受到損害。這大大擴大了攻擊的潛在爆炸半徑，因為超過 1000 萬用戶和超過 50,000 家企業使用 Bitwarden，該公司自稱是第二大企業密碼管理器。</p>
+    <p>「攻擊者故意針對開發人員被告知最信任的工具：安全掃描器、密碼管理器和其他直接連接到開發人員環境的高權限軟體。這就是為什麼後果會很快變得嚴重，」Socket 執行長 Feross Aboukhadijeh 週一告訴 The Register。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
