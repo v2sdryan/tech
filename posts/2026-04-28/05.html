@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05. 2026-04-27｜Cursor-Opus 代理商消滅了新創公司的生產資料庫</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 05</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/" target="_blank">The Register — Cursor-Opus agent snuffs out startup’s production database</a><br>📅 原文發佈：2026-04-27</div>
+    <h1>05. 2026-04-27｜Cursor-Opus 代理商消滅了新創公司的生產資料庫</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>汽車 SaaS 平台 PocketOS 的創始人 Jeremy Crane 在整個週末花了不到 10 秒的時間從該公司 AI 編碼代理引發的數據消失事件中恢復過來。</p>
+    <p>克萊恩不是一個會白白浪費危機的人，他在社群媒體貼文中寫下了刪除事件的事後分析，檢驗了「不存在不良宣傳」這句話。</p>
+    <p>「[週五]，人工智慧編碼代理程式——運行 Anthropic 旗艦產品 Claude Opus 4.6 的 Cursor——透過對我們的基礎設施提供商 Railway 的一次 API 調用，刪除了我們的生產資料庫和所有捲級備份，」他解釋道。 “花了9秒。”</p>
+    <p>據 Crane 稱，Cursor 代理在 PocketOS 臨時環境中遇到了憑證不匹配的問題，並決定透過刪除 Railway 磁碟區（應用程式資料所在的儲存空間）來解決該問題。為此，它尋找 API 令牌，並在不相關的文件中找到了一個。</p>
+    <p>該令牌是為了透過 Railway CLI 新增和刪除自訂網域而建立的，但其範圍適用於任何操作，包括破壞性操作。這顯然是一個功能，而它應該是一個錯誤。根據 Crane 的說法，如果知道該令牌的權限範圍，就不會儲存該令牌。</p>
+    <p>AI代理使用此令牌授權curl命令刪除PocketOS的生產卷，無需任何確認檢查，同時還刪除備份，因為正如Crane指出的那樣，“Railway將捲級備份存儲在同一卷中。”</p>
+    <p>我們在這裡暫停，讓你難以置信地搖頭，翻白眼，或參與任何你喜歡的我告訴過你的儀式。 AWS 的 Kiro snafu 以及使用 Google Antigravity 和 Replit 的開發人員所學到的教訓將不斷重複，直到他們完全領會為止。</p>
+    <p>鐵路公司執行長傑克庫柏(Jake Cooper)對克蘭的貼文做出了回應，稱刪除不應該發生，然後又說這是預期的行為。</p>
+    <p>他寫道：「雖然Railway 始終將『撤消』作為核心原語構建到平台（CLI、儀表板等）中，但我們使 API 語義與『經典工程』開發人員標準保持一致。」「…因此，今天，如果您（或您的代理）進行身份驗證並調用刪除，我們將尊重該請求。代理就是這麼做的…只是在其生產資料庫上刪除了。</p>
+    <p>Crane 在一封電子郵件中告訴 The Register，他非常感謝 Cooper 在周日晚上介入，並在一小時內幫助恢復了公司的數據，並對 API 採取了進一步的保護措施。</p>
+    <p>Railway 的 Cooper 在給 The Register 的一封電子郵件中表示：「我們既維護用戶備份，也維護災難備份。我們非常非常認真地對待資料。這種特殊情況是一個『流氓客戶 AI』授予了完全許可的 API 令牌，決定調用一個沒有我們的『延遲刪除』邏輯（存在於儀表板、CLI 等中）的遺留點。此後，我們修了該端點。合作關於平臺本身的潛在改進（到目前為止，所有這些改進都在事件發生之前正在積極開發中）。</p>
+    <p>Brave Software 執行長 Brendan Eich 表示：“不要指責‘人工智慧’，也不要讓現任者或政府小人來負責——這表明存在多種人為錯誤，這對盲目‘代理’炒作提出了警示。”</p>
+    <p>儘管如此，Crane 仍指出了「Cursor 的失敗」——行銷安全，儘管有相反的證據——以及「鐵路的失敗（複數）」——一個未經確認就刪除的 API，在生產卷上存儲備份，以及根範圍的代幣等等——沒有太多的自責。</p>
+    <p>克萊恩對此提出質疑，堅稱這其中有我的過錯，但他補充說，他也希望基礎設施提供者承擔責任。</p>
+    <p>「我們的核心論點是成立的，」克蘭在電子郵件中說。 「是的，我們的責任是生產 API 金鑰的未知暴露（鐵路目前不允許對金鑰進行限制）。</p>
+    <p>「但是，這仍然是工具和基礎設施提供商的警示故事和發現。表面的安全（通過營銷誇張）並不安全。當我們為這些服務付費而它們並不真正存在時，值得一篇專欄文章。我們建設得如此之快，這些事情將繼續發生。”</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
