@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11. 2026-04-28｜不要向 Vect 支付贖金 - 您的資料可能已被清除</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 11</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/04/28/dont_pay_vect_a_ransom/" target="_blank">The Register — Don't pay Vect a ransom - your data's likely already wiped out</a><br>📅 原文發佈：2026-04-28</div>
+    <h1>11. 2026-04-28｜不要向 Vect 支付贖金 - 您的資料可能已被清除</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>Check Point Research 表示，受到 Trivy 和 LiteLLM 供應鏈妥協浪潮影響的組織向 Vect 支付費用以期恢復數據，但很可能沒有得到太多回報。這是因為 Vect 使用的勒索軟體實際上根本不是勒索軟體，而是一個可以破壞任何大於 128KB 的檔案的擦除器。</p>
+    <p>Vect 的洩密網站列出了自 1 月以來的 25 個組織，以及自 3 月以來的 4 個組織，3 月是供應鏈攻擊開始敲詐勒索的時候。然而，目前尚不清楚有多少（如果有的話）所列出的組織與 Trivy 和 LiteLLM 相關的妥協有關。</p>
+    <p>【翻譯失敗，保留原文】&quot;On April 15, the group claimed two larger victims, Guesty (700GB) and S&amp;P Global (250GB), allegedly tied to earlier TeamPCP compromises,&quot; Eli Smadja, group manager at Check Point Research, told The Register . &quot;However, these claims cannot be independently verified, and there is no confirmed visibility into how many of these cases resulted in successful ransom payments versus data being leaked without payment.&quot;</p>
+    <p>Guesty 和 S&amp;P Global 都沒有回應 The Register 的詢問。</p>
+    <p>【翻譯失敗，保留原文】Vect is one of the crime crews partnering with TeamPCP to leak data and extort victims of the ongoing attacks that infected Trivy , LiteLLM , Checkmarx , and Telnyx .</p>
+    <p>在最初危害安全和開發人員工具，用自我傳播的竊取憑證的惡意軟體感染它們之後，TeamPCP 和 Vect 在 BreachForums 上宣布了他們的新合作夥伴關係，並吹噓道：“我們將實現更大規模的供應鏈操作。我們將把這些危害鏈接到毀滅性的後續勒索軟體活動中。”</p>
+    <p>Plus Vect 宣布與資料外洩網站本身建立合作夥伴關係，並表示每個註冊的 BreachForums 用戶都可以使用 Vect 的勒索軟體、談判平台和網站。</p>
+    <p>因此，Check Point 研究人員開設了一個 BreachForums 帳戶，訪問該面板和勒索軟體建構器，並分析了該團體的惡意軟體。他們很快就確定，勒索軟體即服務組織也不太擅長編寫程式碼——Check Point 研究團隊對犯罪行為的描述是「技術不夠複雜」和「業餘執行」——而且他們似乎不小心編寫了資料擦除器。</p>
+    <p>Vect 2.0 勒索軟體不會對大檔案進行加密（勒索軟體應該這樣做），而是會永久銷毀任何大於 131,072 位元組 (128 KB) 的檔案。</p>
+    <p>安全分析師寫道：「對任何人來說，完全恢復都是不可能的，包括攻擊者。」「在只有 128 KB 的閾值下，這實際上使 VECT 幾乎任何包含有意義資料、企業資產（例如虛擬機磁碟、資料庫、文件和備份）的文件的擦除器。CPR 確認所有公開可用的 VECT 版本都存在此缺陷。」</p>
+    <p>正如所宣傳的那樣，該勒索軟體包括 Windows、Linux 和 ESXi 變種。所有這些都共享基於 libsodium 構建的相同加密設計、相同的文件大小閾值、相同的四塊邏輯和相同的缺陷：對於每個大於 128 KB 的文件，加密實作會丟棄四個解密隨機數中的三個。</p>
+    <p>除了隨機數處理缺陷之外，惡意軟體分析師表示，他們在所有勒索軟體變體中發現了「多個」其他錯誤和設計失敗，這表明即使是犯罪分子也無法透過振動編碼來成功操作。正如研究人員所指出的：「作者知道專業勒索軟體工具應該具備哪些功能，但顯然很難正確地實現這些功能，或者根本無法實現。」®</p>
+    <p>持續的供應鏈攻擊「明確針對」安全、開發工具</p>
+    <p>人工智慧招聘公司 Mercor 表示，它是 LiteLLM 供應鏈攻擊中遭受襲擊的“數千人之一”</p>
+    <p>Trivy 供應鏈攻擊導致超過 1000 個雲端環境受到感染</p>
+    <p>兩位不同的攻擊者毒害了流行的開源工具 - 並向我們展示了供應鏈妥協的未來</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
