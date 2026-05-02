@@ -227,9 +227,10 @@
     ]
   },
   "2026-05-02": {
-    "nextStartIndex": 4,
+    "nextStartIndex": 8,
     "completedRanges": [
-      "01-04"
+      "01-04",
+      "05-08"
     ]
   }
 }
