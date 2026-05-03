@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06. 2026-05-02｜基於使用的定價會破壞你的氛圍 - 以下是如何推出你自己的本地人工智慧編碼代理</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 06</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/05/02/local_ai_coding_agents/" target="_blank">The Register — Usage-based pricing killing your vibe - here's how to roll your own local AI coding agents</a><br>📅 原文發佈：2026-05-02</div>
+    <h1>06. 2026-05-02｜基於使用的定價會破壞你的氛圍 - 以下是如何推出你自己的本地人工智慧編碼代理</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>隨著模型開發人員推行更激進的速率限制、提高價格，甚至放棄基於使用的定價的訂閱，這種振動編碼的愛好項目將變得更加昂貴。幸運的是，您並非沒有節省成本的選擇。</p>
+    <p>在過去的幾周里，我們看到 Anthropic 玩具從其最實惠的計劃中刪除了 Claude Code，而微軟則跳過了試水，並將 GitHub Copilot 轉向純粹基於使用的模型。整個災難讓我們思考。我們是否需要 Anthropic 或 OpenAI 的頂級模型，或者我們可以使用較小的本地模型嗎？當然，它可能會更慢，能力更差，並且使用起來更令人沮喪，但你無法擊敗免費的價格......好吧，假設你已經擁有了硬體。</p>
+    <p>碰巧阿里巴巴最近放棄了 Qwen3.6-27B，這家雲端和電子商務巨頭聲稱將「旗艦編碼能力」打包到一個足夠小的包中，可以在 32 GB M 系列 Mac 或 24 GB GPU 上運行。</p>
+    <p>這不是我們第一次研究本地代碼助手。之前我們曾探索使用Continue 的VS Code 擴充功能來完成程式碼完成和產生等任務。</p>
+    <p>當時，模型和軟體堆疊還相當不成熟，這使得它們成為有用的工具，但不一定足以與更大的前緣模型競爭。從那時起，模型架構和代理工具得到了顯著改進。</p>
+    <p>「推理」功能允許小型模型透過「思考」更長的模型來彌補其尺寸，混合專家模型意味著您不需要每秒 TB 級的記憶體頻寬來獲得互動體驗，而大大改進的函數和工具呼叫功能意味著這些模型實際上可以與程式碼庫、shell 環境和 Web 進行互動。</p>
+    <p>在本次實踐中，我們將了解如何部署和配置 Qwen3.6-27B 等本地模型，以便在電腦上進行編碼，並探索一些可以與它們一起使用的代理框架。</p>
+    <p>注意：較舊的 M 系列 Mac 可能難以應對代理編碼所需的大上下文長度。您可能會更幸運地使用像 oMLX 這樣的推理引擎，它可以更好地利用 Apple 的硬體加速器，但您的情況可能會有所不同。</p>
+    <p>如今，在本地運行法學碩士是一個非常簡單的過程。安裝您最喜歡的推理引擎。下載模型，並透過 API 連接您的應用程式。</p>
+    <p>然而，特別是對於程式碼助手來說，我們需要輸入幾個參數，否則模型很容易產生垃圾和損壞的程式碼。有些模型需要特定的超參數才能在不同的應用中正常運行，Qwen3.6-27B也不例外。</p>
+    <p>使用Qwen3.6-27B進行vibe編碼時，阿里巴巴建議設定以下參數：</p>
+    <p>我們還需要將模型的上下文視窗設定得盡可能大，以適應記憶體。</p>
+    <p>如果您不熟悉，模型的上下文視窗定義了模型可以追蹤任何給定請求的令牌數量。</p>
+    <p>當使用包含數千行程式碼的大型程式碼庫時，這會很快增加。更重要的是，許多代理框架使用的系統提示可能非常大，因此我們希望將上下文視窗設定得盡可能高。</p>
+    <p>Qwen3.6-27B 支援 262,144 個令牌上下文窗口，但除非您有高階 Mac 或工作站 GPU，否則您可能沒有足夠的記憶體來利用所有這些優勢，至少在 16 位元精度下是這樣。</p>
+    <p>好消息是，我們不需要以 16 位元儲存用於追蹤模型狀態的鍵值快取。我們可以擺脫較低的精度，而不會造成太多的性能和品質下降。為了最大化我們的上下文窗口，我們將把鍵值對壓縮到 8 位元。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
