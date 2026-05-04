@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. 2026-05-03｜Inference 為人工智慧晶片新創公司提供了第二次嶄露頭角的機會</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 08</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/05/03/inference_is_giving_ai_chip/" target="_blank">The Register — Inference is giving AI chip startups a second chance to make their mark</a><br>📅 原文發佈：2026-05-03</div>
+    <h1>08. 2026-05-03｜Inference 為人工智慧晶片新創公司提供了第二次嶄露頭角的機會</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>隨著重點從訓練新模型轉向為新模型提供服務，人工智慧的採用正在達到一個轉折點。對於那些想在英偉達分一杯羹的人工智慧新創公司來說，機不可失，失不再來。</p>
+    <p>與訓練相比，推理是一種更多樣化的工作負載，這為晶片新創公司提供了一個為自己開闢利基市場的機會。與人工智慧助理或程式碼代理相比，大批量推理需要不同的計算、記憶體和頻寬組合。</p>
+    <p>因此，推理變得越來越異質，其中某些方面可能更適合 GPU 和其他更專業的硬體。</p>
+    <p>Nvidia 去年 12 月斥資 200 億美元收購 Groq 就是一個典型的例子。這家新創公司的 SRAM 晶片架構意味著，如果有足夠的 SRAM，Groq 的 LPU 可以比任何 GPU 更快地產生代幣。然而，他們有限的運算能力和老化的晶片技術意味著他們無法有效地擴展。</p>
+    <p>Nvidia 方面解決了這個問題，將推理管道中計算量大的預填充位移至 GPU，同時將頻寬受限的解碼操作保留在全新的 LPU 上。</p>
+    <p>這種組合並不是 Nvidia 獨有的。 GTC 之後一周，AWS 宣布了自己的分類計算平台，該平台使用其定制的 Trainium 加速器進行預填充，並使用 Cerebras Systems 的餐盤大小的晶圓級加速器進行解碼。</p>
+    <p>就連英特爾也樂在其中，宣布了一種參考設計，該設計將使用 GPU（大概是去年北半球秋天他們嘲笑過的 GPU）來預先填充和 AI 晶片新創公司 SambaNova 的新 RDU 進行解碼。</p>
+    <p>到目前為止，大多數人工智慧晶片新創公司的勝利都集中在解碼方面。 SRAM 雖然容量不是特別大，但速度卻快得驚人。因此，只要有足夠的晶片，或者至少在 Cerebras 的情況下有足夠大的晶片，它們就非常適合加速解碼操作，但晶片新創公司並不局限於這種情況。</p>
+    <p>本週，Lumai 詳細介紹了其光學推理加速器，該加速器使用光而不是電子來執行大多數機器學習工作負載核心的矩陣乘法運算，其功耗僅為純數位架構的一小部分。</p>
+    <p>Lumai 預計，到 2029 年，其下一代 Iris Tetra 系統將在 10kW 的功率預算中實現 exaOPS 的 AI 性能。</p>
+    <p>從技術上講，這些晶片使用混合光電架構，但推理過程中完成的大部分計算是由晶片的光學張量核心處理的。</p>
+    <p>最初，該公司將該晶片定位為 GPU 的獨立替代品，用於計算密集型推理工作負載，例如批次處理。從長遠來看，該公司還計劃使用其光學加速器作為預填充處理器。</p>
+    <p>該架構仍處於起步階段，目前能夠運行 Llama 3.1 8B 或 70B 等數十億參數模型，但它已經足夠成熟，這家總部位於英國的新創公司已向 Neocloud 和超大規模開放其晶片以進行評估。</p>
+    <p>話雖如此，並不是每個人工智慧晶片新創公司都熱衷於使用不同的晶片進行預填充和解碼。本週早些時候，Tenstorrent 推出了基於 RISC-V 的 Galaxy Blackhole 計算平台，足以說明該公司執行長 Jim Keller 並不喜歡分類推理公式。</p>
+    <p>「業內每家公司都在聯手打造加速器加速器。CPU 運行代碼。GPU 加速 CPU。TPU 加速 GPU。LPU 加速 TPU。等等。這導致了複雜的解決方案，不太可能與人工智能模型和用途的變化兼容。在 Tenstorrent，我們認為更通用、更簡單的東西會起作用，」他在一份聲明中說。 ®</p>
+    <p>頻寬佔用者很高興，Celestica 的最新交換器配備了 64 個 1.6 Tbps 乙太網路端口</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
