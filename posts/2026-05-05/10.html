@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10. 2026-05-04｜在應用程式將 Copilot 歸功於人類工作後，微軟修復了 VS Code</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 10</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/05/04/microsoft_reverses_ai_credit_grab/" target="_blank">The Register — Microsoft fixes VS Code after app gives Copilot credit for human's work</a><br>📅 原文發佈：2026-05-04</div>
+    <h1>10. 2026-05-04｜在應用程式將 Copilot 歸功於人類工作後，微軟修復了 VS Code</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>想像一下，你在一個專案上拼命工作，結果卻讓 VS Code 在你的提交中添加了一個屬性，表明 Copilot 幫助了你，即使它沒有幫助你。在用戶抱怨機器人聲稱對人類編寫的程式碼有功勞後，微軟撤銷了添加預設人工智慧歸屬通知的變更。</p>
+    <p>最初的更改（拉取請求）更改了 VS Code 的 Git 擴展，將「共同創作者：Copilot」添加到涉及某種程度的 AI 輔助的提交中。這是 3 月初在 VS Code 1.110 中完成的。設定更改的目的是“[添加]所有人工智慧生成的程式碼的預告片，包括內聯完成。”</p>
+    <p>但開發人員表示，即使不使用微軟的 Copilot AI 助理且聊天功能已被停用，人工智慧作者行也會被添加。許多人對微軟預設啟動人工智慧通知表示不滿。</p>
+    <p>「最令人擔憂的是，我在提交之前已經檢查了提交訊息，」一位開發人員上週在 GitHub 社群討論貼文中寫道。 「我刪除了 Copilot 產生的英文提交訊息，並手動編寫了自己的提交訊息。但是，建立提交後，最終的 Git 歷史記錄仍然包含 Copilot 共同作者行。</p>
+    <p>“這意味著我在提交之前查看的消息不是 Git 歷史記錄中的最終內容，或者 Copilot/VS Code 在我手動編輯後添加了共同作者元數據。這在專業開發工作流程中是不可接受的。”</p>
+    <p>週末，最初批准拉取請求的 VS Code 審核員 Dmitriy Vasyura 在論壇帖子中道歉，因為沒有檢查更改的接收情況就批准了更改。</p>
+    <p>他寫道：“邪惡公司並沒有惡意，而是希望支持一些客戶期望 VS Code 的人工智慧生成程式碼功能。”</p>
+    <p>他承認，實施應該尊重人工智慧功能被禁用的情況，並且不應誤報提交作者身份。該修復程式於 5 月 3 日編寫，計劃出現在 VS Code 即將發布的 1.119 版本中。它更改了將 Copilot 作者身份預告片附加回選擇加入的預設設定。</p>
+    <p>正如 Vasyura 觀察到的那樣，其他人工智慧工具會自我報告其參與情況。</p>
+    <p>去年，使用 Anthropic 的 Claude Code 的開發人員對 AI 代理自動在提交中添加「共同作者：Claude」提出了類似的擔憂。這仍然是 Claude Code 的預設設置，並且有幾個未解決的問題要求在預設情況下禁用歸因線。</p>
+    <p>OpenAI 的 Codex 從二月開始預設提供歸因。可以透過 config.toml 檔案中的 commit_attribution 標誌停用它。</p>
+    <p>軟體專案已經制定了自己的標準來記錄人工智慧程式碼的貢獻。例如，Linux 計畫要求人類簽署程式碼貢獻，並將人工智慧幫助記錄在歸屬通知中。另一方面，Zig 專案禁止人工智慧輔助程式碼提交。</p>
+    <p>就 VS Code 而言，開發人員主要希望歸屬預告片能夠選擇加入而不是選擇退出 - 他們對微軟單方面做出的改變感到惱火。</p>
+    <p>但在程式碼提交中包含人工智慧信用會引發一些棘手的問題。鑑於純粹人工智慧產生的內容可能不符合版權保護的條件，因此該通知可能會使人工智慧工具的商業使用變得複雜。</p>
+    <p>當人工智慧代理編寫了一些程式碼時，問題就變成了人工智慧程式碼產生過程中是否有足夠的人類參與以獲得智慧財產權保護的資格。如果在訴訟中出現該問題，組織可能沒有必要的工作流程文件流程來澄清該問題。</p>
+    <p>在某些責任場景中，人工智慧歸屬通知可能會使軟體相關糾紛變得複雜。例如，據報道，一些保險公司不願提供涉及人工智慧的商業責任保險。因此，記錄人工智慧的參與可以讓保險公司有能力擺脫相關索賠。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
