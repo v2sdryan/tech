@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. 2026-05-05｜新加坡研究人員讓多樣化的 SIEM 與代理規則翻譯和諧一致</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 03</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://go.theregister.com/feed/www.theregister.com/2026/05/05/arulecon_siem_rule_conversion/" target="_blank">The Register — Singapore boffins get diverse SIEMs singing in harmony with agentic rule translation</a><br>📅 原文發佈：2026-05-05</div>
+    <h1>03. 2026-05-05｜新加坡研究人員讓多樣化的 SIEM 與代理規則翻譯和諧一致</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>來自新加坡和中國的學者找到了一種讓人工智慧對網路防禦者有用的方法，透過創建一種技術來轉換來自不同安全資訊和事件管理（SIEM）的規則，以便更容易在多個系統中使用它們。</p>
+    <p>SIEM 從許多來源收集日誌文件，並允許使用者設定觸發警報的規則，安全營運中心 (SOC) 會在它們代表安全事件時考慮這些警報。測試「不可能的旅行」場景（同一用戶在一小時內從紐約和倫敦登錄，表明存在憑證盜竊或其他詐欺行為）是常見的 SIEM 規則。</p>
+    <p>許多組織最終都會擁有多個 SIEM，這意味著 SOC 的複雜性。</p>
+    <p>來自新加坡國立大學和中國復旦大學的研究人員最近發表了一篇題為「ARuleCon：代理安全規則轉換」的論文 [PDF]，其中解釋了他們開發的一種技術，用於轉換規則，以便多個 SIEM 可以使用它們。</p>
+    <p>主要作者 Ming Xu 告訴 The Register，她和她的同事開發了 ARuleCon，因為 SIEM 使用特定的規則模式，因此使用一個 SIEM 創建的規則無法與另一個 SIEM 一起使用。雖然一些供應商提供翻譯工具，但他們不提供對許多 SIEM 的支援：作者表示，微軟的工具將 Splunk 規則轉移到雷德蒙德的 Sentinel SIEM，但無法處理其他規則。</p>
+    <p>「規則轉換可以由安全專家手動執行，速度慢且工作量大，」論文指出。</p>
+    <p>像 Sigma 框架這樣的工具旨在幫助跨多個平台管理和共享規則，但 Ming 和她的合著者認為它和其他現有的翻譯工具不能很好地處理複雜或相互關聯的規則。</p>
+    <p>現在是 2026 年，所以嘗試使用 LLM 將 SIEM 規則轉換為不同的格式似乎很自然。</p>
+    <p>作者表示，這種方法“通常準確性較差，並且缺乏特定於供應商的正確性”，因為用於構建 LLM 的培訓數據不包含有關 SIEM 規則模式的足夠數據。</p>
+    <p>「這些缺點需要一個可擴展、供應商中立且可靠的 SIEM 規則轉換框架，以保留現有規則值並減輕 SOC 工作負載，」該論文指出，然後解釋 ARuleCon 如何通過「代理 RAG [檢索增強生成] 管道來完成工作，該管道檢索權威的官方供應商文檔以解決約定/模式不匹配問題，以及基於受控的統一規則和測試環境的規則。</p>
+    <p>長話短說，研究人員開發了能夠翻譯使用 Splunk、Microsoft Sentinel、IBM QRadar、Google Chronicle 和 RSA NetWitness 建立的 SIEM 規則的代理技術。並非所有轉換都非常出色，但 ARuleCon 可以將每個 SIEM 供應商使用的專有規則格式轉換為多個競爭對手平台 - 並且比通用 LLM 更準確。</p>
+    <p>因此，ARuleCon 可以從一個 SIEM 匯出規則並在另一個 SIEM 中使用它們。</p>
+    <p>Ming 告訴 The Register，她希望該工具可以幫助組織考慮和規劃 SIEM 整合或遷移，並推出可以更輕鬆地檢測安全威脅訊號的 SOC，並不再擔心來自多個警報的噪音。 ®</p>
+    <p>微軟實際上做了一些有用的事情，將 Sysmon 加入到 Windows</p>
+    <p>混合雲有兩個攻擊面，而您對其中任何一個都沒有給予足夠的重視</p>
+    <p>克爾-斯普倫克！思科完成價值 280 億美元的分析收購</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
