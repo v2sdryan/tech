@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07. Mon, 04 Ma｜美國政府警告嚴重的 CopyFail 錯誤會影響 Linux 主要版本</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.7;padding:20px 16px 40px}.wrap{max-width:680px;margin:0 auto}.badge{display:inline-block;background:#007aff;color:#fff;font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 12px 0}.source{background:#f0f0f5;border-left:3px solid #007aff;padding:10px 14px;border-radius:4px;margin-bottom:20px;font-size:14px}.source a{color:#007aff;word-break:break-all}h1{font-size:22px;line-height:1.4;margin-bottom:16px}h2{font-size:18px;margin:28px 0 12px;color:#1d1d1f}p{font-size:16px;margin-bottom:16px;text-align:justify}.back{display:inline-block;margin-top:32px;color:#007aff;text-decoration:none;font-size:15px}
+  </style>
+</head>
+<body>
+  <article class="wrap">
+    <div><span class="badge">指定文章 07</span><span class="badge">全文翻譯（zh-HK）</span></div>
+    <div class="source">📰 原文來源：<a href="https://techcrunch.com/2026/05/04/u-s-government-warns-of-severe-copyfail-bug-affecting-major-versions-of-linux/" target="_blank">TechCrunch — US government warns of severe CopyFail bug affecting major versions of Linux</a><br>📅 原文發佈：Mon, 04 Ma</div>
+    <h1>07. Mon, 04 Ma｜美國政府警告嚴重的 CopyFail 錯誤會影響 Linux 主要版本</h1>
+    <h2>全文翻譯（繁體中文・香港）</h2>
+    <p>2026 年首屆 StrictlyVC 將於 4 月 30 日登陸舊金山。門票火熱搶購。立即註冊。</p>
+    <p>購買一張 Disrupt 通行證，即可享有 50% 折扣購買第二張通行證。 5 月 8 日結束。立即註冊。</p>
+    <p>在安全研究人員公開發布允許攻擊者完全控制易受攻擊的系統的漏洞程式碼後，影響幾乎所有版本 Linux 作業系統的嚴重安全漏洞讓防禦者措手不及，並爭先恐後地進行修補。</p>
+    <p>美國政府表示，這個被稱為「CopyFail」的漏洞目前正被廣泛利用，這意味著它正被積極用於惡意駭客活動。</p>
+    <p>該漏洞的官方編號為 CVE-2026-31431，在 Linux 核心版本 7.0 及更早版本中發現，並於 3 月底向 Linux 核心安全團隊披露，並在大約一周後進行了修補。但這些補丁尚未完全滲透到許多依賴易受攻擊核心的 Linux 發行版中，這使得任何運行受影響 Linux 版本的系統都面臨損害的風險。</p>
+    <p>Linux 廣泛應用於企業環境中，運行全球大部分資料中心的電腦。</p>
+    <p>CopyFail 網站表示，同一個簡短的 Python 腳本「紮根於 2017 年以來發布的每個 Linux 發行版」。據發現 CopyFail 的安全公司 Theori 稱，該漏洞已在多個廣泛使用的 Linux 版本中得到驗證，包括 Red Hat Enterprise Linux 10.1、Ubuntu 24.04 (LTS)、Amazon Linux 2023 以及 SUSE 16。</p>
+    <p>DevOps 工程師兼開發人員 Jorijn Schrijvershof 在一篇部落格文章中寫道，該漏洞適用於 Debian 和 Fedora 版本，以及依賴 Linux 核心的 Kubernetes。 Schrijvershof 將漏洞描述為具有“異常大的爆炸半徑”，因為它適用於“幾乎所有現代發行版”的 Linux。</p>
+    <p>這個錯誤稱為 CopyFail，因為 Linux 核心（作業系統的核心，幾乎可以完全存取整個裝置）中受影響的元件在應該複製某些資料時卻沒有複製。這會破壞核心中的敏感數據，從而允許攻擊者利用核心對系統其餘部分（包括其數據）的存取。</p>
+    <p>如果被利用，該錯誤會特別成問題，因為它允許常規的、存取權限有限的使用者在受影響的 Linux 系統上獲得完全管理員存取權限。成功入侵資料中心中的伺服器可能使攻擊者能夠存取眾多企業客戶的每個應用程式、伺服器和資料庫，並有可能存取同一網路或資料中心上的其他系統。</p>
+    <p>CopyFail 漏洞無法單獨透過網路進行利用，但如果與透過網路進行的漏洞結合使用，則可以將其武器化。根據 Microsoft 的說法，如果 CopyFail 漏洞與可透過網路傳播的另一個漏洞連結在一起，攻擊者就可以利用該漏洞來獲得受影響伺服器的 root 存取權。操作具有易受攻擊核心的 Linux 電腦的使用者也可能被誘騙開啟觸發該漏洞的惡意連結或附件。</p>
+    <p>該漏洞還可以透過供應鏈攻擊的方式註入，其中惡意行為者侵入開源開發人員的帳戶並將惡意軟體植入其程式碼中，以便一次性危害大量設備。</p>
+    <p>鑑於聯邦企業網路面臨的風險，美國網路安全機構 CISA 已命令所有民間聯邦機構在 5 月 15 日之前修補任何受影響的系統。</p>
+    <p>當您透過我們文章中的連結購買時，我們可能會賺取少量佣金。這並不影響我們的編輯獨立性。</p>
+    <p>您可以透過 Signal 上的 zackwhittaker.1337 加密訊息聯繫他。您也可以透過電子郵件聯絡他，或透過 zack.whittaker@techcrunch.com 來驗證聯絡方式。</p>
+    <p>接下來是 StrictlyVC Athens。直接聆聽歐洲科技領導者未經過濾的見解，並與塑造未來的人建立聯繫。在它消失之前鎖定你的位置。</p>
+    <a class="back" href="/">← 返回首頁</a>
+  </article>
+</body>
+</html>
